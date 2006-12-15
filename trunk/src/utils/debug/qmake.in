@@ -1,0 +1,8 @@
+
+DVT_PATH_UTILS_DEBUG = ../src/utils/debug
+
+HEADERS += \
+	$$DVT_PATH_UTILS_DEBUG/debug.h
+	
+SOURCES += \
+	$$DVT_PATH_UTILS_DEBUG/debug.cpp

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<divotra:languageProfile formatVersion="1.0" langCode="en" version="0.1" xmlns:divotra="http://www.delta-my.de/divotra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.delta-my.de/divotra/dlp.xsd">
+
+<license>
+	<lg c="de">
+		Die Verwendung dieser Datei unterliegt keinerlei Einschränkungen.
+	</lg>
+</license>
+
+<authors>
+	<author>
+		Denis Martin
+	</author>
+</authors>
+
+<name>
+	<lg c="de">Englisch</lg>
+	<lg c="en">English</lg>
+	<lg c="fr">anglais</lg>
+</name>
+
+<personalPronouns>
+	<p t="1">I</p>
+	<p t="2">you</p>
+	<p t="3">he/she/it</p>
+	<p t="4">we</p>
+	<p t="5">you</p>
+	<p t="6">they</p>
+</personalPronouns>
+
+<tenses>
+	<t t="1">
+		<name>
+			<lg c="de">Präsens</lg>
+			<lg c="en">Present</lg>
+		</name>
+	</t>
+</tenses>
+
+</divotra:languageProfile>

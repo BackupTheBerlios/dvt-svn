@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<divotra:languageProfile formatVersion="1.0" langCode="ru" version="0.1" xmlns:divotra="http://www.delta-my.de/divotra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.delta-my.de/divotra/dlp.xsd">
+
+<license>
+	<lg c="de">
+		Die Verwendung dieser Datei unterliegt keinerlei Einschränkungen.
+	</lg>
+</license>
+
+<authors>
+	<author>
+		Denis Martin
+	</author>
+</authors>
+
+<name>
+	<lg c="de">Russisch</lg>
+	<lg c="en">Russian</lg>
+	<lg c="ru">русский</lg>
+</name>
+
+
+<personalPronouns>
+	<p t="1">я</p>
+	<p t="2">ты</p>
+	<p t="3">он/она</p>
+	<p t="4">мы</p>
+	<p t="5">вы</p>
+	<p t="6">они</p>
+</personalPronouns>
+
+<cases>
+	<c t="1">
+		<name>
+			<lg c="de">Nominativ</lg>
+			<lg c="en">Nominative</lg>
+		</name>
+	</c>
+	<c t="2">
+		<name>
+			<lg c="de">Genitiv</lg>
+			<lg c="en">Genitive</lg>
+		</name>
+	</c>
+	<c t="3">
+		<name>
+			<lg c="de">Dativ</lg>
+			<lg c="en">Dative</lg>
+		</name>
+	</c>
+	<c t="4">
+		<name>
+			<lg c="de">Akkusativ</lg>
+			<lg c="en">Accusative</lg>
+		</name>
+	</c>
+	<c t="5">
+		<name>
+			<lg c="de">Instrumental</lg>
+			<lg c="en">Instrumental</lg>
+		</name>
+	</c>
+	<c t="6">
+		<name>
+			<lg c="de">Präpositiv</lg>
+			<lg c="en">Prepositional</lg>
+		</name>
+	</c>
+</cases>
+
+<tenses>
+	<t t="1">
+		<name>
+			<lg c="de">Präsens</lg>
+			<lg c="en">Present</lg>
+		</name>
+	</t>
+</tenses>
+
+<conjugations>
+	<defcj t="1">
+		<name>
+			<lg c="en">E: -ать / -ять / -еть / ...</lg>
+		</name>
+	</defcj>
+	<defcj t="11">
+		<name>
+			<lg c="en">E1: -овать / -евать</lg>
+		</name>
+	</defcj>
+	<defcj t="12">
+		<name>
+			<lg c="en">E2: -нуть</lg>
+		</name>
+	</defcj>
+	<defcj t="2">
+		<name>
+			<lg c="en">I: -ить</lg>
+		</name>
+	</defcj>
+	<defcj t="3">
+		<name>
+			<lg c="de">unregelmäßig</lg>
+			<lg c="en">irregular</lg>
+		</name>
+	</defcj>
+</conjugations>
+
+</divotra:languageProfile>

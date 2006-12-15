@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<divotra:trainingLesson formatVersion="1.0" langCode_o="de" langCode_t="fr" version="0.1" xmlns:divotra="http://www.delta-my.de/divotra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.delta-my.de/divotra/dtl.xsd">
+	<title>
+		<lg c="ia">
+			Misc
+		</lg>
+	</title>
+	<description>
+		<lg c="en">
+			Misc
+		</lg>
+	</description>
+	<license>
+		<lg c="de">
+			Die Verwendung dieser Datei unterliegt keinerlei Einschränkungen.
+		</lg>
+	</license>
+	<entries>
+		<e t="n">
+			<o>
+				Naht
+			</o>
+			<t>
+				suture
+			</t>
+			<oe>
+				<g t="f" />
+			</oe>
+			<te>
+				<g t="f" />
+			</te>
+		</e>
+		<e t="n">
+			<o>
+				Feldheuschrecke
+			</o>
+			<t>
+				criquet
+			</t>
+			<oe>
+				<g t="f" />
+			</oe>
+			<te>
+				<g t="m" />
+			</te>
+		</e>
+		<e t="n">
+			<o>
+				Zikade
+			</o>
+			<t>
+				cigale
+			</t>
+			<oe>
+				<g t="f" />
+			</oe>
+			<te>
+				<g t="f" />
+			</te>
+		</e>
+		<e t="n">
+			<o>
+				Sommer
+			</o>
+			<t>
+				été
+			</t>
+			<oe>
+				<g t="m" />
+			</oe>
+			<te>
+				<g t="m" />
+			</te>
+		</e>
+		<e t="v">
+			<o>
+				haben
+			</o>
+			<t>
+				avoir
+			</t>
+			<te>
+				<cj>
+					<p t="1">
+						ai
+					</p>
+					<p t="2">
+						as
+					</p>
+					<p t="3">
+						a
+					</p>
+					<p t="4">
+						avons
+					</p>
+					<p t="5">
+						avez
+					</p>
+					<p t="6">
+						ont
+					</p>
+				</cj>
+			</te>
+		</e>
+		<e t="v">
+			<o>
+				ertragen, erleiden
+			</o>
+			<t>
+				subir
+			</t>
+		</e>
+	</entries>
+</divotra:trainingLesson>

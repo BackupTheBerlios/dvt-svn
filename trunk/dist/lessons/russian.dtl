@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<divotra:trainingLesson formatVersion="1.0" langCode_o="de" langCode_t="ru" version="0.1" xmlns:divotra="http://www.delta-my.de/divotra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.delta-my.de/divotra/dtl.xsd">
+	<title>
+		<lg c="ia">
+			Misc
+		</lg>
+	</title>
+	<description>
+		<lg c="en">
+			Misc
+		</lg>
+	</description>
+	<license>
+		<lg c="de">
+			Die Verwendung dieser Datei unterliegt keinerlei Einschränkungen.
+		</lg>
+	</license>
+	<entries>
+		<e t="v">
+			<o>
+				wohnen, leben
+			</o>
+			<t>
+				жить
+			</t>
+			<te>
+				<cj t="3">
+					<p t="1">
+						живу
+					</p>
+					<p t="2">
+						живёшь
+					</p>
+					<p t="3">
+						живёт
+					</p>
+					<p t="4">
+						живём
+					</p>
+					<p t="5">
+						живёте
+					</p>
+					<p t="6">
+						живут
+					</p>
+				</cj>
+			</te>
+		</e>
+		<e t="n">
+			<o>
+				Haus
+			</o>
+			<t>
+				дом
+			</t>
+			<oe>
+				<g t="n" />
+			</oe>
+		</e>
+		<e t="n">
+			<o>
+				Stadt
+			</o>
+			<t>
+				город
+			</t>
+			<oe>
+				<g t="f" />
+			</oe>
+		</e>
+	</entries>
+</divotra:trainingLesson>

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<divotra:trainingLesson formatVersion="1.0" langCode_o="de" langCode_t="en" version="0.1" xmlns:divotra="http://www.delta-my.de/divotra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.delta-my.de/divotra/dtl.xsd">
+	<title>
+		<lg c="ia">
+			Misc
+		</lg>
+	</title>
+	<description>
+		<lg c="en">
+			Misc
+		</lg>
+	</description>
+	<license>
+		<lg c="de">
+			Die Verwendung dieser Datei unterliegt keinerlei Einschränkungen.
+		</lg>
+	</license>
+	<entries>
+		<e t="v">
+			<o>
+				abbringen
+			</o>
+			<t>
+				dissuade
+			</t>
+		</e>
+		<e t="v">
+			<o>
+				etw. erwägen
+			</o>
+			<t>
+				mull sth.
+			</t>
+		</e>
+		<e t="v">
+			<o>
+				grübeln über
+			</o>
+			<t>
+				mull over
+			</t>
+		</e>
+		<e t="n">
+			<o>
+				Gelassenheit
+			</o>
+			<t>
+				serenity
+			</t>
+			<oe>
+				<g t="f" />
+			</oe>
+		</e>
+		<e t="v">
+			<o>
+				kriechen
+			</o>
+			<t>
+				creep
+			</t>
+		</e>
+		<e t="n">
+			<o>
+				Völkermord
+			</o>
+			<t>
+				genocide
+			</t>
+			<oe>
+				<g t="m" />
+			</oe>
+		</e>
+		<e t="n">
+			<o>
+				Mord
+			</o>
+			<t>
+				homicide
+			</t>
+			<oe>
+				<g t="m" />
+			</oe>
+		</e>
+		<e t="n">
+			<o>
+				Selbstmord
+			</o>
+			<t>
+				suicide
+			</t>
+			<oe>
+				<g t="m" />
+			</oe>
+		</e>
+		<e t="v">
+			<o>
+				nachgehen
+			</o>
+			<t>
+				pursue
+			</t>
+		</e>
+		<e t="v">
+			<o>
+				aufhören
+			</o>
+			<t>
+				cease
+			</t>
+		</e>
+		<e t="n">
+			<o>
+				Schwindel
+			</o>
+			<t>
+				vertigo
+			</t>
+			<oe>
+				<g t="m" />
+			</oe>
+		</e>
+		<e t="ad">
+			<o>
+				unkritisch
+			</o>
+			<t>
+				benign
+			</t>
+		</e>
+		<e t="v">
+			<o>
+				schlecht werden
+			</o>
+			<t>
+				nauseate
+			</t>
+		</e>
+		<e t="n">
+			<o>
+				Übelkeit
+			</o>
+			<t>
+				nausea
+			</t>
+			<oe>
+				<g t="f" />
+			</oe>
+		</e>
+		<e t="ad">
+			<o>
+				abgeneigt
+			</o>
+			<t>
+				reluctant
+			</t>
+		</e>
+		<e t="v">
+			<o>
+				ausweisen
+			</o>
+			<t>
+				expel
+			</t>
+		</e>
+		<e t="ad">
+			<o>
+				oberflächlich
+			</o>
+			<t>
+				superficial
+			</t>
+		</e>
+		<e>
+			<o>
+				Berufung
+			</o>
+			<t>
+				appeal
+			</t>
+		</e>
+		<e t="av">
+			<o>
+				vergeblich
+			</o>
+			<t>
+				in vain
+			</t>
+		</e>
+		<e t="n">
+			<o>
+				Narbe
+			</o>
+			<t>
+				scar
+			</t>
+			<oe>
+				<g t="f" />
+			</oe>
+		</e>
+		<e t="v">
+			<o>
+				zugestehen
+			</o>
+			<t>
+				concede
+			</t>
+		</e>
+		<e t="v">
+			<o>
+				blenden
+			</o>
+			<t>
+				dazzle
+			</t>
+		</e>
+		<e t="v">
+			<o>
+				randalieren
+			</o>
+			<t>
+				to go on rampage
+			</t>
+		</e>
+		<e t="n">
+			<o>
+				Kamelhöcker
+			</o>
+			<t>
+				hump
+			</t>
+			<oe>
+				<g t="m" />
+			</oe>
+		</e>
+		<e t="n">
+			<o>
+				Dürre
+			</o>
+			<t>
+				drought
+			</t>
+			<oe>
+				<g t="f" />
+			</oe>
+		</e>
+		<e t="n">
+			<o>
+				Bauch
+			</o>
+			<t>
+				belly
+			</t>
+			<oe>
+				<g t="m" />
+			</oe>
+		</e>
+	</entries>
+</divotra:trainingLesson>

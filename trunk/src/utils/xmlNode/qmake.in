@@ -1,0 +1,8 @@
+
+DVT_PATH_UTILS_XMLNODE = ../src/utils/xmlNode
+
+HEADERS += \
+	$$DVT_PATH_UTILS_XMLNODE/xmlNode.h
+	
+SOURCES += \
+	$$DVT_PATH_UTILS_XMLNODE/xmlNode.cpp

@@ -1,0 +1,37 @@
+
+DVT_PATH_CORE = ../src/core
+
+HEADERS += \
+	$$DVT_PATH_CORE/dvtCore.h \
+	$$DVT_PATH_CORE/dvtExceptions.h \
+	$$DVT_PATH_CORE/dvtMlString.h \
+	$$DVT_PATH_CORE/dvtWordClass.h \
+	$$DVT_PATH_CORE/dvtLanguageProfile.h \
+	$$DVT_PATH_CORE/dvtEntry.h \
+	$$DVT_PATH_CORE/lang/dvtLanguage.h \
+	$$DVT_PATH_CORE/lang/dvtLanguage_en.h \
+	$$DVT_PATH_CORE/lang/dvtLanguage_de.h \
+	$$DVT_PATH_CORE/lang/dvtLanguage_fr.h \
+	$$DVT_PATH_CORE/lang/dvtLanguage_fi.h \
+	$$DVT_PATH_CORE/trainer/dvtLesson.h \
+	$$DVT_PATH_CORE/trainer/dvtTrainingEntry.h \
+	$$DVT_PATH_CORE/trainer/dvtTrainer.h \
+	$$DVT_PATH_CORE/simpleTrainer/dvtSimpleTrainer.h
+
+SOURCES += \
+	$$DVT_PATH_CORE/dvtCore.cpp \
+	$$DVT_PATH_CORE/dvtExceptions.cpp \
+	$$DVT_PATH_CORE/dvtMlString.cpp \
+	$$DVT_PATH_CORE/dvtWordClass.cpp \
+	$$DVT_PATH_CORE/dvtLanguageProfile.cpp \
+	$$DVT_PATH_CORE/dvtEntry.cpp \
+	$$DVT_PATH_CORE/lang/dvtLanguage.cpp \
+	$$DVT_PATH_CORE/lang/dvtLanguage_en.cpp \
+	$$DVT_PATH_CORE/lang/dvtLanguage_de.cpp \
+	$$DVT_PATH_CORE/lang/dvtLanguage_fr.cpp \
+	$$DVT_PATH_CORE/lang/dvtLanguage_fi.cpp \
+	$$DVT_PATH_CORE/trainer/dvtLesson.cpp \
+	$$DVT_PATH_CORE/trainer/dvtTrainingEntry.cpp \
+	$$DVT_PATH_CORE/trainer/dvtTrainer.cpp \
+	$$DVT_PATH_CORE/simpleTrainer/dvtSimpleTrainer.cpp
+

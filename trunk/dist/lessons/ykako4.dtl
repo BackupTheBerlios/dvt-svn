@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<divotra:trainingLesson formatVersion="1.0" langCode_o="de" langCode_t="fi" version="0.1" xmlns:divotra="http://www.delta-my.de/divotra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.delta-my.de/divotra/dtl.xsd">
+	<title>
+		<lg c="ia">
+			Yksi, kaksi, kolme - Lektion 4 (neu)
+		</lg>
+	</title>
+	<description>
+		<lg c="de">
+			Yksi, kaksi, kolme - Lektion 4 (neu)
+		</lg>
+	</description>
+	<license>
+		<lg c="de">
+			Die Verwendung dieser Datei unterliegt keinerlei Einschränkungen.
+		</lg>
+	</license>
+	<!--
+		Verb types:
+			1: -a
+			3: -la
+			
+		Declination types for nouns:
+			1: nominative
+			2: genitive
+			3: partitive
+			4: accusative
+			51: inessive (inner locative "where?")
+			52: elative (inner locative "where from?")
+			53: illative (inner locative "where to?")
+			61: adessive (outer locative "where?")
+			62: ablative (outer locative "where from?")
+			63: allative (outer locative "where to?")
+			7: essive
+			8: translative
+	-->
+	<languageProfile langCode="fi">
+		
+	</languageProfile>
+	<entries>
+		<e t="v">
+			<o>
+				sein
+			</o>
+			<t>
+				olla
+			</t>
+			<te>
+				<cj t="3">
+					<p t="1">olen</p>
+				</cj>
+			</te>
+		</e>
+		<e>
+			<o>
+				ja/doch
+			</o>
+			<t>
+				kyllä
+			</t>
+		</e>
+		<e t="v">
+			<o>
+				wohnen
+			</o>
+			<t>
+				asua
+			</t>
+			<te>
+				<cj t="1">
+					<p t="1">asun</p>
+				</cj>
+			</te>
+		</e>
+		<e>
+			<o>
+				ich nicht/nein
+			</o>
+			<t>
+				en
+			</t>
+		</e>
+		<e t="v">
+			<o>
+				sprechen
+			</o>
+			<t>
+				puhua
+			</t>
+			<te>
+				<cj t="1">
+					<p t="1">puhun</p>
+				</cj>
+			</te>
+		</e>
+		<e t="av">
+			<o>
+				sehr
+			</o>
+			<t>
+				hyvin
+			</t>
+		</e>
+		<e>
+			<o>
+				gewöhnlich
+			</o>
+			<t>
+				tavallisesti
+			</t>
+		</e>
+		<e>
+			<o>
+				du nicht/nein
+			</o>
+			<t>
+				et
+			</t>
+		</e>
+		<e>
+			<o>
+				Sprichst du nicht...?
+			</o>
+			<t>
+				Etkö sinä puhu...?
+			</t>
+		</e>
+		<e>
+			<o>
+				leider
+			</o>
+			<t>
+				valitettavasti
+			</t>
+		</e>
+		<e>
+			<o>
+				zu Hause
+			</o>
+			<t>
+				kotona
+			</t>
+		</e>
+		<e>
+			<o>
+				er/sie/es nicht/nein
+			</o>
+			<t>
+				ei
+			</t>
+		</e>
+		<e>
+			<o>
+				draußen
+			</o>
+			<t>
+				ulkona
+			</t>
+		</e>
+		<e>
+			<o>
+				dort
+			</o>
+			<t>
+				tuolla
+			</t>
+		</e>
+		<e>
+			<o>
+				hier
+			</o>
+			<t>
+				täällä
+			</t>
+		</e>
+		<e t="v">
+			<o>
+				wissen
+			</o>
+			<t>
+				tietää
+			</t>
+			<te>
+				<cj t="1">
+					<p t="1">tiedän</p>
+				</cj>
+			</te>
+		</e>
+		<e t="n">
+			<o>
+				Frau/weibliche Person
+			</o>
+			<t>
+				nainen
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">naisen</dcl>
+					<dcl t="3">naista</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e>
+			<o>
+				wie/was für ein
+			</o>
+			<t>
+				millainen
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">millaisen</dcl>
+					<dcl t="3">millaista</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e>
+			<o>
+				sehr/richtig
+			</o>
+			<t>
+				oikein
+			</t>
+		</e>
+		<e t="ad">
+			<o>
+				nett
+			</o>
+			<t>
+				mukava
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">mukavan</dcl>
+					<dcl t="3">mukavaa</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e t="ad">
+			<o>
+				alt
+			</o>
+			<t>
+				vanha
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">vanhan</dcl>
+					<dcl t="3">vanhaa</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e> t="ad"
+			<o>
+				jung
+			</o>
+			<t>
+				nuori
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">nuoren</dcl>
+					<dcl t="3">nuorta</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e>
+			<o>
+				natürlich
+			</o>
+			<t>
+				tietysti
+			</t>
+		</e>
+		<e t="ad">
+			<o>
+				nett/toll
+			</o>
+			<t>
+				kiva
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">kivan</dcl>
+					<dcl t="3">kivaa</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e>
+			<o>
+				nur
+			</o>
+			<t>
+				vain
+			</t>
+		</e>
+		<e t="n">
+			<o>
+				Mädchen
+			</o>
+			<t>
+				tyttö
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">tytön</dcl>
+					<dcl t="3">tyttöä</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e t="v">
+			<o>
+				verstehen
+			</o>
+			<t>
+				ymmärtää
+			</t>
+			<te>
+				<cj t="1">
+					<p t="1">ymmärrän</p>
+				</cj>
+			</te>
+		</e>
+		<e t="n">
+			<o>
+				Junge
+			</o>
+			<t>
+				poika
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">pojan</dcl>
+					<dcl t="3">poikaa</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e>
+			<o>
+				oft
+			</o>
+			<t>
+				usein
+			</t>
+		</e>
+		<e>
+			<o>
+				im Finnischkurs
+			</o>
+			<t>
+				suomen kurssilla
+			</t>
+		</e>
+		<e t="n">
+			<o>
+				Dame/Frau
+			</o>
+			<t>
+				rouva
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">rouvan</dcl>
+					<dcl t="3">rouvaa</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e>
+			<o>
+				weg
+			</o>
+			<t>
+				poissa
+			</t>
+		</e>
+		<e>
+			<o>
+				dein/deine
+			</o>
+			<t>
+				sinun
+			</t>
+		</e>
+		<e t="n">
+			<o>
+				Name
+			</o>
+			<t>
+				nimi
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">nimen</dcl>
+					<dcl t="3">nimeä</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e t="n">
+			<o>
+				Finnland
+			</o>
+			<t>
+				Suomi
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">Suomen</dcl>
+					<dcl t="3">Suomea</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e t="n">
+			<o>
+				Frankreich
+			</o>
+			<t>
+				Ranska
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">Ranskan</dcl>
+					<dcl t="3">Ranskaa</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e>
+			<o>
+				bei der Arbeit
+			</o>
+			<t>
+				työssä
+			</t>
+		</e>
+		<e t="ad">
+			<o>
+				Ungarisch
+			</o>
+			<t>
+				unkari
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">unkarin</dcl>
+					<dcl t="3">unkaria</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e t="v">
+			<o>
+				sagen
+			</o>
+			<t>
+				sanoa
+			</t>
+			<te>
+				<cj t="1">
+					<p t="1">sanon</p>
+				</cj>
+			</te>
+		</e>
+		<e>
+			<o>
+				immer
+			</o>
+			<t>
+				aina
+			</t>
+		</e>
+		<e t="ad">
+			<o>
+				japanisch
+			</o>
+			<t>
+				japanilainen
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">japanilaisen</dcl>
+					<dcl t="3">japanilaista</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e t="av">
+			<o>
+				gut
+			</o>
+			<t>
+				hyvin
+			</t>
+		</e>
+		<e t="ad">
+			<o>
+				Russisch
+			</o>
+			<t>
+				venäjä
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">venäjän</dcl>
+					<dcl t="3">venäjää</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e t="n">
+			<o>
+				Sekretär
+			</o>
+			<t>
+				sihteeri
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">sihteerin</dcl>
+					<dcl t="3">sihteeriä</dcl>
+				</dcls>
+			</te>
+		</e>
+		<e>
+			<o>
+				aber
+			</o>
+			<t>
+				mutta
+			</t>
+		</e>
+		<e t="ad">
+			<o>
+				gut
+			</o>
+			<t>
+				hyvä
+			</t>
+			<te>
+				<dcls>
+					<dcl t="2">hyvän</dcl>
+					<dcl t="3">hyvää</dcl>
+				</dcls>
+			</te>
+		</e>
+	</entries>
+</divotra:trainingLesson>

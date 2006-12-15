@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<divotra:languageProfile formatVersion="1.0" langCode="fi" version="0.1" xmlns:divotra="http://www.delta-my.de/divotra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.delta-my.de/divotra/dlp.xsd">
+
+<license>
+	<lg c="de">
+		Die Verwendung dieser Datei unterliegt keinerlei Einschränkungen.
+	</lg>
+</license>
+
+<authors>
+	<author>
+		Denis Martin
+	</author>
+</authors>
+
+<name>
+	<lg c="de">Finnisch</lg>
+	<lg c="en">Finnish</lg>
+	<lg c="fi">Suomea</lg>
+</name>
+
+<!--
+	Verb types:
+		1: -a
+		3: -la
+		
+	Declination types for nouns:
+		1: nominative
+		2: genitive
+		3: partitive
+		4: accusative
+		51: inessive (inner locative "where?")
+		52: elative (inner locative "where from?")
+		53: illative (inner locative "where to?")
+		61: adessive (outer locative "where?")
+		62: ablative (outer locative "where from?")
+		63: allative (outer locative "where to?")
+		7: essive
+		8: translative
+-->
+
+<personalPronouns>
+	<p t="1">minä</p>
+	<p t="2">sinä</p>
+	<p t="3">hän/se</p>
+	<p t="4">me</p>
+	<p t="5">te/Te</p>
+	<p t="6">he</p>
+</personalPronouns>
+
+<cases>
+	<c t="1">
+		<name>
+			<lg c="de">Nominativ</lg>
+			<lg c="en">nominative</lg>
+		</name>
+	</c>
+	<c t="2">
+		<name>
+			<lg c="de">Genitiv</lg>
+			<lg c="en">genitive</lg>
+		</name>
+	</c>
+	<c t="3">
+		<name>
+			<lg c="de">Partitiv</lg>
+			<lg c="en">partitive</lg>
+		</name>
+	</c>
+	<c t="4">
+		<name>
+			<lg c="de">Akkusativ</lg>
+			<lg c="en">accusative</lg>
+		</name>
+	</c>
+	<c t="51">
+		<name>
+			<lg c="de">Inessiv (innerer Lokativ "wo?")</lg>
+			<lg c="en">inessive (inner locative "where?")</lg>
+		</name>
+	</c>
+	<c t="52">
+		<name>
+			<lg c="de">Elativ (innerer Lokativ "woher?")</lg>
+			<lg c="en">elative (inner locative "where from?")</lg>
+		</name>
+	</c>
+	<c t="53">
+		<name>
+			<lg c="de">Illativ (innerer Lokativ "wohin?")</lg>
+			<lg c="en">illative (inner locative "where to?")</lg>
+		</name>
+	</c>
+	<c t="61">
+		<name>
+			<lg c="de">Adessiv (äußerer Lokativ "wo?")</lg>
+			<lg c="en">adessive (outer locative "where?")</lg>
+		</name>
+	</c>
+	<c t="62">
+		<name>
+			<lg c="de">ablativ (äußerer Lokativ "woher?")</lg>
+			<lg c="en">ablative (outer locative "where from?")</lg>
+		</name>
+	</c>
+	<c t="63">
+		<name>
+			<lg c="de">Allativ (äußerer Lokativ "wohin?")</lg>
+			<lg c="en">allative (outer locative "where to?")</lg>
+		</name>
+	</c>
+	<c t="7">
+		<name>
+			<lg c="de">Essiv</lg>
+			<lg c="en">essive</lg>
+		</name>
+	</c>
+	<c t="8">
+		<name>
+			<lg c="de">Translativ</lg>
+			<lg c="en">translative</lg>
+		</name>
+	</c>
+</cases>
+
+<tenses>
+	<t t="1">
+		<name>
+			<lg c="de">Präsens</lg>
+			<lg c="en">Present</lg>
+		</name>
+	</t>
+</tenses>
+
+<conjugations>
+	<defcj t="1">
+		<name>
+			<lg c="de">1: (-a/-ä)</lg>
+			<lg c="en">1: (-a/-ä)</lg>
+		</name>
+	</defcj>
+	<defcj t="2">
+		<name>
+			<lg c="de">2: (Doppelvokal/Diphthong + -da/-dä)</lg>
+			<lg c="en">2: (double vowel/diphthong + -da/-dä)</lg>
+		</name>
+	</defcj>
+	<defcj t="3">
+		<name>
+			<lg c="de">3: (Konsonant + -la/-lä, -na/-nä, -ra/-rä, -ta/-tä)</lg>
+			<lg c="en">3: (consonant + -la/-lä, -na/-nä, -ra/-rä, -ta/-tä)</lg>
+		</name>
+	</defcj>
+	<defcj t="4">
+		<name>
+			<lg c="de">4: (Vokal + -ta/-tä)</lg>
+			<lg c="en">4: (vowel + -ta/-tä)</lg>
+		</name>
+	</defcj>
+	<defcj t="5">
+		<name>
+			<lg c="de">5: (-i-ta/-tä)</lg>
+			<lg c="en">5: (-i-ta/-tä)</lg>
+		</name>
+	</defcj>
+	<defcj t="6">
+		<name>
+			<lg c="de">6: (-e-ta/-tä)</lg>
+			<lg c="en">6: (-e-ta/-tä)</lg>
+		</name>
+	</defcj>
+</conjugations>
+
+</divotra:languageProfile>

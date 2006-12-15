@@ -1,0 +1,37 @@
+
+DVT_PATH_GUI = ../src/gui
+
+HEADERS += \
+	$$DVT_PATH_GUI/mainWindow.h \
+	$$DVT_PATH_GUI/twiEntry.h \
+	$$DVT_PATH_GUI/language.h \
+	$$DVT_PATH_GUI/module.h \
+	$$DVT_PATH_GUI/lessonSelect.h \
+	$$DVT_PATH_GUI/lessonEdit.h \
+	$$DVT_PATH_GUI/editExt/editExt.h \
+	$$DVT_PATH_GUI/editExt/editExt_fi.h \
+	$$DVT_PATH_GUI/editDetail/editDetail.h \
+	$$DVT_PATH_GUI/editDetail/editDetailVerb.h \
+	$$DVT_PATH_GUI/simpleTrainer/simpleTrainer.h
+
+SOURCES += \
+	$$DVT_PATH_GUI/main.cpp \
+	$$DVT_PATH_GUI/mainWindow.cpp \
+	$$DVT_PATH_GUI/twiEntry.cpp \
+	$$DVT_PATH_GUI/language.cpp \
+	$$DVT_PATH_GUI/module.cpp \
+	$$DVT_PATH_GUI/lessonSelect.cpp \
+	$$DVT_PATH_GUI/lessonEdit.cpp \
+	$$DVT_PATH_GUI/editExt/editExt.cpp \
+	$$DVT_PATH_GUI/editExt/editExt_fi.cpp \
+	$$DVT_PATH_GUI/editDetail/editDetail.cpp \
+	$$DVT_PATH_GUI/editDetail/editDetailVerb.cpp \
+	$$DVT_PATH_GUI/simpleTrainer/simpleTrainer.cpp
+
+FORMS += \
+	$$DVT_PATH_GUI/ui/mainWindow.ui \
+	$$DVT_PATH_GUI/ui/lessonSelect.ui \
+	$$DVT_PATH_GUI/ui/lessonEdit.ui \
+	$$DVT_PATH_GUI/ui/editExt_fi.ui \
+	$$DVT_PATH_GUI/ui/editDetailVerb.ui \
+	$$DVT_PATH_GUI/ui/simpleTrainer.ui
