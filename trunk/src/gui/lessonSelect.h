@@ -72,6 +72,7 @@ protected:
 public slots:
 	void on_lwLessons_currentItemChanged(QListWidgetItem* item, QListWidgetItem* prev);
 	void on_pbEdit_clicked(bool pressed = false);
+	void on_pbNew_clicked(bool pressed = false);
 	void on_pbTrain_clicked(bool pressed = false);
 	
 };

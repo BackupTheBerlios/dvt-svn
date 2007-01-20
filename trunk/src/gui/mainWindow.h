@@ -34,6 +34,7 @@
 
 class LessonSelect;
 class LessonEdit;
+class DlgLessonMetaEdit;
 class SimpleTrainer;
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
@@ -46,6 +47,7 @@ private:
 public:
 	LessonSelect* lessonSelect;
 	LessonEdit* lessonEdit;
+	DlgLessonMetaEdit* dlgLessonMetaEdit;
 	
 	SimpleTrainer* simpleTrainer;
 	

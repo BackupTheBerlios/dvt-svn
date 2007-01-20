@@ -25,6 +25,7 @@
 
 #include "mainWindow.h"
 #include "utils.h"
+#include "dlgLessonMetaEdit.h"
 
 #include "dvtLanguageProfile.h"
 
@@ -39,7 +40,7 @@ LessonSelect::LessonSelect(MainWindow* mainWindow, QWidget* parent)
 	lbFlagTrans->setText("");
 	
 	setLesson(NULL);
-	pbNew->setEnabled(false);
+	pbTrain->setEnabled(false);
 }
 
 LessonSelect::~LessonSelect()
@@ -114,6 +115,13 @@ void LessonSelect::on_pbEdit_clicked(bool pressed)
 	
 	if (lesson != NULL)
 		mainWindow->actionEdit->trigger();
+}
+
+void LessonSelect::on_pbNew_clicked(bool pressed)
+{
+	Q_UNUSED(pressed);
+	QDialog::DialogCode res = 
+		(QDialog::DialogCode) mainWindow->dlgLessonMetaEdit->exec();
 }
 
 void LessonSelect::on_pbTrain_clicked(bool pressed)

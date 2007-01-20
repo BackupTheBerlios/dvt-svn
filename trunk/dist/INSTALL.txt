@@ -1,0 +1,25 @@
+Dvt:: - Dictionary and Vocabulary Trainer
+
+
+1.1) Installing (Windows, Linux)
+
+There is no installer yet. Just extract all files from the archive file 
+(ZIP under Windows, tar.gz under Linux) to a new folder and double-click on 
+'dvt'.
+
+
+1.2) Updating (Windows, Linux)
+
+Any lesson files produced by you are also saved to this folder, so when updating
+Dvt::, just copy the 'lessons' directory from the old folder to the new one.
+
+
+1.3) Backup (Windows, Linux)
+
+To backup your lessons, just save the folder 'lessons' to your backup location.
+
+
+1.4) Uninstalling (Windows, Linux)
+
+Just delete the Dvt:: folder. Note, that all your lessons are lost unless you
+did a backup before.

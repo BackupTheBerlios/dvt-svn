@@ -25,6 +25,7 @@
 
 #include "lessonSelect.h"
 #include "lessonEdit.h"
+#include "dlgLessonMetaEdit.h"
 #include "simpleTrainer.h"
 
 #include "dvtExceptions.h"
@@ -73,6 +74,7 @@ MainWindow::MainWindow()
 	
 	lessonSelect = new LessonSelect(this, centralWidget());
 	lessonEdit = new LessonEdit(this, centralWidget());
+	dlgLessonMetaEdit = new DlgLessonMetaEdit(this);
 	simpleTrainer = new SimpleTrainer(this, centralWidget());
 	
 	lessonSelect->show();
