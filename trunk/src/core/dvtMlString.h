@@ -48,6 +48,10 @@ public:
 	
 	void setFromXmlNode(sxml::XmlNode* node);
 	void setToXmlNode(sxml::XmlNode* node);
+	void updateFromXmlNode(sxml::XmlNode* node);
+	
+	void setFrom(const MlString& mls);
+	void clear();
 	
 	std::string str();
 	const char* c_str();
@@ -55,7 +59,8 @@ public:
 	bool empty();
 	
 	operator std::string ();
-	std::string operator [] (const std::string& langId);
+	std::string operator[] (const std::string& langId);
+	void operator= (const MlString& mls);
 };
 
 }

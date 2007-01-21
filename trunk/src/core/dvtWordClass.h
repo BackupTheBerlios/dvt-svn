@@ -25,6 +25,8 @@
 
 #include "dvtMlString.h"
 
+#include "xmlNode.h"
+
 #include <map>
 #include <string>
 
@@ -57,6 +59,9 @@ public:
 	static std::string getShortString(Type type);
 	static std::string getXmlAttr(Type type);
 	static Type getType(std::string xmlAttr);
+	
+	static void updateFromXmlNode(sxml::XmlNode* node);
+	static void updateShortNamesFromXmlNode(sxml::XmlNode* node);
 	
 };
 
@@ -97,6 +102,9 @@ public:
 	static std::string getShortString(Type wc);
 	static std::string getXmlAttr(Type wc);
 	static Type getType(const std::string xmlAttr);
+	
+	static void updateFromXmlNode(sxml::XmlNode* node);
+	static void updateShortNamesFromXmlNode(sxml::XmlNode* node);
 	
 };
 

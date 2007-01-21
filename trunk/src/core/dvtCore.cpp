@@ -68,8 +68,24 @@ bool Core::prettyXmlOutput() {return p_prettyXmlOutput;}
 void Core::setPrettyXmlOutput(bool b) {p_prettyXmlOutput = b;}
 list<string>& Core::languagePrefOrder() {return p_languagePrefOrder;}
 
+std::string Core::systemLocale() {return p_systemLocale;}
 map<string, LanguageProfile*> Core::languageProfiles() {return p_languageProfiles;}
 std::vector<Lesson*> Core::lessons() {return p_lessons;}
+
+void Core::setSystemLocale(std::string name)
+{
+	p_systemLocale = name;
+	if (p_languagePrefOrder.size() == 0) {
+		p_languagePrefOrder.push_back(name);
+		if (name.size() > 2) {
+			// assume sth like fr_FR
+			name = name.substr(0, 2);
+			p_languagePrefOrder.push_back(name);
+			
+		}
+		
+	}
+}
 
 LanguageProfile* Core::getLanguageProfile(std::string langCode)
 {
@@ -202,6 +218,16 @@ void Core::loadLessons(const string& dirName) {
 	}
 	
 	closedir(dir);
+}
+
+/**
+ * Create a new lesson
+ */
+Dvt::Lesson* Core::createLesson()
+{
+	Dvt::Lesson* lesson = new Dvt::Lesson(true);
+	p_lessons.push_back(lesson);
+	return lesson;
 }
 
 } // namespace

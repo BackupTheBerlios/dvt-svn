@@ -36,13 +36,18 @@ namespace Dvt
 
 using namespace std;
 
-Lesson::Lesson()
+Lesson::Lesson(bool newLesson)
 {
 	core = Core::getInstance();
 	p_langProfile_o = NULL;
 	p_langProfile_t = NULL;
 	p_metaRead = false;
 	p_dataRead = false;
+	
+	if (newLesson) {
+		p_metaRead = true;
+		p_dataRead = true;
+	}
 }
 
 Lesson::~Lesson()
@@ -52,6 +57,9 @@ Lesson::~Lesson()
 LanguageProfile* Lesson::langProfile_o() {return p_langProfile_o;}
 LanguageProfile* Lesson::langProfile_t() {return p_langProfile_t;}
 std::string Lesson::version() {return p_version;}
+
+void Lesson::setLangProfile_o(LanguageProfile* lp) {p_langProfile_o = lp;}
+void Lesson::setLangProfile_t(LanguageProfile* lp) {p_langProfile_t = lp;}
 
 bool Lesson::metaRead() {return p_metaRead;}
 bool Lesson::dataRead() {return p_dataRead;}
@@ -430,6 +438,8 @@ void Lesson::writeToStream(std::ostream& writeTo)
 
 void Lesson::writeToFile(const std::string& fileName)
 {
+	p_fileName = fileName;
+	
 	string backUpName = fileName + ".bak";
 	ifstream fin(fileName.c_str());
 	if (!fin.fail()) {

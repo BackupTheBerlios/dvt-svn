@@ -67,7 +67,7 @@ LessonEdit::LessonEdit(MainWindow* mainWindow, QWidget* parent)
 	twEntries->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
 	twEntries->horizontalHeader()->setResizeMode(1, QHeaderView::Stretch);
 	twEntries->horizontalHeader()->setIconSize(QSize(23, 14));
-	twEntries->verticalHeader()->setDefaultSectionSize(fontHeight + 2);
+	twEntries->verticalHeader()->setDefaultSectionSize(fontHeight + 4);
 	twEntries->verticalHeader()->setResizeMode(1, QHeaderView::Fixed);
 //	twEntries->verticalHeader()->hide();
 	

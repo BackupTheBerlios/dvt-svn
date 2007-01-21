@@ -25,6 +25,8 @@
 #include "dvtCore.h"
 #include "dvtExceptions.h"
 
+#include "debug.h"
+
 namespace Dvt
 {
 
@@ -46,9 +48,29 @@ string MlString::getString(const string& langId) {
 	return translations[langId];
 }
 
-void MlString::setFromXmlNode(sxml::XmlNode* node) {
+void MlString::setFromXmlNode(sxml::XmlNode* node)
+{
 	translations.clear();
+	updateFromXmlNode(node);
+}
+
+void MlString::setToXmlNode(sxml::XmlNode* node) {
+	assert(node != NULL);
 	
+	sxml::XmlNode* cnode;
+	map<string, string>::iterator it;
+	for (it = translations.begin(); it != translations.end(); it++) {
+		if (it->second != "") {
+			cnode = new sxml::XmlNode(sxml::ntElementNode, "lg");
+			cnode->attributes["c"] = it->first;
+			cnode->children.push_back(new sxml::XmlNode(sxml::ntTextNode, it->second));
+			node->children.push_back(cnode);
+		}
+	}
+}
+
+void MlString::updateFromXmlNode(sxml::XmlNode* node)
+{
 	sxml::XmlNode* cnode;
 	sxml::NodeSearch* ns = node->findInit("lg");
 	
@@ -79,19 +101,14 @@ void MlString::setFromXmlNode(sxml::XmlNode* node) {
 	}
 }
 
-void MlString::setToXmlNode(sxml::XmlNode* node) {
-	assert(node != NULL);
-	
-	sxml::XmlNode* cnode;
-	map<string, string>::iterator it;
-	for (it = translations.begin(); it != translations.end(); it++) {
-		if (it->second != "") {
-			cnode = new sxml::XmlNode(sxml::ntElementNode, "lg");
-			cnode->attributes["c"] = it->first;
-			cnode->children.push_back(new sxml::XmlNode(sxml::ntTextNode, it->second));
-			node->children.push_back(cnode);
-		}
-	}
+void MlString::setFrom(const MlString& mls)
+{
+	translations = mls.translations;
+}
+
+void MlString::clear()
+{
+	translations.clear();
 }
 
 string MlString::str() {
@@ -103,9 +120,9 @@ string MlString::str() {
 	
 	list<string>::iterator it;
 	for (it = Core::languagePrefOrder().begin(); it != Core::languagePrefOrder().end(); it++) {
+//		DEBUG(DBG_GENERAL, "MlString::str(): languagePrefOrder: %s\n", it->c_str());
 		tr_it = translations.find(*it);
-		if (tr_it != translations.end()) {
-			assert(!tr_it->second.empty());
+		if (tr_it != translations.end() && !tr_it->second.empty()) {
 			return tr_it->second;
 		}
 	}
@@ -114,23 +131,24 @@ string MlString::str() {
 	
 	// try interlingua
 	tr_it = translations.find("ia");
-	if (tr_it != translations.end()) {
-		assert(!tr_it->second.empty());
+	if (tr_it != translations.end() && !tr_it->second.empty()) {
 		return tr_it->second;
 	}
 	
 	// try english
 	tr_it = translations.find("en");
-	if (tr_it != translations.end()) {
-		assert(!tr_it->second.empty());
+	if (tr_it != translations.end() && !tr_it->second.empty()) {
 		return tr_it->second;
 	}
 	
-	// get first element
-	tr_it = translations.begin();
-	assert(tr_it != translations.end());
-	assert(!tr_it->second.empty());
-	return tr_it->second;
+	// get first non-empty element
+	for (tr_it = translations.begin(); tr_it != translations.end(); tr_it++) {
+		if (!tr_it->second.empty())
+			return tr_it->second;
+	}
+	
+	// nothing found
+	return string();
 	
 //	DEBUG(DBG_GENERAL, DBGL_INFO, "MlString::str(): %s\n", res.c_str());
 }
@@ -155,6 +173,10 @@ MlString::operator string () {
 
 string MlString::operator[](const string& langId) {
 	return translations[langId];
+}
+
+void MlString::operator= (const MlString& mls) {
+	return setFrom(mls);
 }
 
 } // namespace

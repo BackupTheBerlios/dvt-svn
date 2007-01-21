@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
+<!DOCTYPE TS><TS version="1.1" language="fr">
+<context>
+    <name>DlgLessonMetaEdit</name>
+    <message>
+        <location filename="../ui/dlgLessonMetaEdit.ui" line="36"/>
+        <source>Base language:</source>
+        <translation>Langue d&apos;origine:</translation>
+    </message>
+    <message>
+        <location filename="../ui/dlgLessonMetaEdit.ui" line="62"/>
+        <source>Foreign language:</source>
+        <translation>Langue étrangère:</translation>
+    </message>
+    <message>
+        <location filename="../ui/dlgLessonMetaEdit.ui" line="95"/>
+        <source>Description:</source>
+        <translation>Description:</translation>
+    </message>
+    <message>
+        <location filename="../ui/dlgLessonMetaEdit.ui" line="113"/>
+        <source>Title:</source>
+        <translation>Titre:</translation>
+    </message>
+    <message>
+        <location filename="../ui/dlgLessonMetaEdit.ui" line="157"/>
+        <source>License:</source>
+        <translation>Licence:</translation>
+    </message>
+    <message>
+        <location filename="../dlgLessonMetaEdit.cpp" line="52"/>
+        <source>International</source>
+        <translation>international</translation>
+    </message>
+    <message>
+        <location filename="../dlgLessonMetaEdit.cpp" line="195"/>
+        <source>Please enter a title for this lesson.</source>
+        <translation>S.v.p., remplissez un titre pour cette leçon.</translation>
+    </message>
+    <message>
+        <location filename="../ui/dlgLessonMetaEdit.ui" line="13"/>
+        <source>Lesson properties</source>
+        <translation>Propriétés de la leçon</translation>
+    </message>
+</context>
 <context>
     <name>EditDetailVerb</name>
     <message>
         <location filename="../editDetail/editDetailVerb.cpp" line="43"/>
         <source>Undefined</source>
-        <translation type="unfinished"></translation>
+        <translation>Inconnu</translation>
     </message>
     <message>
         <location filename="../ui/editDetailVerb.ui" line="13"/>
@@ -15,12 +58,12 @@
     <message>
         <location filename="../ui/editDetailVerb.ui" line="50"/>
         <source>Tense:</source>
-        <translation type="unfinished"></translation>
+        <translation>Temps:</translation>
     </message>
     <message>
         <location filename="../ui/editDetailVerb.ui" line="89"/>
         <source>Conj. class:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cat. de conj.:</translation>
     </message>
     <message>
         <location filename="../ui/editDetailVerb.ui" line="117"/>
@@ -53,7 +96,7 @@
     <message>
         <location filename="../editExt/editExt_fi.cpp" line="47"/>
         <source>Select conjugation class</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisissez la cat. de conjugaison</translation>
     </message>
     <message>
         <location filename="../ui/editExt_fi.ui" line="13"/>
@@ -63,12 +106,12 @@
     <message>
         <location filename="../ui/editExt_fi.ui" line="43"/>
         <source>Genitive:</source>
-        <translation type="unfinished"></translation>
+        <translation>Génitif:</translation>
     </message>
     <message>
         <location filename="../ui/editExt_fi.ui" line="53"/>
         <source>Partitive:</source>
-        <translation type="unfinished"></translation>
+        <translation>Partitif:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="../ui/editExt_fi.ui" line="84"/>
@@ -81,7 +124,7 @@
     <message>
         <location filename="../lessonEdit.cpp" line="228"/>
         <source>Save changes?</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer les changements?</translation>
     </message>
     <message>
         <location filename="../ui/lessonEdit.ui" line="13"/>
@@ -91,12 +134,12 @@
     <message>
         <location filename="../ui/lessonEdit.ui" line="37"/>
         <source>Base</source>
-        <translation type="unfinished"></translation>
+        <translation>Base</translation>
     </message>
     <message>
         <location filename="../ui/lessonEdit.ui" line="57"/>
         <source>Class:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cat. grammaticale:</translation>
     </message>
     <message>
         <location filename="../ui/lessonEdit.ui" line="82"/>
@@ -106,7 +149,7 @@
     <message>
         <location filename="../ui/lessonEdit.ui" line="184"/>
         <source>Gender:</source>
-        <translation type="unfinished"></translation>
+        <translation>Genre:</translation>
     </message>
     <message>
         <location filename="../ui/lessonEdit.ui" line="144"/>
@@ -116,22 +159,22 @@
     <message>
         <location filename="../ui/lessonEdit.ui" line="204"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Détails</translation>
     </message>
     <message>
         <location filename="../ui/lessonEdit.ui" line="319"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer</translation>
     </message>
     <message>
         <location filename="../ui/lessonEdit.ui" line="314"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Effacer</translation>
     </message>
     <message>
         <location filename="../ui/lessonEdit.ui" line="309"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveau</translation>
     </message>
 </context>
 <context>
@@ -144,7 +187,7 @@
     <message>
         <location filename="../ui/lessonSelect.ui" line="25"/>
         <source>Lesson</source>
-        <translation type="unfinished"></translation>
+        <translation>Leçon</translation>
     </message>
     <message>
         <location filename="../ui/lessonSelect.ui" line="37"/>
@@ -154,7 +197,7 @@
     <message>
         <location filename="../ui/lessonSelect.ui" line="47"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation>Description:</translation>
     </message>
     <message>
         <location filename="../ui/lessonSelect.ui" line="69"/>
@@ -179,27 +222,36 @@
     <message>
         <location filename="../ui/lessonSelect.ui" line="105"/>
         <source>Foreign language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Langue étrangère:</translation>
     </message>
     <message>
         <location filename="../ui/lessonSelect.ui" line="112"/>
         <source>Base language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Langue d&apos;origine:</translation>
     </message>
     <message>
         <location filename="../ui/lessonSelect.ui" line="150"/>
         <source>New...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouvelle...</translation>
     </message>
     <message>
         <location filename="../ui/lessonSelect.ui" line="170"/>
         <source>Edit...</source>
-        <translation type="unfinished"></translation>
+        <translation>Édition...</translation>
     </message>
     <message>
         <location filename="../ui/lessonSelect.ui" line="177"/>
         <source>Train...</source>
-        <translation type="unfinished"></translation>
+        <translation>Apprendre...</translation>
+    </message>
+    <message>
+        <location filename="../lessonSelect.cpp" line="140"/>
+        <source>Cannot write to file %1:
+
+</source>
+        <translation>Le fichier %1 ne peut pas être écrit:
+
+</translation>
     </message>
 </context>
 <context>
@@ -210,29 +262,56 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/mainWindow.ui" line="39"/>
+        <source>&amp;Help</source>
+        <translation>&amp;Aide</translation>
+    </message>
+    <message>
         <location filename="../ui/mainWindow.ui" line="27"/>
-        <source>File</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;File</source>
+        <translation>&amp;Fichier</translation>
     </message>
     <message>
-        <location filename="../ui/mainWindow.ui" line="41"/>
-        <source>Open lesson...</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/mainWindow.ui" line="50"/>
+        <source>&amp;Open lesson...</source>
+        <translation>&amp;Ouvrir leçon...</translation>
     </message>
     <message>
-        <location filename="../ui/mainWindow.ui" line="46"/>
-        <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/mainWindow.ui" line="55"/>
+        <source>&amp;Quit</source>
+        <translation>&amp;Quitter</translation>
     </message>
     <message>
-        <location filename="../ui/mainWindow.ui" line="51"/>
-        <source>Edit lesson...</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/mainWindow.ui" line="60"/>
+        <source>&amp;Edit lesson...</source>
+        <translation>&amp;Édition de la leçon...</translation>
     </message>
     <message>
-        <location filename="../ui/mainWindow.ui" line="56"/>
-        <source>Train...</source>
-        <translation type="unfinished"></translation>
+        <location filename="../ui/mainWindow.ui" line="65"/>
+        <source>&amp;Train...</source>
+        <translation>A&amp;pprendre...</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainWindow.ui" line="70"/>
+        <source>Edit lesson &amp;properties...</source>
+        <translation>P&amp;ropriétés de la leçon...</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainWindow.ui" line="75"/>
+        <source>About Dvt::</source>
+        <translation>À propos de Dvt::</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainWindow.ui" line="80"/>
+        <source>About Qt</source>
+        <translation>À propos de Qt</translation>
+    </message>
+    <message>
+        <location filename="../mainWindow.cpp" line="166"/>
+        <source>Dvt:: Dictionary and vocabulary trainer v%1
+(c) 2006-2007 Denis Martin</source>
+        <translation>Dvt:: Dictionnaire et entraîneur de vocabulaire v%1
+(c) 2006-2007 Denis Martin</translation>
     </message>
 </context>
 <context>

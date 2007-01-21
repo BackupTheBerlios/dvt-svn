@@ -28,9 +28,13 @@
 
 #include "dvtCore.h"
 
+#include <QLocale>
 #include <QString>
 #include <QIcon>
 #include <QMap>
+
+#define APPNAME		"Dvt::"
+#define APPVERSION	"0.1a"
 
 class LessonSelect;
 class LessonEdit;
@@ -45,6 +49,8 @@ private:
 	Dvt::Core* core;
 	
 public:
+	QLocale sysLocale;
+	
 	LessonSelect* lessonSelect;
 	LessonEdit* lessonEdit;
 	DlgLessonMetaEdit* dlgLessonMetaEdit;
@@ -63,7 +69,10 @@ public slots:
 	void on_actionQuit_triggered(bool checked = false);
 	void on_actionOpen_triggered(bool checked = false);
 	void on_actionEdit_triggered(bool checked = false);
+	void on_actionEditProperties_triggered(bool checked = false);
 	void on_actionTrain_triggered(bool checked = false);
+	void on_actionAboutDvt_triggered(bool checked = false);
+	void on_actionAboutQt_triggered(bool checked = false);
 	
 };
 

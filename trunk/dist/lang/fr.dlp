@@ -48,4 +48,41 @@
 	</t>
 </tenses>
 
+<translations>
+	<genders>
+		<g t="u"><lg c="fr">inconnu</lg></g>
+		<g t="m"><lg c="fr">masculin</lg></g>
+		<g t="f"><lg c="fr">féminin</lg></g>
+		<g t="n"><lg c="fr">neutre</lg></g>
+	</genders>
+	<wordClasses>
+		<wc t="u"><lg c="fr">inconnue</lg></wc>
+		<wc t="n"><lg c="fr">nom</lg></wc>
+		<wc t="v"><lg c="fr">verbe</lg></wc>
+		<wc t="ad"><lg c="fr">adjectif</lg></wc>
+		<wc t="av"><lg c="fr">adverbe</lg></wc>
+		<wc t="pn"><lg c="fr">pronom</lg></wc>
+		<wc t="pp"><lg c="fr">préposition</lg></wc>
+		<wc t="cj"><lg c="fr">conjonction</lg></wc>
+		<wc t="ij"><lg c="fr">interjection</lg></wc>
+		<wc t="nr"><lg c="fr">adjectif numéral</lg></wc>
+		<wc t="p"><lg c="fr">phrase</lg></wc>
+		<wc t="nnv"><lg c="fr">ni nom, ni verbe</lg></wc>
+	</wordClasses>
+	<wordClassesShort>
+		<wc t="u"><lg c="fr">inc</lg></wc>
+		<wc t="n"><lg c="fr">n</lg></wc>
+		<wc t="v"><lg c="fr">v</lg></wc>
+		<wc t="ad"><lg c="fr">adj</lg></wc>
+		<wc t="av"><lg c="fr">adv</lg></wc>
+		<wc t="pn"><lg c="fr">pron</lg></wc>
+		<wc t="pp"><lg c="fr">prép</lg></wc>
+		<wc t="cj"><lg c="fr">conj</lg></wc>
+		<wc t="ij"><lg c="fr">interj</lg></wc>
+		<wc t="nr"><lg c="fr">num</lg></wc>
+		<wc t="p"><lg c="fr">phr</lg></wc>
+		<wc t="nnv"><lg c="fr">nn/nv</lg></wc>
+	</wordClassesShort>
+</translations>
+
 </divotra:languageProfile>

@@ -322,6 +322,21 @@ void LanguageProfile::readFromStream(istream& readFrom)
 			node->findFree(ns);
 		}
 		
+		node = dlpNode->findFirst("translations");
+		if (node != NULL) {
+			node2 = node->findFirst("genders");
+			if (node2 != NULL)
+				Gender::updateFromXmlNode(node2);
+				
+			node2 = node->findFirst("wordClasses");
+			if (node2 != NULL)
+				WordClass::updateFromXmlNode(node2);
+				
+			node2 = node->findFirst("wordClassesShort");
+			if (node2 != NULL)
+				WordClass::updateShortNamesFromXmlNode(node2);
+		}
+		
 	} catch (EXmlTreeInvalid e) {
 		DEBUG(DBG_GENERAL, "LanguageProfile::readFromStream(): Exception occurred: %s\n", e.msg.c_str());
 		delete xmlNode;

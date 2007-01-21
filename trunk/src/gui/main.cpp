@@ -2,6 +2,8 @@
 #include <iostream>
 
 #include <QApplication>
+#include <QLocale>
+#include <QTranslator>
 
 #include "mainWindow.h"
 
@@ -40,6 +42,13 @@ int main(int argc, char* argv[]) {
 		QString s = argv[1];
 		if (s == "--debug") debugMode = true;
 	}
+	
+	QString sysLocale = QLocale::system().name();
+	QTranslator translatorDvt, translatorQt;
+	translatorDvt.load(QString("dvt_%1").arg(sysLocale), "trans");
+	translatorQt.load(QString("qt_%1").arg(sysLocale), "trans");
+	app.installTranslator(&translatorDvt);
+	app.installTranslator(&translatorQt);
 	
 	MainWindow mainWindow;
 	mainWindow.show();

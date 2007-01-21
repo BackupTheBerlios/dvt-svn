@@ -27,6 +27,7 @@
 #include "lessonEdit.h"
 #include "dlgLessonMetaEdit.h"
 #include "simpleTrainer.h"
+#include "utils.h"
 
 #include "dvtExceptions.h"
 
@@ -40,8 +41,10 @@
 MainWindow::MainWindow()
 {
 	setupUi(this);
+	sysLocale = QLocale::system();
 	
 	core = Dvt::Core::getInstance();
+	core->setSystemLocale(QSTR2STR(sysLocale.name()));
 	
 	try {
 		core->init();
@@ -88,6 +91,7 @@ MainWindow::MainWindow()
 	lessonSelect->loadLessons();
 	lessonSelect->show();
 	
+	actionTrain->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -133,6 +137,16 @@ void MainWindow::on_actionEdit_triggered(bool checked)
 	lessonEdit->show();
 }
 
+void MainWindow::on_actionEditProperties_triggered(bool checked)
+{
+	Q_UNUSED(checked);
+	dlgLessonMetaEdit->setFromLesson(lessonSelect->lesson);
+	QDialog::DialogCode res = (QDialog::DialogCode) dlgLessonMetaEdit->exec();
+	if (res == QDialog::Accepted)
+		lessonSelect->lesson->write();
+	dlgLessonMetaEdit->setFromLesson(NULL);
+}
+
 void MainWindow::on_actionTrain_triggered(bool checked)
 {
 	Q_UNUSED(checked);
@@ -141,4 +155,20 @@ void MainWindow::on_actionTrain_triggered(bool checked)
 	
 	simpleTrainer->setLesson(lessonSelect->lesson);
 	simpleTrainer->show();
+}
+
+void MainWindow::on_actionAboutDvt_triggered(bool checked)
+{
+	Q_UNUSED(checked);
+	
+	QMessageBox::about(this, APPNAME, trUtf8(
+		"Dvt:: Dictionary and vocabulary trainer v%1\n" \
+		"(c) 2006-2007 Denis Martin").arg(APPVERSION));
+}
+
+void MainWindow::on_actionAboutQt_triggered(bool checked)
+{
+	Q_UNUSED(checked);
+	
+	QMessageBox::aboutQt(this);
 }

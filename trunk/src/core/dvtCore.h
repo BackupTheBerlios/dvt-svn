@@ -52,6 +52,7 @@ private:
 	static bool p_prettyXmlOutput;
 	static std::list<std::string> p_languagePrefOrder;
 	
+	std::string p_systemLocale;
 	std::map<std::string, LanguageProfile*> p_languageProfiles;
 	std::vector<Lesson*> p_lessons;
 	
@@ -68,13 +69,18 @@ public:
 	
 	static std::list<std::string>& languagePrefOrder();
 	
+	std::string systemLocale();
 	std::map<std::string, LanguageProfile*> languageProfiles();
 	std::vector<Lesson*> lessons();
+	
+	void setSystemLocale(std::string name);
 	
 	LanguageProfile* getLanguageProfile(std::string langCode);
 	
 	void loadLanguageProfiles(const std::string& dirName);
 	void loadLessons(const std::string& dirName);
+	
+	Dvt::Lesson* createLesson();
 };
 
 }

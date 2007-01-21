@@ -110,6 +110,52 @@ Gender::Type Gender::getType(std::string xmlAttr)
 		return Undefined;
 }
 
+void Gender::updateFromXmlNode(sxml::XmlNode* node)
+{
+	if (!initialized) init();
+	
+	sxml::NodeSearch* ns = node->findInit("g");
+	sxml::XmlNode* node2 = node->findNext(ns);
+	while (node2 != NULL) {
+		string s = node2->attributes["t"];
+		if (!s.empty()) {
+			Type t = getType(s);
+			if (t != Undefined || s == "u")
+				p_gtToMlString[t].updateFromXmlNode(node2);
+				
+		}
+		
+		node2 = node->findNext(ns);
+		
+	}
+	
+	node->findFree(ns);
+	
+}
+
+void Gender::updateShortNamesFromXmlNode(sxml::XmlNode* node)
+{
+	if (!initialized) init();
+	
+	sxml::NodeSearch* ns = node->findInit("g");
+	sxml::XmlNode* node2 = node->findNext(ns);
+	while (node2 != NULL) {
+		string s = node2->attributes["t"];
+		if (!s.empty()) {
+			Type t = getType(s);
+			if (t != Undefined || s == "u")
+				p_gtToMlStringShort[t].updateFromXmlNode(node2);
+				
+		}
+		
+		node2 = node->findNext(ns);
+		
+	}
+	
+	node->findFree(ns);
+	
+}
+
 /* WordClass ******************************************************************/
 
 #define DVT_WC_XMLATTR_UNDEFINED		"u"
@@ -259,6 +305,58 @@ WordClass::Type WordClass::getType(const string xmlAttr)
 		return Undefined;
 		
 	}
+}
+
+/**
+ * Static
+ */
+void WordClass::updateFromXmlNode(sxml::XmlNode* node)
+{
+	if (!initialized) init();
+	
+	sxml::NodeSearch* ns = node->findInit("wc");
+	sxml::XmlNode* node2 = node->findNext(ns);
+	while (node2 != NULL) {
+		string s = node2->attributes["t"];
+		if (!s.empty()) {
+			Type t = getType(s);
+			if (t != Undefined || s == "u")
+				p_wctToMlString[t].updateFromXmlNode(node2);
+				
+		}
+		
+		node2 = node->findNext(ns);
+		
+	}
+	
+	node->findFree(ns);
+	
+}
+
+/**
+ * Static
+ */
+void WordClass::updateShortNamesFromXmlNode(sxml::XmlNode* node)
+{
+	if (!initialized) init();
+	
+	sxml::NodeSearch* ns = node->findInit("wc");
+	sxml::XmlNode* node2 = node->findNext(ns);
+	while (node2 != NULL) {
+		string s = node2->attributes["t"];
+		if (!s.empty()) {
+			Type t = getType(s);
+			if (t != Undefined || s == "u")
+				p_wctToMlStringShort[t].updateFromXmlNode(node2);
+				
+		}
+		
+		node2 = node->findNext(ns);
+		
+	}
+	
+	node->findFree(ns);
+	
 }
 
 } // namespace

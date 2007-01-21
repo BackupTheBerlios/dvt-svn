@@ -28,6 +28,9 @@
 #include "dlgLessonMetaEdit.h"
 
 #include "dvtLanguageProfile.h"
+#include "dvtExceptions.h"
+
+#include <QMessageBox>
 
 using namespace std;
 
@@ -122,6 +125,31 @@ void LessonSelect::on_pbNew_clicked(bool pressed)
 	Q_UNUSED(pressed);
 	QDialog::DialogCode res = 
 		(QDialog::DialogCode) mainWindow->dlgLessonMetaEdit->exec();
+	if (res == QDialog::Accepted) {
+		Dvt::Lesson* lesson = core->createLesson();
+		mainWindow->dlgLessonMetaEdit->setToLesson(lesson);
+		// TODO: build better file names
+		QString fileName = QString("lessons/%1%2")
+			.arg(lesson->title().c_str())
+			.arg(DVT_TRAINING_LESSON_FILE_SUFFIX);
+		try {
+			lesson->writeToFile(QSTR2STR(fileName));
+				
+		} catch(Dvt::Exception e) {
+			QMessageBox::critical(this, APPNAME,
+				QString(trUtf8("Cannot write to file %1:\n\n"))
+					.arg(fileName) + 
+				QString("Dvt::Exception %1: %2")
+					.arg(e.code)
+					.arg(e.msg.c_str()),
+				QMessageBox::Cancel);
+			
+		}
+		
+		mainWindow->dlgLessonMetaEdit->setFromLesson(NULL);
+		loadLessons();
+		
+	}
 }
 
 void LessonSelect::on_pbTrain_clicked(bool pressed)

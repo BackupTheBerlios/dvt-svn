@@ -26,15 +26,46 @@
 
 #include "ui_dlgLessonMetaEdit.h"
 
+#include "dvtCore.h"
+#include "dvtLesson.h"
+#include "dvtMlString.h"
+
 #include <QDialog>
+
+class MainWindow;
 
 class DlgLessonMetaEdit : public QDialog, public Ui::DlgLessonMetaEdit
 {
 	Q_OBJECT
 	
+private:
+	Dvt::Core* core;
+	MainWindow* mainWindow;
+	
+	Dvt::Lesson* lesson;
+	Dvt::MlString title;
+	Dvt::MlString desc;
+	Dvt::MlString license;
+	
+	int cboxTitleLangIndex;
+	int cboxDescLangIndex;
+	int cboxLicenseLangIndex;
+	
 public:
-	DlgLessonMetaEdit(QWidget* parent = 0);
+	DlgLessonMetaEdit(MainWindow* parent);
 	virtual ~DlgLessonMetaEdit();
+	
+	void setFromLesson(Dvt::Lesson* lesson);
+	void setToLesson(Dvt::Lesson* lesson);
+	
+public slots:
+	void on_cboxTitleLang_currentIndexChanged(int index);
+	void on_cboxDescLang_currentIndexChanged(int index);
+	void on_cboxLicenseLang_currentIndexChanged(int index);
+	
+	void validateAccept();
+	virtual void accept();
+	
 };
 
 #endif /*DLGLESSONMETAEDIT_H_*/

@@ -65,12 +65,15 @@ private:
 	std::vector<TrainingEntry*> p_entries;
 	
 public:
-	Lesson();
+	Lesson(bool newLesson = false);
 	virtual ~Lesson();
 	
 	// tag attributes
 	LanguageProfile* langProfile_o();
+	void setLangProfile_o(LanguageProfile*);
 	LanguageProfile* langProfile_t();
+	void setLangProfile_t(LanguageProfile*);
+	
 	std::string version();
 	
 	bool metaRead();
