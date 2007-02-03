@@ -16,7 +16,8 @@ HEADERS += \
 	$$DVT_PATH_CORE/trainer/dvtLesson.h \
 	$$DVT_PATH_CORE/trainer/dvtTrainingEntry.h \
 	$$DVT_PATH_CORE/trainer/dvtTrainer.h \
-	$$DVT_PATH_CORE/simpleTrainer/dvtSimpleTrainer.h
+	$$DVT_PATH_CORE/simpleTrainer/dvtSimpleTrainer.h \
+	$$DVT_PATH_CORE/flashCardTrainer/dvtFlashCardTrainer.h
 
 SOURCES += \
 	$$DVT_PATH_CORE/dvtCore.cpp \
@@ -33,5 +34,6 @@ SOURCES += \
 	$$DVT_PATH_CORE/trainer/dvtLesson.cpp \
 	$$DVT_PATH_CORE/trainer/dvtTrainingEntry.cpp \
 	$$DVT_PATH_CORE/trainer/dvtTrainer.cpp \
-	$$DVT_PATH_CORE/simpleTrainer/dvtSimpleTrainer.cpp
+	$$DVT_PATH_CORE/simpleTrainer/dvtSimpleTrainer.cpp \
+	$$DVT_PATH_CORE/flashCardTrainer/dvtFlashCardTrainer.cpp
 

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/trainer" >
+        <file>trainer/dontknow.png</file>
+        <file>trainer/know.png</file>
+        <file>trainer/turn.png</file>
+    </qresource>
+</RCC>

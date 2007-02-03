@@ -13,7 +13,8 @@ HEADERS += \
 	$$DVT_PATH_GUI/editExt/editExt_fi.h \
 	$$DVT_PATH_GUI/editDetail/editDetail.h \
 	$$DVT_PATH_GUI/editDetail/editDetailVerb.h \
-	$$DVT_PATH_GUI/simpleTrainer/simpleTrainer.h
+	$$DVT_PATH_GUI/simpleTrainer/simpleTrainer.h \
+	$$DVT_PATH_GUI/flashCardTrainer/flashCardTrainer.h
 
 SOURCES += \
 	$$DVT_PATH_GUI/main.cpp \
@@ -28,7 +29,8 @@ SOURCES += \
 	$$DVT_PATH_GUI/editExt/editExt_fi.cpp \
 	$$DVT_PATH_GUI/editDetail/editDetail.cpp \
 	$$DVT_PATH_GUI/editDetail/editDetailVerb.cpp \
-	$$DVT_PATH_GUI/simpleTrainer/simpleTrainer.cpp
+	$$DVT_PATH_GUI/simpleTrainer/simpleTrainer.cpp \
+	$$DVT_PATH_GUI/flashCardTrainer/flashCardTrainer.cpp
 
 FORMS += \
 	$$DVT_PATH_GUI/ui/mainWindow.ui \
@@ -37,9 +39,12 @@ FORMS += \
 	$$DVT_PATH_GUI/ui/dlgLessonMetaEdit.ui \
 	$$DVT_PATH_GUI/ui/editExt_fi.ui \
 	$$DVT_PATH_GUI/ui/editDetailVerb.ui \
-	$$DVT_PATH_GUI/ui/simpleTrainer.ui
+	$$DVT_PATH_GUI/ui/simpleTrainer.ui \
+	$$DVT_PATH_GUI/ui/flashCardTrainer.ui
 
 TRANSLATIONS += \
 	$$DVT_PATH_GUI/trans/dvt_de.ts \
 	$$DVT_PATH_GUI/trans/dvt_fr.ts
 
+RESOURCES += \
+	$$DVT_PATH_GUI/res/dvt.qrc

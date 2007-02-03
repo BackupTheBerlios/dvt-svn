@@ -33,7 +33,7 @@ void messageOutput(QtMsgType type, const char *msg)
 }
 
 int main(int argc, char* argv[]) {
-//	Q_INIT_RESOURCE(main);
+	Q_INIT_RESOURCE(dvt);
 	
 	qInstallMsgHandler(messageOutput);
 	QApplication app(argc, argv);

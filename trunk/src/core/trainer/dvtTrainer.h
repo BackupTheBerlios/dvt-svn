@@ -45,6 +45,8 @@ public:
 	virtual std::string orig();
 	virtual std::string trans();
 	
+	virtual bool empty();
+	
 	virtual bool compare(std::string answer);
 	
 	virtual bool operator==(std::string answer);
@@ -64,6 +66,7 @@ protected:
 	bool p_useHtmlOrig;
 	
 	Query p_query;
+	Query::const_iterator p_currentQueryPair;
 	
 public:
 	Trainer();
@@ -85,6 +88,9 @@ public:
 	
 	virtual void generateQuery();
 	virtual void randomizeQuery();
+	
+	virtual QueryPair currentQueryPair();
+	virtual QueryPair nextQueryPair();
 	 
 };
 

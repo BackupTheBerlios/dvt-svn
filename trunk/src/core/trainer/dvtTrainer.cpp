@@ -45,6 +45,11 @@ QueryPair::~QueryPair() {}
 std::string QueryPair::orig() {return p_orig;}
 std::string QueryPair::trans() {return p_trans;}
 
+bool QueryPair::empty()
+{
+	return p_orig.empty() && p_trans.empty();
+}
+
 bool QueryPair::compare(std::string answer)
 {
 	return p_trans == answer;
@@ -88,6 +93,31 @@ void Trainer::generateQuery() {};
 void Trainer::randomizeQuery()
 {
 	random_shuffle(p_query.begin(), p_query.end());
+}
+
+QueryPair Trainer::currentQueryPair()
+{
+	if (p_currentQueryPair != p_query.end()) {
+		return *p_currentQueryPair;
+		
+	} else {
+		return QueryPair("", "");
+		
+	}
+	
+}
+
+QueryPair Trainer::nextQueryPair()
+{
+	if (p_currentQueryPair != p_query.end()) {
+		p_currentQueryPair++;
+		return *p_currentQueryPair;
+		
+	} else {
+		return QueryPair("", "");
+		
+	}
+	
 }
 
 } // namespace

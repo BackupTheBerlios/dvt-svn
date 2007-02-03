@@ -22,6 +22,13 @@
      <height>30</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuHelp" >
+    <property name="title" >
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAboutDvt" />
+    <addaction name="actionAboutQt" />
+   </widget>
    <widget class="QMenu" name="menuFile" >
     <property name="title" >
      <string>&amp;File</string>
@@ -29,17 +36,11 @@
     <addaction name="actionOpen" />
     <addaction name="actionEdit" />
     <addaction name="actionEditProperties" />
+    <addaction name="actionDeleteLesson" />
     <addaction name="separator" />
     <addaction name="actionTrain" />
     <addaction name="separator" />
     <addaction name="actionQuit" />
-   </widget>
-   <widget class="QMenu" name="menuHelp" >
-    <property name="title" >
-     <string>&amp;Help</string>
-    </property>
-    <addaction name="actionAboutDvt" />
-    <addaction name="actionAboutQt" />
    </widget>
    <addaction name="menuFile" />
    <addaction name="menuHelp" />
@@ -78,6 +79,11 @@
   <action name="actionAboutQt" >
    <property name="text" >
     <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionDeleteLesson" >
+   <property name="text" >
+    <string>Delete lesson...</string>
    </property>
   </action>
  </widget>

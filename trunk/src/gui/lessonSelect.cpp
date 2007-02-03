@@ -31,6 +31,8 @@
 #include "dvtExceptions.h"
 
 #include <QMessageBox>
+#include <QInputDialog>
+#include <QFileInfo>
 
 using namespace std;
 
@@ -43,7 +45,6 @@ LessonSelect::LessonSelect(MainWindow* mainWindow, QWidget* parent)
 	lbFlagTrans->setText("");
 	
 	setLesson(NULL);
-	pbTrain->setEnabled(false);
 }
 
 LessonSelect::~LessonSelect()
@@ -126,12 +127,35 @@ void LessonSelect::on_pbNew_clicked(bool pressed)
 	QDialog::DialogCode res = 
 		(QDialog::DialogCode) mainWindow->dlgLessonMetaEdit->exec();
 	if (res == QDialog::Accepted) {
+		// TODO: build better file names
+		QString fname = mainWindow->dlgLessonMetaEdit->title.c_str();
+		bool ok = false;
+		fname = QInputDialog::getText(this, APPNAME, 
+			trUtf8("Please enter a file name for this lesson\n(it will be saved to your lessons directory):"),
+			QLineEdit::Normal, fname, &ok);
+		if (!ok) return;
+		
+		QString fileName = QString("lessons/%1%2")
+			.arg(fname)
+			.arg(DVT_TRAINING_LESSON_FILE_SUFFIX);
+		QFileInfo fi(fileName);
+		
+		while (fi.exists()) {
+			fname = QInputDialog::getText(this, APPNAME, 
+				trUtf8("File already exists, please choose a different one:"),
+				QLineEdit::Normal, fname, &ok);
+			if (!ok) return;
+			
+			fileName = QString("lessons/%1%2")
+				.arg(fname)
+				.arg(DVT_TRAINING_LESSON_FILE_SUFFIX);
+			fi.setFile(fileName);
+			
+		}
+		
 		Dvt::Lesson* lesson = core->createLesson();
 		mainWindow->dlgLessonMetaEdit->setToLesson(lesson);
-		// TODO: build better file names
-		QString fileName = QString("lessons/%1%2")
-			.arg(lesson->title().c_str())
-			.arg(DVT_TRAINING_LESSON_FILE_SUFFIX);
+		
 		try {
 			lesson->writeToFile(QSTR2STR(fileName));
 				
@@ -143,6 +167,8 @@ void LessonSelect::on_pbNew_clicked(bool pressed)
 					.arg(e.code)
 					.arg(e.msg.c_str()),
 				QMessageBox::Cancel);
+			
+			return;
 			
 		}
 		

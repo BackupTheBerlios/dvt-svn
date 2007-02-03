@@ -43,15 +43,16 @@ private:
 	MainWindow* mainWindow;
 	
 	Dvt::Lesson* lesson;
-	Dvt::MlString title;
-	Dvt::MlString desc;
-	Dvt::MlString license;
 	
 	int cboxTitleLangIndex;
 	int cboxDescLangIndex;
 	int cboxLicenseLangIndex;
 	
 public:
+	Dvt::MlString title;
+	Dvt::MlString desc;
+	Dvt::MlString license;
+
 	DlgLessonMetaEdit(MainWindow* parent);
 	virtual ~DlgLessonMetaEdit();
 	

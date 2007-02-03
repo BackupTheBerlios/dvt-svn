@@ -23,10 +23,12 @@ INCLUDEPATH += \
 	../src/core/lang \
 	../src/core/trainer \
 	../src/core/simpleTrainer \
+	../src/core/flashCardTrainer \
 	../src/gui \
 	../src/gui/editExt \
 	../src/gui/editDetail \
 	../src/gui/simpleTrainer \
+	../src/gui/flashCardTrainer \
 	../src/utils/debug \
 	../src/utils/xmlNode
 

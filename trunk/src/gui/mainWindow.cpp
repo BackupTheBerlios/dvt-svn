@@ -27,6 +27,7 @@
 #include "lessonEdit.h"
 #include "dlgLessonMetaEdit.h"
 #include "simpleTrainer.h"
+#include "flashCardTrainer.h"
 #include "utils.h"
 
 #include "dvtExceptions.h"
@@ -78,20 +79,22 @@ MainWindow::MainWindow()
 	lessonSelect = new LessonSelect(this, centralWidget());
 	lessonEdit = new LessonEdit(this, centralWidget());
 	dlgLessonMetaEdit = new DlgLessonMetaEdit(this);
-	simpleTrainer = new SimpleTrainer(this, centralWidget());
+	simpleTrainer = NULL; //new SimpleTrainer(this, centralWidget());
+	flashCardTrainer = new FlashCardTrainer(this, centralWidget());
 	
 	lessonSelect->show();
 	lessonEdit->hide();
-	simpleTrainer->hide();
+//	simpleTrainer->hide();
+	flashCardTrainer->hide();
 	
 	hbox->addWidget(lessonSelect);
 	hbox->addWidget(lessonEdit);
-	hbox->addWidget(simpleTrainer);
+//	hbox->addWidget(simpleTrainer);
+	hbox->addWidget(flashCardTrainer);
 	
 	lessonSelect->loadLessons();
 	lessonSelect->show();
 	
-	actionTrain->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -118,9 +121,9 @@ void MainWindow::on_actionQuit_triggered(bool checked)
 void MainWindow::on_actionOpen_triggered(bool checked)
 {
 	Q_UNUSED(checked);
-	if (lessonEdit->mayClose() && simpleTrainer->mayClose()) {
-		simpleTrainer->hide();
-		simpleTrainer->setLesson(NULL);
+	if (lessonEdit->mayClose() && flashCardTrainer->mayClose()) {
+		flashCardTrainer->hide();
+		flashCardTrainer->setLesson(NULL);
 		lessonEdit->hide();
 		lessonEdit->setLesson(NULL);
 		lessonSelect->show();
@@ -131,7 +134,7 @@ void MainWindow::on_actionEdit_triggered(bool checked)
 {
 	Q_UNUSED(checked);
 	lessonSelect->hide();
-	simpleTrainer->hide();
+	flashCardTrainer->hide();
 	
 	lessonEdit->setLesson(lessonSelect->lesson);
 	lessonEdit->show();
@@ -153,8 +156,8 @@ void MainWindow::on_actionTrain_triggered(bool checked)
 	lessonSelect->hide();
 	lessonEdit->hide();
 	
-	simpleTrainer->setLesson(lessonSelect->lesson);
-	simpleTrainer->show();
+	flashCardTrainer->setLesson(lessonSelect->lesson);
+	flashCardTrainer->show();
 }
 
 void MainWindow::on_actionAboutDvt_triggered(bool checked)

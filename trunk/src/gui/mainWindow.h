@@ -40,6 +40,7 @@ class LessonSelect;
 class LessonEdit;
 class DlgLessonMetaEdit;
 class SimpleTrainer;
+class FlashCardTrainer;
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {
@@ -56,6 +57,7 @@ public:
 	DlgLessonMetaEdit* dlgLessonMetaEdit;
 	
 	SimpleTrainer* simpleTrainer;
+	FlashCardTrainer* flashCardTrainer;
 	
 	QMap<QString, QIcon*> flags;
 	

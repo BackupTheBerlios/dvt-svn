@@ -107,6 +107,8 @@ void SimpleTrainer::generateQuery()
 	}
 	
 	randomizeQuery();
+	
+	p_currentQueryPair = p_query.begin();
 }
 
 } // namespace
