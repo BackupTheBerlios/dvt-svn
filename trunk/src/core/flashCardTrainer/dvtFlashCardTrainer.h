@@ -24,16 +24,18 @@
 #ifndef DVTFLASHCARDTRAINER_H_
 #define DVTFLASHCARDTRAINER_H_
 
-#include "dvtSimpleTrainer.h"
+#include "dvtTrainer.h"
 
 namespace Dvt
 {
 
-class FlashCardTrainer : public SimpleTrainer
+class FlashCardTrainer : public Trainer
 {
 public:
 	FlashCardTrainer();
 	virtual ~FlashCardTrainer();
+	
+	virtual void generateQuery();
 };
 
 }

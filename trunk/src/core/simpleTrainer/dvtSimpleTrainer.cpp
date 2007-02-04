@@ -45,6 +45,7 @@ SimpleTrainer::~SimpleTrainer()
 void SimpleTrainer::generateQuery()
 {
 	p_query.clear();
+	int number = 1;
 	
 	LanguageProfile* lp = p_lesson->langProfile_t();
 	assert(lp != NULL);
@@ -67,7 +68,7 @@ void SimpleTrainer::generateQuery()
 			}
 		}
 		
-		p_query.push_back(QueryPair(s, base));
+		p_query.push_back(QueryPair(s, base, number++));
 			
 		if (p_useDecl) {
 			map<string, string>& dcls = te->trans()->decls();
@@ -81,7 +82,7 @@ void SimpleTrainer::generateQuery()
 						s2 = s + " <i>(" + d + ")</i>";
 					else
 						s2 = s + " (" + d + ")";
-					p_query.push_back(QueryPair(s2, t));
+					p_query.push_back(QueryPair(s2, t, number++));
 				}
 				
 			}
@@ -97,7 +98,7 @@ void SimpleTrainer::generateQuery()
 						s2 = s + " <i>(" + p + ")</i>";
 					else
 						s2 = s + " (" + p + ")";
-					p_query.push_back(QueryPair(s2, t));
+					p_query.push_back(QueryPair(s2, t, number++));
 				}
 				
 			}

@@ -38,12 +38,23 @@ protected:
 	std::string	p_orig;
 	std::string p_trans;
 	
+	int p_number;
+	bool p_done;
+	bool p_correct;
+	
 public:
-	QueryPair(std::string o, std::string t);
+	QueryPair(std::string o, std::string t, int number = 0);
 	virtual ~QueryPair();
 	
 	virtual std::string orig();
 	virtual std::string trans();
+	
+	virtual int number();
+	
+	virtual bool isDone();
+	virtual void setDone(bool done);
+	virtual bool wasCorrect();
+	virtual void setCorrect(bool correct);
 	
 	virtual bool empty();
 	
@@ -65,8 +76,12 @@ protected:
 	bool p_useDecl;
 	bool p_useHtmlOrig;
 	
+	int p_done;
+	int p_correct;
+	int p_wrong;
+	
 	Query p_query;
-	Query::const_iterator p_currentQueryPair;
+	Query::iterator p_currentQueryPair;
 	
 public:
 	Trainer();
@@ -91,6 +106,14 @@ public:
 	
 	virtual QueryPair currentQueryPair();
 	virtual QueryPair nextQueryPair();
+	
+	virtual void setCurrentAsWrong();
+	virtual void setCurrentAsCorrect();
+	
+	virtual int nbRemaining();
+	virtual int nbDone();
+	virtual int nbCorrect();
+	virtual int nbWrong();
 	 
 };
 

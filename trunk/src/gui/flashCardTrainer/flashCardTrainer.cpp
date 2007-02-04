@@ -23,6 +23,8 @@
 
 #include "flashCardTrainer.h"
 
+#include "mainWindow.h"
+
 #include "utils.h"
 
 FlashCardTrainer::FlashCardTrainer(MainWindow* mainWindow, QWidget* parent)
@@ -55,8 +57,22 @@ void FlashCardTrainer::setLesson(Dvt::Lesson* lesson)
 		trainer->generateQuery();
 		qDebug("%d query pairs", trainer->query().size());
 		
+		lbLessonTitle->setText(STR2QSTR(lesson->title()));
 		cardIsFront = false;
-		actionTurn->trigger();
+		
+		Dvt::QueryPair qp = trainer->currentQueryPair();
+		if (!qp.empty()) {
+			setCard(true, STR2QSTR(qp.orig()));
+			
+		} else {
+			setCard(true, trUtf8("You are through!"));
+			
+		}
+		
+		lbCardNumber->setText(QString("%1").arg(qp.number()));
+		lbToGo->setText(QString("%1").arg(trainer->nbRemaining()));
+		lbNotKnown->setText(QString("%1").arg(trainer->nbWrong()));
+		lbKnown->setText(QString("%1").arg(trainer->nbCorrect()));
 		
 	}
 	
@@ -70,10 +86,18 @@ bool FlashCardTrainer::mayClose()
 void FlashCardTrainer::setCard(bool front, QString text)
 {
 	QPalette palette = lbFlashCard->palette();
-	if (front)
+	if (front) {
 		palette.setColor(QPalette::WindowText, Qt::darkRed);
-	else
+		frmFlashCard->setFrameShadow(QFrame::Raised);
+		lbFlag->setPixmap(mainWindow->flags[STR2QSTR(lesson->langProfile_o()->langCode())]->pixmap(20, 12));
+		
+	} else {
 		palette.setColor(QPalette::WindowText, Qt::darkGreen);
+		frmFlashCard->setFrameShadow(QFrame::Sunken);
+		lbFlag->setPixmap(mainWindow->flags[STR2QSTR(lesson->langProfile_t()->langCode())]->pixmap(20, 12));
+		
+	}
+	
 	lbFlashCard->setPalette(palette);
 	
 	lbFlashCard->setText(text);
@@ -83,6 +107,8 @@ void FlashCardTrainer::setCard(bool front, QString text)
 
 void FlashCardTrainer::setNext()
 {
+	actionTurn->setChecked(false);
+	
 	Dvt::QueryPair qp = trainer->nextQueryPair();
 	if (!qp.empty()) {
 		setCard(true, STR2QSTR(qp.orig()));
@@ -92,15 +118,19 @@ void FlashCardTrainer::setNext()
 		
 	}
 	
+	lbCardNumber->setText(QString("%1").arg(qp.number()));
+	lbToGo->setText(QString("%1").arg(trainer->nbRemaining()));
+	lbNotKnown->setText(QString("%1").arg(trainer->nbWrong()));
+	lbKnown->setText(QString("%1").arg(trainer->nbCorrect()));
+	
 }
 
 void FlashCardTrainer::on_actionTurn_triggered(bool checked)
 {
-	Q_UNUSED(checked);
+	cardIsFront = !checked;
 	
 	Dvt::QueryPair qp = trainer->currentQueryPair();
 	if (!qp.empty()) {
-		cardIsFront = !cardIsFront;
 		if (cardIsFront)
 			setCard(true, STR2QSTR(qp.orig()));
 		else
@@ -113,6 +143,8 @@ void FlashCardTrainer::on_actionKnown_triggered(bool checked)
 {
 	Q_UNUSED(checked);
 	
+	trainer->setCurrentAsCorrect();
+	actionTurn->setChecked(false);
 	setNext();
 }
 
@@ -120,5 +152,7 @@ void FlashCardTrainer::on_actionNotKnown_triggered(bool checked)
 {
 	Q_UNUSED(checked);
 	
+	trainer->setCurrentAsWrong();
+	actionTurn->setChecked(false);
 	setNext();
 }

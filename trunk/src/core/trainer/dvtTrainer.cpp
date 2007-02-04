@@ -34,16 +34,23 @@ using namespace std;
 
 /* QueryPair ******************************************************************/
 
-QueryPair::QueryPair(std::string o, std::string t)
+QueryPair::QueryPair(std::string o, std::string t, int number)
 {
 	p_orig = o;
 	p_trans = t;
+	p_number = number;
 }
 
 QueryPair::~QueryPair() {}
 
 std::string QueryPair::orig() {return p_orig;}
 std::string QueryPair::trans() {return p_trans;}
+
+int QueryPair::number() {return p_number;}
+bool QueryPair::isDone() {return p_done;}
+void QueryPair::setDone(bool done) {p_done = done;}
+bool QueryPair::wasCorrect() {return p_correct;}
+void QueryPair::setCorrect(bool correct) {p_correct = correct;}
 
 bool QueryPair::empty()
 {
@@ -68,6 +75,10 @@ Trainer::Trainer()
 	p_lesson = NULL;
 	p_useConj = false;
 	p_useDecl = false;
+	
+	p_done = 0;
+	p_correct = 0;
+	p_wrong = 0;
 }
 
 Trainer::~Trainer()
@@ -75,7 +86,13 @@ Trainer::~Trainer()
 }
 
 Lesson* Trainer::lesson() {return p_lesson;}
-void Trainer::setLesson(Lesson* lesson) {p_lesson = lesson;}
+void Trainer::setLesson(Lesson* lesson) 
+{
+	p_lesson = lesson;
+	p_done = 0;
+	p_correct = 0;
+	p_wrong = 0;
+}
 	
 bool Trainer::useConj() {return p_useConj;}
 void Trainer::setUseConj(bool use) {p_useConj = use;}
@@ -110,8 +127,19 @@ QueryPair Trainer::currentQueryPair()
 QueryPair Trainer::nextQueryPair()
 {
 	if (p_currentQueryPair != p_query.end()) {
+		QueryPair& qp = *p_currentQueryPair;
+		qp.setDone(true);
+		if (qp.wasCorrect())
+			p_correct++;
+		else
+			p_wrong++;
+		p_done++;
+		
 		p_currentQueryPair++;
-		return *p_currentQueryPair;
+		if (p_currentQueryPair == p_query.end())
+			return QueryPair("", "");
+		else
+			return *p_currentQueryPair;
 		
 	} else {
 		return QueryPair("", "");
@@ -119,5 +147,26 @@ QueryPair Trainer::nextQueryPair()
 	}
 	
 }
+
+void Trainer::setCurrentAsWrong()
+{
+	if (p_currentQueryPair != p_query.end()) {
+		QueryPair& qp = *p_currentQueryPair;
+		qp.setCorrect(false);
+	}
+}
+
+void Trainer::setCurrentAsCorrect()
+{
+	if (p_currentQueryPair != p_query.end()) {
+		QueryPair& qp = *p_currentQueryPair;
+		qp.setCorrect(true);
+	}
+}
+
+int Trainer::nbRemaining() {return p_query.size() - p_done;}
+int Trainer::nbDone() {return p_done;}
+int Trainer::nbCorrect() {return p_correct;}
+int Trainer::nbWrong() {return p_wrong;}
 
 } // namespace
