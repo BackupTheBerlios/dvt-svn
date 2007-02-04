@@ -35,13 +35,16 @@ void messageOutput(QtMsgType type, const char *msg)
 int main(int argc, char* argv[]) {
 	Q_INIT_RESOURCE(dvt);
 	
-	qInstallMsgHandler(messageOutput);
-	QApplication app(argc, argv);
-	
 	if (argc > 1) {
 		QString s = argv[1];
 		if (s == "--debug") debugMode = true;
 	}
+	
+	qInstallMsgHandler(messageOutput);
+	QApplication app(argc, argv);
+	app.setWindowIcon(QIcon(":/dvt/logo/dvt48.png"));
+	if (app.windowIcon().isNull())
+		qDebug("Window icon is null!");
 	
 	QString sysLocale = QLocale::system().name();
 	QTranslator translatorDvt, translatorQt;

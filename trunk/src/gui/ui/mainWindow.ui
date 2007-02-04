@@ -46,7 +46,30 @@
    <addaction name="menuHelp" />
   </widget>
   <widget class="QStatusBar" name="statusbar" />
+  <widget class="QToolBar" name="toolBar" >
+   <property name="movable" >
+    <bool>false</bool>
+   </property>
+   <property name="orientation" >
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="iconSize" >
+    <size>
+     <width>22</width>
+     <height>22</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea" >
+    <number>4</number>
+   </attribute>
+   <addaction name="actionOpen" />
+   <addaction name="actionEdit" />
+   <addaction name="actionTrain" />
+  </widget>
   <action name="actionOpen" >
+   <property name="icon" >
+    <iconset resource="../res/dvt.qrc" >:/dvt/dvt/lessonOpen.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Open lesson...</string>
    </property>
@@ -57,11 +80,17 @@
    </property>
   </action>
   <action name="actionEdit" >
+   <property name="icon" >
+    <iconset resource="../res/dvt.qrc" >:/dvt/dvt/lessonEdit.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Edit lesson...</string>
    </property>
   </action>
   <action name="actionTrain" >
+   <property name="icon" >
+    <iconset resource="../res/dvt.qrc" >:/dvt/dvt/lessonTrain.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Train...</string>
    </property>
@@ -82,11 +111,16 @@
    </property>
   </action>
   <action name="actionDeleteLesson" >
+   <property name="icon" >
+    <iconset resource="../res/dvt.qrc" >:/dvt/dvt/lessonDelete.png</iconset>
+   </property>
    <property name="text" >
     <string>Delete lesson...</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../res/dvt.qrc" />
+ </resources>
  <connections/>
 </ui>

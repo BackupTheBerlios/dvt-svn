@@ -8,7 +8,7 @@ HEADERS += \
 	$$DVT_PATH_GUI/module.h \
 	$$DVT_PATH_GUI/lessonSelect.h \
 	$$DVT_PATH_GUI/lessonEdit.h \
-	$$DVT_PATH_GUI/dlgLessonMetaEdit.h \
+	$$DVT_PATH_GUI/dialogs/dlgLessonMetaEdit.h \
 	$$DVT_PATH_GUI/editExt/editExt.h \
 	$$DVT_PATH_GUI/editExt/editExt_fi.h \
 	$$DVT_PATH_GUI/editDetail/editDetail.h \
@@ -24,7 +24,7 @@ SOURCES += \
 	$$DVT_PATH_GUI/module.cpp \
 	$$DVT_PATH_GUI/lessonSelect.cpp \
 	$$DVT_PATH_GUI/lessonEdit.cpp \
-	$$DVT_PATH_GUI/dlgLessonMetaEdit.cpp \
+	$$DVT_PATH_GUI/dialogs/dlgLessonMetaEdit.cpp \
 	$$DVT_PATH_GUI/editExt/editExt.cpp \
 	$$DVT_PATH_GUI/editExt/editExt_fi.cpp \
 	$$DVT_PATH_GUI/editDetail/editDetail.cpp \

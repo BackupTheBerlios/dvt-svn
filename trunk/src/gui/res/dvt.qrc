@@ -1,4 +1,17 @@
 <RCC>
+    <qresource prefix="/dvt" >
+        <file>dvt/entryDelete.png</file>
+        <file>dvt/entryNew.png</file>
+        <file>dvt/lessonDelete.png</file>
+        <file>dvt/lessonEdit.png</file>
+        <file>dvt/lessonNew.png</file>
+        <file>dvt/lessonOpen.png</file>
+        <file>dvt/lessonSave.png</file>
+        <file>dvt/lessonTrain.png</file>
+    </qresource>
+    <qresource prefix="/logo" >
+        <file>logo/dvt48.png</file>
+    </qresource>
     <qresource prefix="/trainer" >
         <file>trainer/dontknow.png</file>
         <file>trainer/know.png</file>

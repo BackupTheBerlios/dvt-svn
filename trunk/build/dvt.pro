@@ -25,6 +25,7 @@ INCLUDEPATH += \
 	../src/core/simpleTrainer \
 	../src/core/flashCardTrainer \
 	../src/gui \
+	../src/gui/dialogs \
 	../src/gui/editExt \
 	../src/gui/editDetail \
 	../src/gui/simpleTrainer \

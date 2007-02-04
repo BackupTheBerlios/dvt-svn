@@ -73,6 +73,8 @@ MainWindow::MainWindow()
 			delete icon;
 	}
 	
+	setStatusBar(NULL);
+	
 	QHBoxLayout* hbox = new QHBoxLayout(centralWidget());
 	hbox->setMargin(0);
 	
@@ -92,6 +94,7 @@ MainWindow::MainWindow()
 //	hbox->addWidget(simpleTrainer);
 	hbox->addWidget(flashCardTrainer);
 	
+	actionOpen->setEnabled(false);
 	lessonSelect->loadLessons();
 	lessonSelect->show();
 	
@@ -121,12 +124,15 @@ void MainWindow::on_actionQuit_triggered(bool checked)
 void MainWindow::on_actionOpen_triggered(bool checked)
 {
 	Q_UNUSED(checked);
+	
 	if (lessonEdit->mayClose() && flashCardTrainer->mayClose()) {
 		flashCardTrainer->hide();
 		flashCardTrainer->setLesson(NULL);
 		lessonEdit->hide();
 		lessonEdit->setLesson(NULL);
 		lessonSelect->show();
+		actionOpen->setEnabled(false);
+		actionEdit->setEnabled(true);
 	}
 }
 
@@ -138,6 +144,9 @@ void MainWindow::on_actionEdit_triggered(bool checked)
 	
 	lessonEdit->setLesson(lessonSelect->lesson);
 	lessonEdit->show();
+	
+	actionOpen->setEnabled(true);
+	actionEdit->setEnabled(false);
 }
 
 void MainWindow::on_actionEditProperties_triggered(bool checked)
@@ -158,6 +167,9 @@ void MainWindow::on_actionTrain_triggered(bool checked)
 	
 	flashCardTrainer->setLesson(lessonSelect->lesson);
 	flashCardTrainer->show();
+	
+	actionOpen->setEnabled(true);
+	actionEdit->setEnabled(true);
 }
 
 void MainWindow::on_actionAboutDvt_triggered(bool checked)

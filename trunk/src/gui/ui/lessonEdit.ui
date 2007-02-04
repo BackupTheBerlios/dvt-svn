@@ -305,21 +305,32 @@
    </item>
   </layout>
   <action name="actionNew" >
+   <property name="icon" >
+    <iconset resource="../res/dvt.qrc" >:/dvt/dvt/entryNew.png</iconset>
+   </property>
    <property name="text" >
-    <string>New</string>
+    <string>New entry</string>
    </property>
   </action>
   <action name="actionDelete" >
+   <property name="icon" >
+    <iconset resource="../res/dvt.qrc" >:/dvt/dvt/entryDelete.png</iconset>
+   </property>
    <property name="text" >
-    <string>Delete</string>
+    <string>Delete entry</string>
    </property>
   </action>
   <action name="actionSave" >
+   <property name="icon" >
+    <iconset resource="../res/dvt.qrc" >:/dvt/dvt/lessonSave.png</iconset>
+   </property>
    <property name="text" >
-    <string>Save</string>
+    <string>Save lesson</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../res/dvt.qrc" />
+ </resources>
  <connections/>
 </ui>
