@@ -1,6 +1,6 @@
 /** @file
  * 
- * Dvt::Lesson - Part of the portable Dictionary and Vocabulary Trainer.
+ * Dvt::LessonFile - Part of the portable Dictionary and Vocabulary Trainer.
  * 
  * Copyright (C) 2006  Denis Martin (http://www.delta-my.de/)
  * 
@@ -20,59 +20,86 @@
  * 
  */
 
-#ifndef DVTLESSON_H_
-#define DVTLESSON_H_
+#ifndef DVTLESSONFILE_H_
+#define DVTLESSONFILE_H_
 
 #include "dvtMlString.h"
 #include "dvtTrainingEntry.h"
 
 #include <string>
-#include <vector>
+#include <map>
+#include <iostream>
 
 namespace Dvt
 {
 
+#define DVT_DTL_XML_FORMATVERSION	"1.0"
+
+typedef enum {
+	rfReadAll,
+	rfReadMetaDataOnly,
+	rfReadData
+} ReadFlag;
+
 class Core;
 class LanguageProfile;
+class Lesson;
 
-class Lesson
+class LessonFile
 {
 private:
 	Core* core;
 	
+	bool p_metaRead;
+	bool p_dataRead;
+	
+	std::string p_fileName;
+	
 	LanguageProfile* p_langProfile_o;
 	LanguageProfile* p_langProfile_t;
+	std::string p_version;
 
-	int p_number;
 	MlString p_title;
+	MlString p_description;
+	MlString p_license;
 	
-	std::vector<TrainingEntry*> p_entries;
+	std::map<int, Lesson*> p_lessons;
 	
 public:
-	Lesson(int number, LanguageProfile* orig = NULL, LanguageProfile* trans = NULL);
-	virtual ~Lesson();
+	LessonFile(bool newFile = false);
+	virtual ~LessonFile();
 	
+	// tag attributes
 	LanguageProfile* langProfile_o();
 	void setLangProfile_o(LanguageProfile*);
 	LanguageProfile* langProfile_t();
 	void setLangProfile_t(LanguageProfile*);
 	
-	int number();
-	MlString& title();
+	std::string version();
 	
-	std::vector<TrainingEntry*>& entries();
+	bool metaRead();
+	bool dataRead();
+	
+	// meta data
+	MlString& title();
+	MlString& description();
+	MlString& license();
+	
+	std::map<int, Lesson*>& lessons();
 	
 	// methods
 	
-	TrainingEntry* addEntry();
-	void deleteEntry(TrainingEntry* te);
+	void readFromStream(std::istream& readFrom, const ReadFlag readFlag = rfReadAll);
+	void readFromFile(const std::string& fileName, const ReadFlag readFlag = rfReadAll);
 	
-	void setFromXmlNode(sxml::XmlNode* lessonNode);
-	void setToXmlNode(sxml::XmlNode* lessonNode);
-	
+	void readData();
 	void unloadData();
+	
+	void write();
+	void writeToStream(std::ostream& writeTo);
+	void writeToFile(const std::string& fileName);
 };
 
 }
 
-#endif /*DVTLESSON_H_*/
+#endif /*DVTLESSONFILE_H_*/

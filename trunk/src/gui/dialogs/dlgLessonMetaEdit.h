@@ -27,7 +27,7 @@
 #include "ui_dlgLessonMetaEdit.h"
 
 #include "dvtCore.h"
-#include "dvtLesson.h"
+#include "dvtLessonFile.h"
 #include "dvtMlString.h"
 
 #include <QDialog>
@@ -42,7 +42,7 @@ private:
 	Dvt::Core* core;
 	MainWindow* mainWindow;
 	
-	Dvt::Lesson* lesson;
+	Dvt::LessonFile* lessonFile;
 	
 	int cboxTitleLangIndex;
 	int cboxDescLangIndex;
@@ -56,8 +56,8 @@ public:
 	DlgLessonMetaEdit(MainWindow* parent);
 	virtual ~DlgLessonMetaEdit();
 	
-	void setFromLesson(Dvt::Lesson* lesson);
-	void setToLesson(Dvt::Lesson* lesson);
+	void setFromLessonFile(Dvt::LessonFile* lessonFile);
+	void setToLessonFile(Dvt::LessonFile* lessonFile);
 	
 public slots:
 	void on_cboxTitleLang_currentIndexChanged(int index);

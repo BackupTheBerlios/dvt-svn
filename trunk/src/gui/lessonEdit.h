@@ -49,6 +49,7 @@ class LessonEdit : public Module, public Ui::LessonEdit
 	Q_OBJECT
 	
 private:
+	Dvt::LessonFile* lessonFile;
 	Dvt::Lesson* lesson;
 	Language* foreignLang;
 	Language* nativeLang;
@@ -70,11 +71,11 @@ public:
 	LessonEdit(MainWindow* mainWindow, QWidget* parent = 0);
 	virtual ~LessonEdit();
 	
-	virtual void setLesson(Dvt::Lesson* lesson);
+	virtual void setLessonFile(Dvt::LessonFile* lessonFile);
 	virtual bool mayClose();
 	
+	void setLesson(Dvt::Lesson* lesson);
 	void setDetail(Dvt::WordClass::Type wc);
-	
 	void setEdited(bool edited);
 	
 	void emitCurrentEntryChanged();
@@ -86,6 +87,7 @@ protected:
 public slots:
 	void on_twEntries_currentItemChanged(QTableWidgetItem* current, QTableWidgetItem* previous);
 	
+	void on_cboxLessonSelect_currentIndexChanged(int index);
 	void on_cboxWordClass_currentIndexChanged(int index);
 	
 	void on_actionNew_triggered(bool checked = false);

@@ -108,35 +108,36 @@ LessonEdit::~LessonEdit()
 {
 }
 
-void LessonEdit::setLesson(Dvt::Lesson* lesson)
+void LessonEdit::setLessonFile(Dvt::LessonFile* lessonFile)
 {
-	if (lesson != NULL) {
-		if (this->lesson != lesson) {
-			this->lesson = lesson;
+	if (lessonFile != NULL) {
+		if (this->lessonFile != lessonFile) {
+			this->lessonFile = lessonFile;
 			
-			if (!lesson->dataRead()) 
-				lesson->readData();
+			if (!lessonFile->dataRead()) 
+				lessonFile->readData();
 			
 			tabWidget->setCurrentIndex(0);
 			tabWidget->setTabEnabled(1, false);
 			
 			if (foreignLang != NULL) delete foreignLang;
 			if (nativeLang != NULL) delete nativeLang;
-			foreignLang = new Language(this, lesson->langProfile_t());
-			nativeLang = new Language(this, lesson->langProfile_o());
+			foreignLang = new Language(this, lessonFile->langProfile_t());
+			nativeLang = new Language(this, lessonFile->langProfile_o());
 			
 			// titles
 			
-			gboxForeignLang->setTitle(STR2QSTR(lesson->langProfile_t()->name()));
-			gboxNativeLang->setTitle(STR2QSTR(lesson->langProfile_o()->name()));
+			lbLessonFileTitle->setText(STR2QSTR(lessonFile->title()));
+			gboxForeignLang->setTitle(STR2QSTR(lessonFile->langProfile_t()->name()));
+			gboxNativeLang->setTitle(STR2QSTR(lessonFile->langProfile_o()->name()));
 			
 			// genders
 			
 			vector<Dvt::Gender::Type>::iterator git;
 			
 			cboxForeignGender->clear();
-			for (git = lesson->langProfile_t()->genders().begin();
-				git != lesson->langProfile_t()->genders().end();
+			for (git = lessonFile->langProfile_t()->genders().begin();
+				git != lessonFile->langProfile_t()->genders().end();
 				git++)
 			{
 				cboxForeignGender->addItem(STR2QSTR(Dvt::Gender::getString(*git)), *git);
@@ -144,8 +145,8 @@ void LessonEdit::setLesson(Dvt::Lesson* lesson)
 			frmForeignGender->setVisible(false);
 			
 			cboxNativeGender->clear();
-			for (git = lesson->langProfile_o()->genders().begin();
-				git != lesson->langProfile_o()->genders().end();
+			for (git = lessonFile->langProfile_o()->genders().begin();
+				git != lessonFile->langProfile_o()->genders().end();
 				git++)
 			{
 				cboxNativeGender->addItem(STR2QSTR(Dvt::Gender::getString(*git)), *git);
@@ -163,54 +164,36 @@ void LessonEdit::setLesson(Dvt::Lesson* lesson)
 				
 			}
 				
-			if (nativeLang->editExt() != NULL) {
-				frmNativeExt->layout()->addWidget(nativeLang->editExt());
-				frmNativeExt->show();
-				
-			} else {
-				frmNativeExt->hide();
-				
-			}
+			frmNativeExt->hide();
 			
 			resetTabOrder();
 			
-			// table entries
+			// lessons
 			
-			twEntries->clear();
-			twEntries->setRowCount(lesson->entries().size());
-			qDebug("%d lesson entries", lesson->entries().size());
-			
-			bool useLabels = lesson->entries().size() < 201;
-			int i = 0;
-			vector<Dvt::TrainingEntry*>::iterator it;
-			for (it = lesson->entries().begin(); it != lesson->entries().end(); it++, i++) {
-				Dvt::TrainingEntry* te = *it;
-				new TwiEntry(te, i, twEntries, useLabels);
+			cboxLessonSelect->clear();
+			int i = 1;
+			map<int, Dvt::Lesson*>::const_iterator lit;
+			for (lit = lessonFile->lessons().begin(); lit != lessonFile->lessons().end(); lit++, i++) {
+				cboxLessonSelect->addItem(QString("%1. %2")
+					.arg(i).arg(STR2QSTR(lit->second->title())),
+					(int) lit->second);
+				
 			}
 			
-			// table headers
+			cboxLessonSelect->setCurrentIndex(0);
 			
-			QTableWidgetItem* h;
-			QIcon* icon;
+			// entries
 			
-			h = new QTableWidgetItem(gboxForeignLang->title());
-			icon = mainWindow->flags[lesson->langProfile_t()->langCode().c_str()];
-			if (icon != NULL) h->setIcon(*icon);
-			twEntries->setHorizontalHeaderItem(0, h);
-			
-			h = new QTableWidgetItem(gboxNativeLang->title());
-			icon = mainWindow->flags[lesson->langProfile_o()->langCode().c_str()];
-			if (icon != NULL) h->setIcon(*icon);
-			twEntries->setHorizontalHeaderItem(1, h);
+			setLesson(lessonFile->lessons().begin()->second);
 			
 			edited = false;
 		}
 		
 	} else {
 		edited = false;
-		this->lesson = lesson;
-		setTwiEntry(NULL);
-		twEntries->clear();
+		this->lessonFile = NULL;
+		setLesson(NULL);
+		
 		
 	}
 	
@@ -252,6 +235,48 @@ bool LessonEdit::mayClose()
 	}
 			
 	return true;		
+}
+
+void LessonEdit::setLesson(Dvt::Lesson* lesson)
+{
+	// table entries
+	
+	this->lesson = lesson;
+	
+	if (lesson != NULL) {
+		twEntries->clear();
+		twEntries->setRowCount(lesson->entries().size());
+		qDebug("%d lesson entries", lesson->entries().size());
+		
+		bool useLabels = lesson->entries().size() < 201; // ahem...
+		int i = 0;
+		vector<Dvt::TrainingEntry*>::iterator it;
+		for (it = lesson->entries().begin(); it != lesson->entries().end(); it++, i++) {
+			Dvt::TrainingEntry* te = *it;
+			new TwiEntry(te, i, twEntries, useLabels);
+		}
+		
+		// table headers
+			
+		QTableWidgetItem* h;
+		QIcon* icon;
+		
+		h = new QTableWidgetItem(gboxForeignLang->title());
+		icon = mainWindow->flags[lessonFile->langProfile_t()->langCode().c_str()];
+		if (icon != NULL) h->setIcon(*icon);
+		twEntries->setHorizontalHeaderItem(0, h);
+		
+		h = new QTableWidgetItem(gboxNativeLang->title());
+		icon = mainWindow->flags[lessonFile->langProfile_o()->langCode().c_str()];
+		if (icon != NULL) h->setIcon(*icon);
+		twEntries->setHorizontalHeaderItem(1, h);
+		
+	} else {
+		setTwiEntry(NULL);
+		twEntries->clear();
+		
+	}
+	
 }
 
 void LessonEdit::setDetail(Dvt::WordClass::Type wc)
@@ -488,6 +513,21 @@ void LessonEdit::on_twEntries_currentItemChanged(QTableWidgetItem* current,
 		setTwiEntry(NULL);
 }
 
+void LessonEdit::on_cboxLessonSelect_currentIndexChanged(int index)
+{
+	Q_UNUSED(index);
+	if (lessonFile != NULL) {
+		if (currentEntry != NULL)
+			postCurrentEntry(false);
+		Dvt::Lesson* lesson = (Dvt::Lesson*) cboxLessonSelect->itemData(cboxLessonSelect->currentIndex()).toInt();
+		assert(lesson != NULL);
+		
+		setLesson(lesson);
+			
+	}
+	
+}
+
 void LessonEdit::on_cboxWordClass_currentIndexChanged(int index)
 {
 	Q_UNUSED(index);
@@ -547,7 +587,7 @@ void LessonEdit::on_actionSave_triggered(bool checked)
 	postCurrentEntry();
 	
 	try {
-		lesson->write();
+		lessonFile->write();
 		edited = false;
 		
 	} catch (Dvt::Exception e) {

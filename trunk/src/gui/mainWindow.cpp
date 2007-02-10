@@ -95,7 +95,7 @@ MainWindow::MainWindow()
 	hbox->addWidget(flashCardTrainer);
 	
 	actionOpen->setEnabled(false);
-	lessonSelect->loadLessons();
+	lessonSelect->loadLessonFiles();
 	lessonSelect->show();
 	
 }
@@ -142,7 +142,7 @@ void MainWindow::on_actionEdit_triggered(bool checked)
 	lessonSelect->hide();
 	flashCardTrainer->hide();
 	
-	lessonEdit->setLesson(lessonSelect->lesson);
+	lessonEdit->setLessonFile(lessonSelect->lessonFile);
 	lessonEdit->show();
 	
 	actionOpen->setEnabled(true);
@@ -152,11 +152,11 @@ void MainWindow::on_actionEdit_triggered(bool checked)
 void MainWindow::on_actionEditProperties_triggered(bool checked)
 {
 	Q_UNUSED(checked);
-	dlgLessonMetaEdit->setFromLesson(lessonSelect->lesson);
+	dlgLessonMetaEdit->setFromLessonFile(lessonSelect->lessonFile);
 	QDialog::DialogCode res = (QDialog::DialogCode) dlgLessonMetaEdit->exec();
 	if (res == QDialog::Accepted)
-		lessonSelect->lesson->write();
-	dlgLessonMetaEdit->setFromLesson(NULL);
+		lessonSelect->lessonFile->write();
+	dlgLessonMetaEdit->setFromLessonFile(NULL);
 }
 
 void MainWindow::on_actionTrain_triggered(bool checked)
@@ -165,7 +165,7 @@ void MainWindow::on_actionTrain_triggered(bool checked)
 	lessonSelect->hide();
 	lessonEdit->hide();
 	
-	flashCardTrainer->setLesson(lessonSelect->lesson);
+	flashCardTrainer->setLessonFile(lessonSelect->lessonFile);
 	flashCardTrainer->show();
 	
 	actionOpen->setEnabled(true);

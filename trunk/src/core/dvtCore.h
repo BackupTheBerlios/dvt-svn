@@ -40,7 +40,7 @@
 namespace Dvt {
 
 class LanguageProfile;
-class Lesson;
+class LessonFile;
 
 /**
  * Dvt::Core
@@ -54,7 +54,7 @@ private:
 	
 	std::string p_systemLocale;
 	std::map<std::string, LanguageProfile*> p_languageProfiles;
-	std::vector<Lesson*> p_lessons;
+	std::vector<LessonFile*> p_lessonFiles;
 	
 	Core();
 	
@@ -71,16 +71,16 @@ public:
 	
 	std::string systemLocale();
 	std::map<std::string, LanguageProfile*> languageProfiles();
-	std::vector<Lesson*> lessons();
+	std::vector<LessonFile*> lessonFiles();
 	
 	void setSystemLocale(std::string name);
 	
 	LanguageProfile* getLanguageProfile(std::string langCode);
 	
 	void loadLanguageProfiles(const std::string& dirName);
-	void loadLessons(const std::string& dirName);
+	void loadLessonFiles(const std::string& dirName);
 	
-	Dvt::Lesson* createLesson();
+	Dvt::LessonFile* createLessonFile();
 };
 
 }

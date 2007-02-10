@@ -51,8 +51,8 @@ void FlashCardTrainer::setLesson(Dvt::Lesson* lesson)
 {
 	this->lesson = lesson;
 	if (lesson != NULL) {
-		if (!lesson->dataRead()) 
-			lesson->readData();
+//		if (!lesson->dataRead()) 
+//			lesson->readData();
 		trainer->setLesson(lesson);
 		trainer->generateQuery();
 		qDebug("%d query pairs", trainer->query().size());

@@ -41,7 +41,7 @@ DlgLessonMetaEdit::DlgLessonMetaEdit(MainWindow* parent)
 	
 	core = Dvt::Core::getInstance();
 	mainWindow = parent;
-	lesson = NULL;
+	lessonFile = NULL;
 	
 	connect(buttonBox, SIGNAL(accepted()), this, SLOT(validateAccept()));
 		
@@ -95,20 +95,20 @@ DlgLessonMetaEdit::~DlgLessonMetaEdit()
 {
 }
 
-void DlgLessonMetaEdit::setFromLesson(Dvt::Lesson* lesson)
+void DlgLessonMetaEdit::setFromLessonFile(Dvt::LessonFile* lessonFile)
 {
-	this->lesson = lesson;
+	this->lessonFile = lessonFile;
 	
-	if (lesson != NULL) {
-		title = lesson->title();
-		desc = lesson->description();
-		license = lesson->license();
+	if (lessonFile != NULL) {
+		title = lessonFile->title();
+		desc = lessonFile->description();
+		license = lessonFile->license();
 		
-		int index = cboxBaseLang->findData((uint) lesson->langProfile_o());
+		int index = cboxBaseLang->findData((uint) lessonFile->langProfile_o());
 		assert(index >= 0);
 		cboxBaseLang->setCurrentIndex(index);
 		
-		index = cboxBaseLang->findData((uint) lesson->langProfile_t());
+		index = cboxBaseLang->findData((uint) lessonFile->langProfile_t());
 		assert(index >= 0);
 		cboxForeignLang->setCurrentIndex(index);
 		
@@ -132,14 +132,14 @@ void DlgLessonMetaEdit::setFromLesson(Dvt::Lesson* lesson)
 	
 }
 
-void DlgLessonMetaEdit::setToLesson(Dvt::Lesson* lesson)
+void DlgLessonMetaEdit::setToLessonFile(Dvt::LessonFile* lessonFile)
 {
-	lesson->title().setFrom(title);
-	lesson->description().setFrom(desc);
-	lesson->license().setFrom(license);
-	lesson->setLangProfile_o(
+	lessonFile->title().setFrom(title);
+	lessonFile->description().setFrom(desc);
+	lessonFile->license().setFrom(license);
+	lessonFile->setLangProfile_o(
 		(Dvt::LanguageProfile*) cboxBaseLang->itemData(cboxBaseLang->currentIndex()).toUInt());
-	lesson->setLangProfile_t(
+	lessonFile->setLangProfile_t(
 		(Dvt::LanguageProfile*) cboxForeignLang->itemData(cboxForeignLang->currentIndex()).toUInt());
 }
 
@@ -202,8 +202,8 @@ void DlgLessonMetaEdit::validateAccept()
 
 void DlgLessonMetaEdit::accept()
 {
-	if (lesson != NULL)
-		setToLesson(lesson);
+	if (lessonFile != NULL)
+		setToLessonFile(lessonFile);
 	
 	QDialog::accept();
 }

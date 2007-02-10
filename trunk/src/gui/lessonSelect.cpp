@@ -44,46 +44,46 @@ LessonSelect::LessonSelect(MainWindow* mainWindow, QWidget* parent)
 	lbFlagOrig->setText("");
 	lbFlagTrans->setText("");
 	
-	setLesson(NULL);
+	setLessonFile(NULL);
 }
 
 LessonSelect::~LessonSelect()
 {
 }
 
-void LessonSelect::loadLessons()
+void LessonSelect::loadLessonFiles()
 {
 	lwLessons->clear();
 	
-	vector<Dvt::Lesson*> lessons = core->lessons();
-	vector<Dvt::Lesson*>::iterator it;
-	for (it = lessons.begin(); it != lessons.end(); it++) {
-		LwiLesson* lwil = new LwiLesson(*it, lwLessons);
-		if (*it == lesson)
+	vector<Dvt::LessonFile*> lessonFiles = core->lessonFiles();
+	vector<Dvt::LessonFile*>::iterator it;
+	for (it = lessonFiles.begin(); it != lessonFiles.end(); it++) {
+		LwiLessonFile* lwil = new LwiLessonFile(*it, lwLessons);
+		if (*it == lessonFile)
 			lwLessons->setCurrentItem(lwil);
 	}
 }
 
-void LessonSelect::setLesson(Dvt::Lesson* lesson)
+void LessonSelect::setLessonFile(Dvt::LessonFile* lessonFile)
 {
-	this->lesson = lesson;
+	this->lessonFile = lessonFile;
 	
-	if (lesson != NULL) {
+	if (lessonFile != NULL) {
 		QIcon* icon;
 		
-		lbLangOrig->setText(STR2QSTR(lesson->langProfile_o()->name()));
-		if ((icon = mainWindow->flags[lesson->langProfile_o()->langCode().c_str()]))
+		lbLangOrig->setText(STR2QSTR(lessonFile->langProfile_o()->name()));
+		if ((icon = mainWindow->flags[lessonFile->langProfile_o()->langCode().c_str()]))
 			lbFlagOrig->setPixmap(icon->pixmap(icon->actualSize(QSize(23,14))));
 		else
 			lbFlagOrig->setPixmap(QPixmap());
 			
-		lbLangTrans->setText(STR2QSTR(lesson->langProfile_t()->name()));
-		if ((icon = mainWindow->flags[lesson->langProfile_t()->langCode().c_str()]))
+		lbLangTrans->setText(STR2QSTR(lessonFile->langProfile_t()->name()));
+		if ((icon = mainWindow->flags[lessonFile->langProfile_t()->langCode().c_str()]))
 			lbFlagTrans->setPixmap(icon->pixmap(icon->actualSize(QSize(23,14))));
 		else
 			lbFlagTrans->setPixmap(QPixmap());
 		
-		lbDesc->setText(STR2QSTR(lesson->description()));
+		lbDesc->setText(STR2QSTR(lessonFile->description()));
 		
 	} else {
 		lbLangOrig->setText("");
@@ -92,7 +92,7 @@ void LessonSelect::setLesson(Dvt::Lesson* lesson)
 		
 	}
 	
-	pbEdit->setEnabled(lesson != NULL);
+	pbEdit->setEnabled(lessonFile != NULL);
 	
 }
 
@@ -105,19 +105,19 @@ void LessonSelect::on_lwLessons_currentItemChanged(QListWidgetItem* item, QListW
 {
 	Q_UNUSED(prev);
 	
-	LwiLesson* lwil = (LwiLesson*) item;
+	LwiLessonFile* lwil = (LwiLessonFile*) item;
 	
 	if (lwil != NULL)
-		setLesson(lwil->lesson);
+		setLessonFile(lwil->lessonFile);
 	else
-		setLesson(NULL);
+		setLessonFile(NULL);
 }
 
 void LessonSelect::on_pbEdit_clicked(bool pressed)
 {
 	Q_UNUSED(pressed);
 	
-	if (lesson != NULL)
+	if (lessonFile != NULL)
 		mainWindow->actionEdit->trigger();
 }
 
@@ -153,11 +153,11 @@ void LessonSelect::on_pbNew_clicked(bool pressed)
 			
 		}
 		
-		Dvt::Lesson* lesson = core->createLesson();
-		mainWindow->dlgLessonMetaEdit->setToLesson(lesson);
+		Dvt::LessonFile* lessonFile = core->createLessonFile();
+		mainWindow->dlgLessonMetaEdit->setToLessonFile(lessonFile);
 		
 		try {
-			lesson->writeToFile(QSTR2STR(fileName));
+			lessonFile->writeToFile(QSTR2STR(fileName));
 				
 		} catch(Dvt::Exception e) {
 			QMessageBox::critical(this, APPNAME,
@@ -172,8 +172,8 @@ void LessonSelect::on_pbNew_clicked(bool pressed)
 			
 		}
 		
-		mainWindow->dlgLessonMetaEdit->setFromLesson(NULL);
-		loadLessons();
+		mainWindow->dlgLessonMetaEdit->setFromLessonFile(NULL);
+		loadLessonFiles();
 		
 	}
 }
@@ -182,6 +182,6 @@ void LessonSelect::on_pbTrain_clicked(bool pressed)
 {
 	Q_UNUSED(pressed);
 	
-	if (lesson != NULL)
+	if (lessonFile != NULL)
 		mainWindow->actionTrain->trigger();
 }

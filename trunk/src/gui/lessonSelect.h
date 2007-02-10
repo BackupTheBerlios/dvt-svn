@@ -29,24 +29,24 @@
 #include "module.h"
 
 #include "dvtCore.h"
-#include "dvtLesson.h"
+#include "dvtLessonFile.h"
 #include "dvtLanguageProfile.h"
 
 #include <QWidget>
 #include <QListWidgetItem>
 
-class LwiLesson : public QListWidgetItem
+class LwiLessonFile : public QListWidgetItem
 {
 public:
-	Dvt::Lesson* lesson;
+	Dvt::LessonFile* lessonFile;
 	
-	LwiLesson(Dvt::Lesson* lesson, QListWidget* parent = 0, int type = Type)
+	LwiLessonFile(Dvt::LessonFile* lessonFile, QListWidget* parent = 0, int type = Type)
 		:QListWidgetItem(parent, type)
 	{
-		this->lesson = lesson;
+		this->lessonFile = lessonFile;
 		setText(QString("%1 (%2)")
-			.arg(QString::fromUtf8(lesson->title().c_str()))
-			.arg(QString::fromUtf8(lesson->langProfile_t()->name().c_str()))
+			.arg(QString::fromUtf8(lessonFile->title().c_str()))
+			.arg(QString::fromUtf8(lessonFile->langProfile_t()->name().c_str()))
 		);
 	};
 	
@@ -57,14 +57,14 @@ class LessonSelect : public Module, public Ui::LessonSelect
 	Q_OBJECT
 	
 public:
-	Dvt::Lesson* lesson;
+	Dvt::LessonFile* lessonFile;
 
 	LessonSelect(MainWindow* mainWindow, QWidget* parent = 0);
 	virtual ~LessonSelect();
 	
-	void loadLessons();
+	void loadLessonFiles();
 	
-	void setLesson(Dvt::Lesson* lesson);
+	virtual void setLessonFile(Dvt::LessonFile* lessonFile);
 	
 protected:
 	virtual void showEvent(QShowEvent* e);

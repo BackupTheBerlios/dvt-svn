@@ -24,7 +24,7 @@
 
 #include "dvtExceptions.h"
 #include "dvtLanguageProfile.h"
-#include "dvtLesson.h"
+#include "dvtLessonFile.h"
 
 #include "debug.h"
 
@@ -61,7 +61,7 @@ Core* Core::getInstance()
 void Core::init()
 {
 	loadLanguageProfiles("lang");
-	loadLessons("lessons");
+	loadLessonFiles("lessons");
 }
 
 bool Core::prettyXmlOutput() {return p_prettyXmlOutput;}
@@ -70,7 +70,7 @@ list<string>& Core::languagePrefOrder() {return p_languagePrefOrder;}
 
 std::string Core::systemLocale() {return p_systemLocale;}
 map<string, LanguageProfile*> Core::languageProfiles() {return p_languageProfiles;}
-std::vector<Lesson*> Core::lessons() {return p_lessons;}
+std::vector<LessonFile*> Core::lessonFiles() {return p_lessonFiles;}
 
 void Core::setSystemLocale(std::string name)
 {
@@ -164,7 +164,7 @@ void Core::loadLanguageProfiles(const string& dirName) {
 /**
  * Read in training lessons
  */
-void Core::loadLessons(const string& dirName) {
+void Core::loadLessonFiles(const string& dirName) {
 	DIR* dir = NULL;
 	struct dirent* dirEntry = NULL;
 	
@@ -194,7 +194,7 @@ void Core::loadLessons(const string& dirName) {
 				if (!S_ISDIR(entry_stat.st_mode)) {
 					// a file
 					if (s.length() > 4 && (strcasecmp(s.substr(s.length() - 4, 4).c_str(), DVT_TRAINING_LESSON_FILE_SUFFIX) == 0)) {
-						Lesson* tl = new Lesson();
+						LessonFile* tl = new LessonFile();
 						try {
 							tl->readFromFile(dirName + DVT_DIR_SEPARATOR + s, rfReadMetaDataOnly);
 						} catch (Exception e) {
@@ -204,7 +204,7 @@ void Core::loadLessons(const string& dirName) {
 //						DEBUG(DBG_GENERAL, 
 //							"Dvt::Core::loadTrainingLessons(): found lesson %s\n",
 //							tl->title().c_str());
-						p_lessons.push_back(tl);
+						p_lessonFiles.push_back(tl);
 					}
 				}
 			}
@@ -223,11 +223,11 @@ void Core::loadLessons(const string& dirName) {
 /**
  * Create a new lesson
  */
-Dvt::Lesson* Core::createLesson()
+Dvt::LessonFile* Core::createLessonFile()
 {
-	Dvt::Lesson* lesson = new Dvt::Lesson(true);
-	p_lessons.push_back(lesson);
-	return lesson;
+	Dvt::LessonFile* lessonFile = new Dvt::LessonFile(true);
+	p_lessonFiles.push_back(lessonFile);
+	return lessonFile;
 }
 
 } // namespace

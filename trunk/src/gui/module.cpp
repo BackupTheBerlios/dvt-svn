@@ -34,9 +34,9 @@ Module::~Module()
 {
 }
 
-void Module::setLesson(Dvt::Lesson* lesson) 
+void Module::setLessonFile(Dvt::LessonFile* lessonFile) 
 {
-	Q_UNUSED(lesson);
+	Q_UNUSED(lessonFile);
 }
 
 bool Module::mayClose() {return true;}

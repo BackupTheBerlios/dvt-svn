@@ -22,7 +22,7 @@
    <item row="0" column="1" >
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Lesson</string>
+      <string>Lesson file</string>
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >

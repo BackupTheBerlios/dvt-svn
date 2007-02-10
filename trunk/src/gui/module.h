@@ -42,7 +42,7 @@ public:
 	Module(MainWindow* mainWindow, QWidget* parent = 0);
 	virtual ~Module();
 	
-	virtual void setLesson(Dvt::Lesson* lesson);
+	virtual void setLessonFile(Dvt::LessonFile* lessonFile);
 	virtual bool mayClose();
 };
 

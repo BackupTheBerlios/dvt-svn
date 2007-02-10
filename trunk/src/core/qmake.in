@@ -13,6 +13,7 @@ HEADERS += \
 	$$DVT_PATH_CORE/lang/dvtLanguage_de.h \
 	$$DVT_PATH_CORE/lang/dvtLanguage_fr.h \
 	$$DVT_PATH_CORE/lang/dvtLanguage_fi.h \
+	$$DVT_PATH_CORE/trainer/dvtLessonFile.h \
 	$$DVT_PATH_CORE/trainer/dvtLesson.h \
 	$$DVT_PATH_CORE/trainer/dvtTrainingEntry.h \
 	$$DVT_PATH_CORE/trainer/dvtTrainer.h \
@@ -31,6 +32,7 @@ SOURCES += \
 	$$DVT_PATH_CORE/lang/dvtLanguage_de.cpp \
 	$$DVT_PATH_CORE/lang/dvtLanguage_fr.cpp \
 	$$DVT_PATH_CORE/lang/dvtLanguage_fi.cpp \
+	$$DVT_PATH_CORE/trainer/dvtLessonFile.cpp \
 	$$DVT_PATH_CORE/trainer/dvtLesson.cpp \
 	$$DVT_PATH_CORE/trainer/dvtTrainingEntry.cpp \
 	$$DVT_PATH_CORE/trainer/dvtTrainer.cpp \
