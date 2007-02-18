@@ -1,6 +1,6 @@
 /** @file
  * 
- * Module - Part of the Qt4-GUI of the portable Dictionary and 
+ * TrainerSelect - Part of the Qt4-GUI of the portable Dictionary and 
  * Vocabulary Trainer.
  * 
  * Copyright (C) 2006  Denis Martin (http://www.delta-my.de/)
@@ -21,32 +21,42 @@
  * 
  */
 
-#ifndef MODULE_H_
-#define MODULE_H_
+#ifndef DLGTRAINERSELECT_H_
+#define DLGTRAINERSELECT_H_
+
+#include "ui_dlgTrainerSelect.h"
 
 #include "dvtCore.h"
+#include "dvtLessonFile.h"
+#include "dvtTrainer.h"
 
-#include <QWidget>
-#include <QToolBar>
+#include <QDialog>
 
+class Module;
 class MainWindow;
 
-class Module : public QWidget
+class DlgTrainerSelect : public QDialog, public Ui::DlgTrainerSelect
 {
 	Q_OBJECT
 	
-protected:
-	MainWindow* mainWindow;
-	Dvt::Core* core;
-	
 public:
-	Module(MainWindow* mainWindow, QWidget* parent = 0);
-	virtual ~Module();
+	MainWindow* mainWindow;
+	Dvt::LessonFile* lessonFile;
+	Module* trainer;
 	
-	virtual void setLessonFile(Dvt::LessonFile* lessonFile);
-	virtual bool mayClose();
+	bool useDecls;
+	bool useConjs;
+	Dvt::LessonList lessons;
 	
-	virtual QToolBar* toolBar();
+	DlgTrainerSelect(MainWindow* parent);
+	virtual ~DlgTrainerSelect();
+	
+	void setLessonFile(Dvt::LessonFile* lessonFile);
+	
+public slots:
+	void validateAccept();
+	virtual void accept();
+	
 };
 
-#endif /*MODULE_H_*/
+#endif /*DLGTRAINERSELECT_H_*/

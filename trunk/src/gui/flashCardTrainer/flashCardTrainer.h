@@ -28,6 +28,7 @@
 #include "module.h"
 
 #include "dvtFlashCardTrainer.h"
+#include "dvtLessonFile.h"
 #include "dvtLesson.h"
 
 class FlashCardTrainer : public Module, public Ui::FlashCardTrainer
@@ -36,7 +37,7 @@ class FlashCardTrainer : public Module, public Ui::FlashCardTrainer
 	
 private:
 	Dvt::FlashCardTrainer* trainer;
-	Dvt::Lesson* lesson;
+	Dvt::LessonFile* lessonFile;
 	
 	bool cardIsFront;
 	
@@ -52,7 +53,7 @@ public:
 	FlashCardTrainer(MainWindow* mainWindow, QWidget* parent = 0);
 	virtual ~FlashCardTrainer();
 	
-	virtual void setLesson(Dvt::Lesson* lesson);
+	virtual void setLessonFile(Dvt::LessonFile* lesson);
 	virtual bool mayClose();
 	
 };

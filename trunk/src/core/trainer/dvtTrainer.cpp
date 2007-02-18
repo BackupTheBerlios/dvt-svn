@@ -72,7 +72,7 @@ bool QueryPair::operator==(std::string answer)
 Trainer::Trainer()
 {
 	core = Core::getInstance();
-	p_lesson = NULL;
+	p_lessonFile = NULL;
 	p_useConj = false;
 	p_useDecl = false;
 	
@@ -85,10 +85,13 @@ Trainer::~Trainer()
 {
 }
 
-Lesson* Trainer::lesson() {return p_lesson;}
-void Trainer::setLesson(Lesson* lesson) 
+LessonFile* Trainer::lessonFile() { return p_lessonFile; }
+void Trainer::setLessonFile(LessonFile* lessonFile) { p_lessonFile = lessonFile; } 
+
+LessonList& Trainer::lessons() { return p_lessons; }
+void Trainer::setLessons(LessonList& lessonList) 
 {
-	p_lesson = lesson;
+	p_lessons = lessonList;
 	p_done = 0;
 	p_correct = 0;
 	p_wrong = 0;

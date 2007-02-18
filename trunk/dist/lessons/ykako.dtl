@@ -1,0 +1,1228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<divotra:trainingLesson formatVersion="1.0" langCode_o="de" langCode_t="fi" version="0.1" xmlns:divotra="http://www.delta-my.de/divotra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.delta-my.de/divotra/dtl.xsd">
+	<title>
+		<lg c="ia">
+			Yksi, kaksi, kolme
+		</lg>
+	</title>
+	<description>
+		<lg c="de">
+			Yksi, kaksi, kolme
+		</lg>
+	</description>
+	<license>
+		<lg c="de">
+			Die Verwendung dieser Datei unterliegt keinerlei Einschränkungen.
+		</lg>
+	</license>
+	<lessons>
+		<lesson n="1">
+			<title>
+				<lg c="de">
+					Erste Lektion
+				</lg>
+				<lg c="fi">
+					Ensimmäinen kappale
+				</lg>
+			</title>
+			<entries>
+				<e t="n">
+					<o>
+						Sichvorstellen
+					</o>
+					<t>
+						esittäytyminen
+					</t>
+					<oe>
+						<g t="n" />
+					</oe>
+				</e>
+				<e>
+					<o>
+						jetzt
+					</o>
+					<t>
+						nyt
+					</t>
+				</e>
+				<e>
+					<o>
+						in Hamburg
+					</o>
+					<t>
+						Hampurissa
+					</t>
+				</e>
+				<e t="p">
+					<o>
+						ich bin von Beruf
+					</o>
+					<t>
+						olen ammatiltani
+					</t>
+				</e>
+				<e t="n">
+					<o>
+						Lehrer
+					</o>
+					<t>
+						opettaja
+					</t>
+					<oe>
+						<g t="m" />
+					</oe>
+				</e>
+				<e t="cj">
+					<o>
+						und
+					</o>
+					<t>
+						ja
+					</t>
+				</e>
+				<e>
+					<o>
+						wer
+					</o>
+					<t>
+						kuka
+					</t>
+				</e>
+				<e t="pn">
+					<o>
+						ich
+					</o>
+					<t>
+						minä
+					</t>
+				</e>
+				<e t="pn">
+					<o>
+						du
+					</o>
+					<t>
+						sinä
+					</t>
+				</e>
+				<e>
+					<o>
+						welche Nationalität, aus welchem Land
+					</o>
+					<t>
+						minkämaalainen
+					</t>
+				</e>
+				<e>
+					<o>
+						deutsch, Deutsche/r
+					</o>
+					<t>
+						saksalainen
+					</t>
+				</e>
+				<e>
+					<o>
+						wo
+					</o>
+					<t>
+						missä
+					</t>
+				</e>
+				<e>
+					<o>
+						welche Sprachen
+					</o>
+					<t>
+						mitä kieliä
+					</t>
+				</e>
+			</entries>
+		</lesson>
+		<lesson n="2">
+			<title>
+				<lg c="de">
+					Zweite Lektion
+				</lg>
+				<lg c="fi">
+					Toinen kappale
+				</lg>
+			</title>
+		</lesson>
+		<lesson n="3">
+			<title>
+				<lg c="de">
+					Dritte Lektion
+				</lg>
+				<lg c="fi">
+					Kolmas kappale
+				</lg>
+			</title>
+		</lesson>
+		<lesson n="4">
+			<title>
+				<lg c="de">
+					Vierte Lektion
+				</lg>
+				<lg c="fi">
+					Neljäs kappale
+				</lg>
+			</title>
+			<entries>
+				<e t="v">
+					<o>
+						sein
+					</o>
+					<t>
+						olla
+					</t>
+					<te>
+						<cj t="3">
+							<p t="1">
+								olen
+							</p>
+						</cj>
+					</te>
+				</e>
+				<e>
+					<o>
+						ja/doch
+					</o>
+					<t>
+						kyllä
+					</t>
+				</e>
+				<e t="v">
+					<o>
+						wohnen
+					</o>
+					<t>
+						asua
+					</t>
+					<te>
+						<cj t="1">
+							<p t="1">
+								asun
+							</p>
+						</cj>
+					</te>
+				</e>
+				<e>
+					<o>
+						ich nicht/nein
+					</o>
+					<t>
+						en
+					</t>
+				</e>
+				<e t="v">
+					<o>
+						sprechen
+					</o>
+					<t>
+						puhua
+					</t>
+					<te>
+						<cj t="1">
+							<p t="1">
+								puhun
+							</p>
+						</cj>
+					</te>
+				</e>
+				<e t="av">
+					<o>
+						sehr
+					</o>
+					<t>
+						hyvin
+					</t>
+				</e>
+				<e>
+					<o>
+						gewöhnlich
+					</o>
+					<t>
+						tavallisesti
+					</t>
+				</e>
+				<e>
+					<o>
+						du nicht/nein
+					</o>
+					<t>
+						et
+					</t>
+				</e>
+				<e>
+					<o>
+						Sprichst du nicht...?
+					</o>
+					<t>
+						Etkö sinä puhu...?
+					</t>
+				</e>
+				<e>
+					<o>
+						leider
+					</o>
+					<t>
+						valitettavasti
+					</t>
+				</e>
+				<e>
+					<o>
+						zu Hause
+					</o>
+					<t>
+						kotona
+					</t>
+				</e>
+				<e>
+					<o>
+						er/sie/es nicht/nein
+					</o>
+					<t>
+						ei
+					</t>
+				</e>
+				<e>
+					<o>
+						draußen
+					</o>
+					<t>
+						ulkona
+					</t>
+				</e>
+				<e>
+					<o>
+						dort
+					</o>
+					<t>
+						tuolla
+					</t>
+				</e>
+				<e>
+					<o>
+						hier
+					</o>
+					<t>
+						täällä
+					</t>
+				</e>
+				<e t="v">
+					<o>
+						wissen
+					</o>
+					<t>
+						tietää
+					</t>
+					<te>
+						<cj t="1">
+							<p t="1">
+								tiedän
+							</p>
+						</cj>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Frau/weibliche Person
+					</o>
+					<t>
+						nainen
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								naisen
+							</dcl>
+							<dcl t="3">
+								naista
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						wie/was für ein
+					</o>
+					<t>
+						millainen
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								millaisen
+							</dcl>
+							<dcl t="3">
+								millaista
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						sehr/richtig
+					</o>
+					<t>
+						oikein
+					</t>
+				</e>
+				<e t="ad">
+					<o>
+						nett
+					</o>
+					<t>
+						mukava
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								mukavan
+							</dcl>
+							<dcl t="3">
+								mukavaa
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="ad">
+					<o>
+						alt
+					</o>
+					<t>
+						vanha
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								vanhan
+							</dcl>
+							<dcl t="3">
+								vanhaa
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						jung
+					</o>
+					<t>
+						nuori
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								nuoren
+							</dcl>
+							<dcl t="3">
+								nuorta
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						natürlich
+					</o>
+					<t>
+						tietysti
+					</t>
+				</e>
+				<e t="ad">
+					<o>
+						nett/toll
+					</o>
+					<t>
+						kiva
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								kivan
+							</dcl>
+							<dcl t="3">
+								kivaa
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						nur
+					</o>
+					<t>
+						vain
+					</t>
+				</e>
+				<e t="n">
+					<o>
+						Mädchen
+					</o>
+					<t>
+						tyttö
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								tytön
+							</dcl>
+							<dcl t="3">
+								tyttöä
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="v">
+					<o>
+						verstehen
+					</o>
+					<t>
+						ymmärtää
+					</t>
+					<te>
+						<cj t="1">
+							<p t="1">
+								ymmärrän
+							</p>
+						</cj>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Junge
+					</o>
+					<t>
+						poika
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								pojan
+							</dcl>
+							<dcl t="3">
+								poikaa
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						oft
+					</o>
+					<t>
+						usein
+					</t>
+				</e>
+				<e>
+					<o>
+						im Finnischkurs
+					</o>
+					<t>
+						suomen kurssilla
+					</t>
+				</e>
+				<e t="n">
+					<o>
+						Dame/Frau
+					</o>
+					<t>
+						rouva
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								rouvan
+							</dcl>
+							<dcl t="3">
+								rouvaa
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						weg
+					</o>
+					<t>
+						poissa
+					</t>
+				</e>
+				<e>
+					<o>
+						dein/deine
+					</o>
+					<t>
+						sinun
+					</t>
+				</e>
+				<e t="n">
+					<o>
+						Name
+					</o>
+					<t>
+						nimi
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								nimen
+							</dcl>
+							<dcl t="3">
+								nimeä
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Finnland
+					</o>
+					<t>
+						Suomi
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								Suomen
+							</dcl>
+							<dcl t="3">
+								Suomea
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Frankreich
+					</o>
+					<t>
+						Ranska
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								Ranskan
+							</dcl>
+							<dcl t="3">
+								Ranskaa
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						bei der Arbeit
+					</o>
+					<t>
+						työssä
+					</t>
+				</e>
+				<e t="ad">
+					<o>
+						Ungarisch
+					</o>
+					<t>
+						unkari
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								unkarin
+							</dcl>
+							<dcl t="3">
+								unkaria
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="v">
+					<o>
+						sagen
+					</o>
+					<t>
+						sanoa
+					</t>
+					<te>
+						<cj t="1">
+							<p t="1">
+								sanon
+							</p>
+						</cj>
+					</te>
+				</e>
+				<e>
+					<o>
+						immer
+					</o>
+					<t>
+						aina
+					</t>
+				</e>
+				<e t="ad">
+					<o>
+						japanisch
+					</o>
+					<t>
+						japanilainen
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								japanilaisen
+							</dcl>
+							<dcl t="3">
+								japanilaista
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="av">
+					<o>
+						gut
+					</o>
+					<t>
+						hyvin
+					</t>
+				</e>
+				<e t="ad">
+					<o>
+						Russisch
+					</o>
+					<t>
+						venäjä
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								venäjän
+							</dcl>
+							<dcl t="3">
+								venäjää
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Sekretär
+					</o>
+					<t>
+						sihteeri
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								sihteerin
+							</dcl>
+							<dcl t="3">
+								sihteeriä
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						aber
+					</o>
+					<t>
+						mutta
+					</t>
+				</e>
+				<e t="ad">
+					<o>
+						gut
+					</o>
+					<t>
+						hyvä
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								hyvän
+							</dcl>
+							<dcl t="3">
+								hyvää
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+			</entries>
+		</lesson>
+		<lesson n="5">
+			<title>
+				<lg c="de">
+					Fünfte Lektion
+				</lg>
+				<lg c="fi">
+					Viides kappale
+				</lg>
+			</title>
+		</lesson>
+		<lesson n="6">
+			<title>
+				<lg c="de">
+					Sechste Lektion
+				</lg>
+				<lg c="fi">
+					Kuudes kappale
+				</lg>
+			</title>
+			<entries>
+				<e t="n">
+					<o>
+						Lampe
+					</o>
+					<t>
+						lamppu
+					</t>
+					<oe>
+						<g t="f" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								lampun
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="ad">
+					<o>
+						klein
+					</o>
+					<t>
+						pieni
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								pienen
+							</dcl>
+							<dcl t="3">
+								pientä
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Fernseher
+					</o>
+					<t>
+						televisio
+					</t>
+					<oe>
+						<g t="m" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								-n
+							</dcl>
+							<dcl t="3">
+								-ta
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Landkarte
+					</o>
+					<t>
+						kartta
+					</t>
+					<oe>
+						<g t="f" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								kartan
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="ad">
+					<o>
+						neu
+					</o>
+					<t>
+						uusi
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								uuden
+							</dcl>
+							<dcl t="3">
+								uutta
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Wörterbuch
+					</o>
+					<t>
+						sanakirja
+					</t>
+					<oe>
+						<g t="n" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								-n
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						ziemlich
+					</o>
+					<t>
+						aika
+					</t>
+				</e>
+				<e t="ad">
+					<o>
+						billig
+					</o>
+					<t>
+						halpa
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								halvan
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="ad">
+					<o>
+						teuer
+					</o>
+					<t>
+						kallis
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								kalliin
+							</dcl>
+							<dcl t="3">
+								-ta
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Gebäude
+					</o>
+					<t>
+						rakennus
+					</t>
+					<oe>
+						<g t="n" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								rakennuksen
+							</dcl>
+							<dcl t="3">
+								-ta
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Bank (Geldinstitut)
+					</o>
+					<t>
+						pankki
+					</t>
+					<oe>
+						<g t="f" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								pankin
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="ad">
+					<o>
+						groß
+					</o>
+					<t>
+						iso
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								-n
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Haus
+					</o>
+					<t>
+						talo
+					</t>
+					<oe>
+						<g t="n" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								-n
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Post
+					</o>
+					<t>
+						posti
+					</t>
+					<oe>
+						<g t="f" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								-n
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						so
+					</o>
+					<t>
+						niin
+					</t>
+				</e>
+				<e>
+					<o>
+						ja, so ist es, das stimmt
+					</o>
+					<t>
+						niin on
+					</t>
+				</e>
+				<e t="n">
+					<o>
+						Bibliothek
+					</o>
+					<t>
+						kirjasto
+					</t>
+					<oe>
+						<g t="f" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								-n
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Buchhandlung
+					</o>
+					<t>
+						kirjakauppa
+					</t>
+					<oe>
+						<g t="f" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								kirjakaupan
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Rathaus
+					</o>
+					<t>
+						kaupungintalo
+					</t>
+					<oe>
+						<g t="n" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								-n
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="ad">
+					<o>
+						interessant
+					</o>
+					<t>
+						mielenkiintoinen
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								mielenkiintoisen
+							</dcl>
+							<dcl t="3">
+								mielenkiintoista
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						finnisches Warenhaus
+					</o>
+					<t>
+						Sokos
+					</t>
+					<te>
+						<dcls>
+							<dcl t="2">
+								Sokoksen
+							</dcl>
+							<dcl t="3">
+								Sokosta
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Warenhaus
+					</o>
+					<t>
+						tavaratalo
+					</t>
+					<oe>
+						<g t="n" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								-n
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e>
+					<o>
+						da, an der Stelle
+					</o>
+					<t>
+						siinä
+					</t>
+				</e>
+				<e t="n">
+					<o>
+						Gesundheitszentrum
+					</o>
+					<t>
+						terveyskeskus
+					</t>
+					<oe>
+						<g t="n" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								terveyskeskuken
+							</dcl>
+							<dcl t="3">
+								terveyskeskusta
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+				<e t="n">
+					<o>
+						Krankenhaus
+					</o>
+					<t>
+						sairaala
+					</t>
+					<oe>
+						<g t="n" />
+					</oe>
+					<te>
+						<dcls>
+							<dcl t="2">
+								-n
+							</dcl>
+							<dcl t="3">
+								-a
+							</dcl>
+						</dcls>
+					</te>
+				</e>
+			</entries>
+		</lesson>
+	</lessons>
+</divotra:trainingLesson>

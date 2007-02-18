@@ -27,6 +27,7 @@
 #include "ui_mainWindow.h"
 
 #include "dvtCore.h"
+#include "dvtLessonFile.h"
 
 #include <QLocale>
 #include <QString>
@@ -39,8 +40,10 @@
 class LessonSelect;
 class LessonEdit;
 class DlgLessonMetaEdit;
+class DlgTrainerSelect;
 class SimpleTrainer;
 class FlashCardTrainer;
+class Module;
 
 class MainWindow : public QMainWindow, public Ui::MainWindow
 {
@@ -52,8 +55,11 @@ private:
 public:
 	QLocale sysLocale;
 	
+	Module* currentModule;
+	
 	LessonSelect* lessonSelect;
 	LessonEdit* lessonEdit;
+	DlgTrainerSelect* dlgTrainerSelect;
 	DlgLessonMetaEdit* dlgLessonMetaEdit;
 	
 	SimpleTrainer* simpleTrainer;
@@ -63,6 +69,8 @@ public:
 	
 	MainWindow();
 	virtual ~MainWindow();
+	
+	bool setModule(Module* mod);
 	
 protected:
 	void closeEvent(QCloseEvent* e);

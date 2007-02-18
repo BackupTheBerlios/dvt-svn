@@ -26,6 +26,7 @@
 #include "lessonSelect.h"
 #include "lessonEdit.h"
 #include "dlgLessonMetaEdit.h"
+#include "dlgTrainerSelect.h"
 #include "simpleTrainer.h"
 #include "flashCardTrainer.h"
 #include "utils.h"
@@ -80,9 +81,11 @@ MainWindow::MainWindow()
 	
 	lessonSelect = new LessonSelect(this, centralWidget());
 	lessonEdit = new LessonEdit(this, centralWidget());
-	dlgLessonMetaEdit = new DlgLessonMetaEdit(this);
 	simpleTrainer = NULL; //new SimpleTrainer(this, centralWidget());
 	flashCardTrainer = new FlashCardTrainer(this, centralWidget());
+	
+	dlgLessonMetaEdit = new DlgLessonMetaEdit(this);
+	dlgTrainerSelect = new DlgTrainerSelect(this);
 	
 	lessonSelect->show();
 	lessonEdit->hide();
@@ -94,9 +97,13 @@ MainWindow::MainWindow()
 //	hbox->addWidget(simpleTrainer);
 	hbox->addWidget(flashCardTrainer);
 	
-	actionOpen->setEnabled(false);
+	currentModule = lessonSelect;
 	lessonSelect->loadLessonFiles();
+	if (lessonSelect->toolBar() != NULL)
+		addToolBar(lessonSelect->toolBar());
 	lessonSelect->show();
+	
+	actionOpen->setEnabled(false);
 	
 }
 
@@ -104,9 +111,43 @@ MainWindow::~MainWindow()
 {
 }
 
+/**
+ * Sets the current active module.
+ * 
+ * @param mod	Module
+ * 
+ * @return True if new module is active, false if old module didn't close
+ */
+bool MainWindow::setModule(Module* mod)
+{
+	if (currentModule->mayClose()) {
+		currentModule->hide();
+		if (currentModule != lessonSelect)
+			currentModule->setLessonFile(NULL);
+		if (currentModule->toolBar() != NULL)
+			removeToolBar(currentModule->toolBar());
+			
+		currentModule = mod;
+		mod->setLessonFile(lessonSelect->lessonFile);
+		if (mod->toolBar() != NULL) {
+			qDebug("adding toolbar");
+			addToolBar(mod->toolBar());
+			mod->toolBar()->show();
+			
+		}
+		mod->show();
+		
+		return true;
+		
+	} else {
+		return false;
+		
+	}
+}
+
 void MainWindow::closeEvent(QCloseEvent* e)
 {
-	if (lessonEdit->mayClose()) {
+	if (currentModule->mayClose()) {
 		e->accept();
 		
 	} else {
@@ -125,28 +166,24 @@ void MainWindow::on_actionOpen_triggered(bool checked)
 {
 	Q_UNUSED(checked);
 	
-	if (lessonEdit->mayClose() && flashCardTrainer->mayClose()) {
-		flashCardTrainer->hide();
-		flashCardTrainer->setLesson(NULL);
-		lessonEdit->hide();
-		lessonEdit->setLesson(NULL);
-		lessonSelect->show();
+	if (setModule(lessonSelect)) {
 		actionOpen->setEnabled(false);
 		actionEdit->setEnabled(true);
+		
 	}
+	
 }
 
 void MainWindow::on_actionEdit_triggered(bool checked)
 {
 	Q_UNUSED(checked);
-	lessonSelect->hide();
-	flashCardTrainer->hide();
 	
-	lessonEdit->setLessonFile(lessonSelect->lessonFile);
-	lessonEdit->show();
+	if (setModule(lessonEdit)) {
+		actionOpen->setEnabled(true);
+		actionEdit->setEnabled(false);
+		
+	}
 	
-	actionOpen->setEnabled(true);
-	actionEdit->setEnabled(false);
 }
 
 void MainWindow::on_actionEditProperties_triggered(bool checked)
@@ -162,14 +199,22 @@ void MainWindow::on_actionEditProperties_triggered(bool checked)
 void MainWindow::on_actionTrain_triggered(bool checked)
 {
 	Q_UNUSED(checked);
-	lessonSelect->hide();
-	lessonEdit->hide();
 	
-	flashCardTrainer->setLessonFile(lessonSelect->lessonFile);
-	flashCardTrainer->show();
+	dlgTrainerSelect->setLessonFile(lessonSelect->lessonFile);
+	QDialog::DialogCode res = (QDialog::DialogCode) dlgTrainerSelect->exec();
+	if (res == QDialog::Accepted) {
+		Module* trainer = dlgTrainerSelect->trainer;
+		if (trainer != NULL) {
+			if (setModule(trainer)) {
+				actionOpen->setEnabled(true);
+				actionEdit->setEnabled(true);
+				
+			}
+			
+		}
+		
+	}
 	
-	actionOpen->setEnabled(true);
-	actionEdit->setEnabled(true);
 }
 
 void MainWindow::on_actionAboutDvt_triggered(bool checked)

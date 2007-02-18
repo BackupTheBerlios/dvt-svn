@@ -24,6 +24,7 @@
 #include "flashCardTrainer.h"
 
 #include "mainWindow.h"
+#include "dlgTrainerSelect.h"
 
 #include "utils.h"
 
@@ -47,17 +48,20 @@ FlashCardTrainer::~FlashCardTrainer()
 	delete trainer;
 }
 
-void FlashCardTrainer::setLesson(Dvt::Lesson* lesson)
+void FlashCardTrainer::setLessonFile(Dvt::LessonFile* lessonFile)
 {
-	this->lesson = lesson;
-	if (lesson != NULL) {
-//		if (!lesson->dataRead()) 
-//			lesson->readData();
-		trainer->setLesson(lesson);
+	this->lessonFile = lessonFile;
+	if (lessonFile != NULL) {
+//		if (!lessonFile->dataRead()) 
+//			lessonFile->readData();
+		trainer->setLessonFile(lessonFile);
+		trainer->setUseDecl(mainWindow->dlgTrainerSelect->useDecls);
+		trainer->setUseConj(mainWindow->dlgTrainerSelect->useConjs);
+		trainer->setLessons(mainWindow->dlgTrainerSelect->lessons);
 		trainer->generateQuery();
 		qDebug("%d query pairs", trainer->query().size());
 		
-		lbLessonTitle->setText(STR2QSTR(lesson->title()));
+		lbLessonTitle->setText(STR2QSTR(lessonFile->title()));
 		cardIsFront = false;
 		
 		Dvt::QueryPair qp = trainer->currentQueryPair();
@@ -65,7 +69,7 @@ void FlashCardTrainer::setLesson(Dvt::Lesson* lesson)
 			setCard(true, STR2QSTR(qp.orig()));
 			
 		} else {
-			setCard(true, trUtf8("You are through!"));
+			setCard(true, trUtf8("No vocabulary for training :("));
 			
 		}
 		
@@ -89,12 +93,12 @@ void FlashCardTrainer::setCard(bool front, QString text)
 	if (front) {
 		palette.setColor(QPalette::WindowText, Qt::darkRed);
 		frmFlashCard->setFrameShadow(QFrame::Raised);
-		lbFlag->setPixmap(mainWindow->flags[STR2QSTR(lesson->langProfile_o()->langCode())]->pixmap(20, 12));
+		lbFlag->setPixmap(mainWindow->flags[STR2QSTR(lessonFile->langProfile_o()->langCode())]->pixmap(20, 12));
 		
 	} else {
 		palette.setColor(QPalette::WindowText, Qt::darkGreen);
 		frmFlashCard->setFrameShadow(QFrame::Sunken);
-		lbFlag->setPixmap(mainWindow->flags[STR2QSTR(lesson->langProfile_t()->langCode())]->pixmap(20, 12));
+		lbFlag->setPixmap(mainWindow->flags[STR2QSTR(lessonFile->langProfile_t()->langCode())]->pixmap(20, 12));
 		
 	}
 	

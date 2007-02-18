@@ -83,12 +83,25 @@ void LessonSelect::setLessonFile(Dvt::LessonFile* lessonFile)
 		else
 			lbFlagTrans->setPixmap(QPixmap());
 		
-		lbDesc->setText(STR2QSTR(lessonFile->description()));
+		teExtendedInfo->clear();
+		QString desc = STR2QSTR(lessonFile->description());
+		QString license = STR2QSTR(lessonFile->license());
+		if (!desc.isEmpty()) {
+			teExtendedInfo->append("<b>" + trUtf8("Description:") + "</b>");
+			teExtendedInfo->append(desc);
+			teExtendedInfo->append("");
+			
+		}
+		if (!license.isEmpty()) {
+			teExtendedInfo->append("<b>" + trUtf8("License:") + "</b>");
+			teExtendedInfo->append(license);
+			
+		}
 		
 	} else {
 		lbLangOrig->setText("");
 		lbLangTrans->setText("");
-		lbDesc->setText("");
+		teExtendedInfo->clear();
 		
 	}
 	

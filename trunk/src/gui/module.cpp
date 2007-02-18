@@ -39,4 +39,5 @@ void Module::setLessonFile(Dvt::LessonFile* lessonFile)
 	Q_UNUSED(lessonFile);
 }
 
-bool Module::mayClose() {return true;}
+bool Module::mayClose() { return true; }
+QToolBar* Module::toolBar() { return NULL; }

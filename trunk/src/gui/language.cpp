@@ -42,11 +42,11 @@ Language::Language(LessonEdit* ledit, Dvt::LanguageProfile* lp)
 	p_editDetailVerb = NULL;
 	
 	if (lp->langCode() == "fi") {
-		p_editExt = new EditExt_fi(lessonEdit, lp);
-		p_editDetailVerb = new EditDetailVerb(lessonEdit, lp);
+		p_editExt = new EditExt_fi(lessonEdit, lp, lessonEdit);
+		p_editDetailVerb = new EditDetailVerb(lessonEdit, lp, lessonEdit);
 	
 	} else {
-		p_editDetailVerb = new EditDetailVerb(lessonEdit, lp);
+		p_editDetailVerb = new EditDetailVerb(lessonEdit, lp, lessonEdit);
 		
 	}
 }

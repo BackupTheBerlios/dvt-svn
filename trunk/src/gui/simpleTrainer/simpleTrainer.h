@@ -28,6 +28,7 @@
 #include "module.h"
 
 #include "dvtSimpleTrainer.h"
+#include "dvtLessonFile.h"
 #include "dvtLesson.h"
 
 #include <QPixmap>
@@ -38,7 +39,7 @@ class SimpleTrainer : public Module, public Ui::SimpleTrainer
 	
 private:
 	Dvt::SimpleTrainer* trainer;
-	Dvt::Lesson* lesson;
+	Dvt::LessonFile* lessonFile;
 	QPixmap currentPm;
 	QPixmap currentPmScaled;
 	
@@ -48,7 +49,7 @@ public:
 	SimpleTrainer(MainWindow* mainWindow, QWidget* parent = 0);
 	virtual ~SimpleTrainer();
 	
-	virtual void setLesson(Dvt::Lesson* lesson);
+	virtual void setLessonFile(Dvt::LessonFile* lessonFile);
 	virtual bool mayClose();
 	
 protected:

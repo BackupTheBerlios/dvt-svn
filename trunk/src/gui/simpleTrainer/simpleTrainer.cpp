@@ -23,6 +23,9 @@
 
 #include "simpleTrainer.h"
 
+#include "mainWindow.h"
+#include "dlgTrainerSelect.h"
+
 #include "utils.h"
 
 #include <QPainter>
@@ -57,13 +60,16 @@ SimpleTrainer::~SimpleTrainer()
 	delete trainer;
 }
 
-void SimpleTrainer::setLesson(Dvt::Lesson* lesson)
+void SimpleTrainer::setLessonFile(Dvt::LessonFile* lessonFile)
 {
-	this->lesson = lesson;
-	if (lesson != NULL) {
+	this->lessonFile = lessonFile;
+	if (lessonFile != NULL) {
 //		if (!lesson->dataRead()) 
 //			lesson->readData();
-		trainer->setLesson(lesson);
+		trainer->setLessonFile(lessonFile);
+		trainer->setUseDecl(mainWindow->dlgTrainerSelect->useDecls);
+		trainer->setUseConj(mainWindow->dlgTrainerSelect->useConjs);
+		trainer->setLessons(mainWindow->dlgTrainerSelect->lessons);
 		trainer->generateQuery();
 		qDebug("%d query pairs", trainer->query().size());
 		setNext();

@@ -31,6 +31,7 @@ EditDetail::EditDetail(LessonEdit* ledit, Dvt::LanguageProfile* lp, QWidget* par
 	this->lp = lp;
 	lessonEdit = ledit;
 	core = Dvt::Core::getInstance();
+	setVisible(false);
 	
 	connect(lessonEdit, SIGNAL(currentEntryChanged(TwiEntry*)),
 		this, SLOT(changeCurrentEntry(TwiEntry*)));

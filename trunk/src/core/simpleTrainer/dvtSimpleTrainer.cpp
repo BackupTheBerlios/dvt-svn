@@ -23,6 +23,7 @@
 #include "dvtSimpleTrainer.h"
 
 #include "dvtCore.h"
+#include "dvtLessonFile.h"
 #include "dvtLesson.h"
 #include "dvtWordClass.h"
 #include "dvtLanguageProfile.h"
@@ -47,65 +48,72 @@ void SimpleTrainer::generateQuery()
 	p_query.clear();
 	int number = 1;
 	
-	LanguageProfile* lp = p_lesson->langProfile_t();
+	LanguageProfile* lp = p_lessonFile->langProfile_t();
 	assert(lp != NULL);
 	
 	string s, base, t, s2, wc;
-	vector<TrainingEntry*>::const_iterator it;
-	for (it = p_lesson->entries().begin(); it != p_lesson->entries().end(); it++) {
-		TrainingEntry* te = *it;
-		base = te->trans()->baseName();
-		s = te->orig()->baseName();
-		wc = "";
-		if (te->wordClass() != WordClass::Undefined) {
-			wc = WordClass::getShortString(te->wordClass()) + ".";
-			if (p_useHtmlOrig) {
-				wc = "  <i>" + wc + "</i>";
-				s = s + wc;
-			} else {
-				wc = "  " + wc;
-				s = s + wc;
+	
+	LessonList::const_iterator lit;
+	for (lit = p_lessons.begin(); lit != p_lessons.end(); lit++) {
+		Lesson* lesson = *lit;
+	
+		vector<TrainingEntry*>::const_iterator it;
+		for (it = lesson->entries().begin(); it != lesson->entries().end(); it++) {
+			TrainingEntry* te = *it;
+			base = te->trans()->baseName();
+			s = te->orig()->baseName();
+			wc = "";
+			if (te->wordClass() != WordClass::Undefined) {
+				wc = WordClass::getShortString(te->wordClass()) + ".";
+				if (p_useHtmlOrig) {
+					wc = "  <i>" + wc + "</i>";
+					s = s + wc;
+				} else {
+					wc = "  " + wc;
+					s = s + wc;
+				}
 			}
-		}
-		
-		p_query.push_back(QueryPair(s, base, number++));
 			
-		if (p_useDecl) {
-			map<string, string>& dcls = te->trans()->decls();
-			map<string, string>::const_iterator dcls_it;
-			for (dcls_it = dcls.begin(); dcls_it != dcls.end(); dcls_it++) {
-				t = dcls_it->second;
-				if (t != "") {
-					if (t[0] == '-') t.replace(0, 1, base);
-					string d = lp->getCase(dcls_it->first)->name().str();
-					if (p_useHtmlOrig)
-						s2 = s + " <i>(" + d + ")</i>";
-					else
-						s2 = s + " (" + d + ")";
-					p_query.push_back(QueryPair(s2, t, number++));
+			p_query.push_back(QueryPair(s, base, number++));
+				
+			if (p_useDecl) {
+				map<string, string>& dcls = te->trans()->decls();
+				map<string, string>::const_iterator dcls_it;
+				for (dcls_it = dcls.begin(); dcls_it != dcls.end(); dcls_it++) {
+					t = dcls_it->second;
+					if (t != "") {
+						if (t[0] == '-') t.replace(0, 1, base);
+						string d = lp->getCase(dcls_it->first)->name().str();
+						if (p_useHtmlOrig)
+							s2 = s + " <i>(" + d + ")</i>";
+						else
+							s2 = s + " (" + d + ")";
+						p_query.push_back(QueryPair(s2, t, number++));
+					}
+					
 				}
 				
 			}
 			
-		}
-		
-		if (p_useConj) {
-			for (int pp = (int) ppSingular1; pp < (int) ppHigh; pp++) {
-				t = te->trans()->getConj((PersonalPronoun) pp);
-				if (!t.empty()) {
-					string p = lp->getPersonalPronoun((PersonalPronoun) pp);
-					if (p_useHtmlOrig)
-						s2 = s + " <i>(" + p + ")</i>";
-					else
-						s2 = s + " (" + p + ")";
-					p_query.push_back(QueryPair(s2, t, number++));
+			if (p_useConj) {
+				for (int pp = (int) ppSingular1; pp < (int) ppHigh; pp++) {
+					t = te->trans()->getConj((PersonalPronoun) pp);
+					if (!t.empty()) {
+						string p = lp->getPersonalPronoun((PersonalPronoun) pp);
+						if (p_useHtmlOrig)
+							s2 = s + " <i>(" + p + ")</i>";
+						else
+							s2 = s + " (" + p + ")";
+						p_query.push_back(QueryPair(s2, t, number++));
+					}
+					
 				}
 				
 			}
 			
-		}
+		} // for entries
 		
-	}
+	} // for lessons
 	
 	randomizeQuery();
 	

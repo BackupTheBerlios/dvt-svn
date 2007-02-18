@@ -56,6 +56,10 @@ private:
 	
 	TwiEntry* currentEntry;
 	
+	QToolBar* p_toolBar;
+	QWidget* wLessonSelect;
+	QComboBox* cboxLessonSelect;
+	
 	QScrollArea* saDetails;
 	
 	bool edited;
@@ -73,6 +77,7 @@ public:
 	
 	virtual void setLessonFile(Dvt::LessonFile* lessonFile);
 	virtual bool mayClose();
+	virtual QToolBar* toolBar();
 	
 	void setLesson(Dvt::Lesson* lesson);
 	void setDetail(Dvt::WordClass::Type wc);

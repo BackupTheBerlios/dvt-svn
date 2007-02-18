@@ -34,6 +34,7 @@ EditExt::EditExt(LessonEdit* ledit, Dvt::LanguageProfile* lp, QWidget* parent)
 	this->lp = lp;
 	core = Dvt::Core::getInstance();
 	setFocusPolicy(Qt::StrongFocus);
+	setVisible(false);
 	
 	connect(ledit, SIGNAL(currentEntryChanged(TwiEntry*)),
 		this, SLOT(changeCurrentEntry(TwiEntry*)));

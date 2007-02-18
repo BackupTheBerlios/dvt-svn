@@ -54,6 +54,17 @@ LessonEdit::LessonEdit(MainWindow* mainWindow, QWidget* parent)
 	
 	setupUi(this);
 	
+	p_toolBar = new QToolBar(trUtf8("Edit lesson"), this);
+	wLessonSelect = new QWidget(p_toolBar);
+	wLessonSelect->setLayout(new QHBoxLayout());
+	cboxLessonSelect = new QComboBox(wLessonSelect);
+	wLessonSelect->layout()->setMargin(0);
+	wLessonSelect->layout()->addWidget(new QLabel(trUtf8("Lesson:"), wLessonSelect));
+	wLessonSelect->layout()->addWidget(cboxLessonSelect);
+	p_toolBar->addWidget(wLessonSelect);
+	connect(cboxLessonSelect, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(on_cboxLessonSelect_currentIndexChanged(int)));
+	
 	tabDetails->hide();
 	
 	frmForeignExt->setLayout(new QHBoxLayout());
@@ -127,7 +138,6 @@ void LessonEdit::setLessonFile(Dvt::LessonFile* lessonFile)
 			
 			// titles
 			
-			lbLessonFileTitle->setText(STR2QSTR(lessonFile->title()));
 			gboxForeignLang->setTitle(STR2QSTR(lessonFile->langProfile_t()->name()));
 			gboxNativeLang->setTitle(STR2QSTR(lessonFile->langProfile_o()->name()));
 			
@@ -208,7 +218,7 @@ bool LessonEdit::mayClose()
 		
 	if (edited) {
 		QMessageBox::StandardButton b = 
-			QMessageBox::question(this, "DVT", trUtf8("Save changes?"), 
+			QMessageBox::question(this, APPNAME, trUtf8("Save changes?"), 
 				QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, 
 				QMessageBox::Yes);
 				
@@ -235,6 +245,11 @@ bool LessonEdit::mayClose()
 	}
 			
 	return true;		
+}
+
+QToolBar* LessonEdit::toolBar()
+{
+	return p_toolBar;
 }
 
 void LessonEdit::setLesson(Dvt::Lesson* lesson)
@@ -516,7 +531,7 @@ void LessonEdit::on_twEntries_currentItemChanged(QTableWidgetItem* current,
 void LessonEdit::on_cboxLessonSelect_currentIndexChanged(int index)
 {
 	Q_UNUSED(index);
-	if (lessonFile != NULL) {
+	if (lessonFile != NULL && cboxLessonSelect->currentIndex() > -1) {
 		if (currentEntry != NULL)
 			postCurrentEntry(false);
 		Dvt::Lesson* lesson = (Dvt::Lesson*) cboxLessonSelect->itemData(cboxLessonSelect->currentIndex()).toInt();

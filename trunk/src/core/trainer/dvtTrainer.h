@@ -25,10 +25,12 @@
 
 #include <string>
 #include <vector>
+#include <list>
 
 namespace Dvt
 {
 
+class LessonFile;
 class Lesson;
 class Core;
 
@@ -65,12 +67,14 @@ public:
 };
 
 typedef std::vector<QueryPair>	Query;
+typedef std::list<Lesson*> LessonList;
 
 class Trainer
 {
 protected:
 	Core* core;
-	Lesson* p_lesson;
+	LessonFile* p_lessonFile;
+	LessonList p_lessons;
 	
 	bool p_useConj;
 	bool p_useDecl;
@@ -87,8 +91,11 @@ public:
 	Trainer();
 	virtual ~Trainer();
 	
-	virtual Lesson* lesson();
-	virtual void setLesson(Lesson* lesson);
+	virtual LessonFile* lessonFile();
+	virtual void setLessonFile(LessonFile* lessonFile);
+	
+	virtual LessonList& lessons();
+	virtual void setLessons(LessonList& lessonList);
 	
 	virtual bool useConj();
 	virtual void setUseConj(bool use);
