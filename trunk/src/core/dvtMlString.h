@@ -41,6 +41,7 @@ private:
 	
 public:
 	MlString();
+	MlString(const std::string& langId, const std::string& str);
 	virtual ~MlString();
 	
 	void setString(const std::string& langId, const std::string& str);

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <divotra:trainingLesson formatVersion="1.0" langCode_o="de" langCode_t="en" version="0.1" xmlns:divotra="http://www.delta-my.de/divotra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.delta-my.de/divotra/dtl.xsd">
 	<title>
-		<lg c="en">
-			Miscellaneous
-		</lg>
 		<lg c="de">
 			Verschiedenes
+		</lg>
+		<lg c="en">
+			Miscellaneous
 		</lg>
 	</title>
 	<description>
-		<lg c="en">
-			Miscellaneous
-		</lg>
 		<lg c="de">
 			Verschiedenes
+		</lg>
+		<lg c="en">
+			Miscellaneous
 		</lg>
 	</description>
 	<license>
@@ -24,11 +24,11 @@
 	<lessons>
 		<lesson n="1">
 			<title>
-				<lg c="en">
-					Miscellaneous
-				</lg>
 				<lg c="de">
 					Verschiedenes
+				</lg>
+				<lg c="en">
+					Miscellaneous
 				</lg>
 			</title>
 			<entries>
@@ -397,6 +397,14 @@
 					<oe>
 						<g t="f" />
 					</oe>
+				</e>
+				<e t="ad">
+					<o>
+						rücksichtslos, unbesonnen, waghalsig
+					</o>
+					<t>
+						reckless
+					</t>
 				</e>
 			</entries>
 		</lesson>

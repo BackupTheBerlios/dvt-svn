@@ -34,14 +34,14 @@ namespace Dvt
 
 class Core;
 class LanguageProfile;
+class LessonFile;
 
 class Lesson
 {
 private:
 	Core* core;
 	
-	LanguageProfile* p_langProfile_o;
-	LanguageProfile* p_langProfile_t;
+	LessonFile* p_lessonFile;
 
 	int p_number;
 	MlString p_title;
@@ -49,16 +49,17 @@ private:
 	std::vector<TrainingEntry*> p_entries;
 	
 public:
-	Lesson(int number, LanguageProfile* orig = NULL, LanguageProfile* trans = NULL);
+	Lesson(int number, LessonFile* lessonFile);
 	virtual ~Lesson();
 	
 	LanguageProfile* langProfile_o();
-	void setLangProfile_o(LanguageProfile*);
 	LanguageProfile* langProfile_t();
-	void setLangProfile_t(LanguageProfile*);
+	
+	LessonFile* lessonFile();
 	
 	int number();
 	MlString& title();
+	void setTitle(const MlString& title);
 	
 	std::vector<TrainingEntry*>& entries();
 	

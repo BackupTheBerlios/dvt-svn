@@ -150,7 +150,7 @@ void LessonFile::readFromStream(std::istream& readFrom, const ReadFlag readFlag)
 				if (ait != node->attributes.end()) 
 					number = atoi(ait->second.c_str());
 					
-				p_lessons[number] = new Lesson(number, p_langProfile_o, p_langProfile_t);
+				p_lessons[number] = new Lesson(number, this);
 				p_lessons[number]->setFromXmlNode(node);
 				
 			}
@@ -355,6 +355,25 @@ void LessonFile::writeToFile(const std::string& fileName)
 		throw;
 		
 	}
+}
+
+void LessonFile::createLesson(int pos, const MlString& title)
+{
+	if (p_lessons[pos] != NULL) {
+		DEBUG(DBG_GENERAL, "Dvt::LessonFile::createLesson(): WARNING: overwriting existing lesson");
+		delete p_lessons[pos];
+		
+	}
+	
+	Lesson* lesson = new Lesson(pos, this);
+	lesson->setTitle(title);
+	p_lessons[pos] = lesson;
+}
+
+void LessonFile::deleteLesson(Lesson* lesson)
+{
+	p_lessons.erase(p_lessons.find(lesson->number()));
+	delete lesson;
 }
 
 } // namespace Dvt

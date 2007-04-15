@@ -98,6 +98,9 @@ public:
 	void write();
 	void writeToStream(std::ostream& writeTo);
 	void writeToFile(const std::string& fileName);
+	
+	void createLesson(int pos, const MlString& title);
+	void deleteLesson(Lesson* lesson);
 };
 
 }

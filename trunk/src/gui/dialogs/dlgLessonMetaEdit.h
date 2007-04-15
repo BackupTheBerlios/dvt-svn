@@ -28,6 +28,7 @@
 
 #include "dvtCore.h"
 #include "dvtLessonFile.h"
+#include "dvtLesson.h"
 #include "dvtMlString.h"
 
 #include <QDialog>
@@ -48,6 +49,8 @@ private:
 	int cboxDescLangIndex;
 	int cboxLicenseLangIndex;
 	
+	void refreshLessonList();
+	
 public:
 	Dvt::MlString title;
 	Dvt::MlString desc;
@@ -63,6 +66,12 @@ public slots:
 	void on_cboxTitleLang_currentIndexChanged(int index);
 	void on_cboxDescLang_currentIndexChanged(int index);
 	void on_cboxLicenseLang_currentIndexChanged(int index);
+	
+	void on_pbNewLesson_clicked(bool checked = false);
+	void on_pbRenameLesson_clicked(bool checked = false);
+	void on_pbDeleteLesson_clicked(bool checked = false);
+	
+	void on_lwLessons_currentItemChanged(QListWidgetItem* item, QListWidgetItem* prev);
 	
 	void validateAccept();
 	virtual void accept();

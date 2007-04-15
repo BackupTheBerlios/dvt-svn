@@ -84,7 +84,7 @@ void DlgTrainerSelect::validateAccept()
 {
 	if (false) {
 		// TODO
-		QMessageBox::information(this, APPNAME, trUtf8("Please enter a title for this lesson."));
+		QMessageBox::information(this, APPNAME, trUtf8("Please enter a title for this lesson file."));
 		
 	} else {
 		accept();

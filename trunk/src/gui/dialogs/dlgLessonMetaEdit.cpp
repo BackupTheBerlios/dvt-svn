@@ -31,6 +31,7 @@
 
 #include <QLocale>
 #include <QMessageBox>
+#include <QInputDialog>
 
 using namespace std;
 
@@ -95,6 +96,27 @@ DlgLessonMetaEdit::~DlgLessonMetaEdit()
 {
 }
 
+void DlgLessonMetaEdit::refreshLessonList()
+{
+	lwLessons->clear();
+	
+	if (lessonFile != NULL) {
+		if (!lessonFile->dataRead()) 
+			lessonFile->readData();
+	
+		int i = 1;
+		map<int, Dvt::Lesson*>::const_iterator lit;
+		for (lit = lessonFile->lessons().begin(); lit != lessonFile->lessons().end(); lit++, i++) {
+			QListWidgetItem* lwi = new QListWidgetItem(QString("%1. %2")
+				.arg(i).arg(STR2QSTR(lit->second->title())), lwLessons);
+			lwi->setData(Qt::UserRole, (int) lit->second);
+			
+		}
+		
+	}
+	
+}
+
 void DlgLessonMetaEdit::setFromLessonFile(Dvt::LessonFile* lessonFile)
 {
 	this->lessonFile = lessonFile;
@@ -119,6 +141,8 @@ void DlgLessonMetaEdit::setFromLessonFile(Dvt::LessonFile* lessonFile)
 		teLicense->setPlainText(STR2QSTR(
 			license.getString(QSTR2STR(cboxLicenseLang->itemData(cboxLicenseLang->currentIndex()).toString()))));
 			
+		refreshLessonList();
+			
 	} else {
 		title.clear();
 		desc.clear();
@@ -127,6 +151,8 @@ void DlgLessonMetaEdit::setFromLessonFile(Dvt::LessonFile* lessonFile)
 		leTitle->setText("");
 		teDesc->setPlainText("");
 		teLicense->setPlainText("");
+		
+		lwLessons->clear();
 		
 	}
 	
@@ -180,6 +206,112 @@ void DlgLessonMetaEdit::on_cboxLicenseLang_currentIndexChanged(int index)
 		cboxLicenseLangIndex = index;
 		
 	}
+}
+
+void DlgLessonMetaEdit::on_pbNewLesson_clicked(bool checked)
+{
+	Q_UNUSED(checked);
+	
+	bool ok = true;
+	QString name = "";
+	
+	while (name == "" && ok) {
+		name = QInputDialog::getText(this, APPNAME, trUtf8("Enter name of lesson:"),
+			QLineEdit::Normal, QString(), &ok);
+		name = name.trimmed();
+		
+		if (ok) {
+			if (name == "") {
+				QMessageBox::warning(this, APPNAME, trUtf8("You must enter a name for the lesson."));
+				
+			} else {
+				// determin id of last lesson
+				int id = 1;
+				map<int, Dvt::Lesson*>::reverse_iterator it = lessonFile->lessons().rbegin();
+				if (it != lessonFile->lessons().rend()) {
+					Dvt::Lesson* last = it->second;
+					id = last->number() + 1;
+				}
+				
+				// TODO: let user choose which language to use
+				lessonFile->createLesson(id, Dvt::MlString("ia", QSTR2STR(name))); 
+				refreshLessonList();
+				
+				break;
+				
+			}
+			
+		}
+		
+	}
+		
+	
+}
+
+void DlgLessonMetaEdit::on_pbRenameLesson_clicked(bool checked)
+{
+	Q_UNUSED(checked);
+	
+	if (lwLessons->currentItem() != NULL) {
+		Dvt::Lesson* lesson = (Dvt::Lesson*) lwLessons->currentItem()->data(Qt::UserRole).toInt();
+		assert(lesson != NULL);
+		
+		bool ok = true;
+		QString name = "";
+		
+		while (name == "" && ok) {
+			QString name = STR2QSTR(lesson->title());
+			name = QInputDialog::getText(this, APPNAME, trUtf8("Enter name of lesson:"),
+				QLineEdit::Normal, name, &ok);
+			name = name.trimmed();
+			
+			if (ok) {
+				if (name == "") {
+					QMessageBox::warning(this, APPNAME, trUtf8("You must enter a name for the lesson."));
+					
+				} else {
+					// TODO: let user choose which language to use
+					lesson->setTitle(Dvt::MlString("ia", QSTR2STR(name)));
+					refreshLessonList();
+					
+					break;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+}
+
+void DlgLessonMetaEdit::on_pbDeleteLesson_clicked(bool checked)
+{
+	Q_UNUSED(checked);
+	
+	if (lwLessons->currentItem() != NULL) {
+		Dvt::Lesson* lesson = (Dvt::Lesson*) lwLessons->currentItem()->data(Qt::UserRole).toInt();
+		assert(lesson != NULL);
+		int res = QMessageBox::question(this, APPNAME,
+			QString(trUtf8("Are you sure that you want to delete the lesson \"%1\"?\nAll entries will get lost."))
+				.arg(STR2QSTR(lesson->title())),
+			QMessageBox::Yes, QMessageBox::No);
+		
+		if (res == QMessageBox::Yes) {
+			lessonFile->deleteLesson(lesson);
+			refreshLessonList();
+			
+		}
+		
+	}
+}
+
+void DlgLessonMetaEdit::on_lwLessons_currentItemChanged(QListWidgetItem* item, QListWidgetItem* prev)
+{
+	Q_UNUSED(prev);
+	
+	pbRenameLesson->setEnabled(item != NULL);
+	pbDeleteLesson->setEnabled(item != NULL);
 }
 
 void DlgLessonMetaEdit::validateAccept()

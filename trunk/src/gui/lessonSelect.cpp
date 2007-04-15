@@ -144,7 +144,7 @@ void LessonSelect::on_pbNew_clicked(bool pressed)
 		QString fname = mainWindow->dlgLessonMetaEdit->title.c_str();
 		bool ok = false;
 		fname = QInputDialog::getText(this, APPNAME, 
-			trUtf8("Please enter a file name for this lesson\n(it will be saved to your lessons directory):"),
+			trUtf8("Please enter a file name for this lesson file\n(it will be saved to your lessons directory):"),
 			QLineEdit::Normal, fname, &ok);
 		if (!ok) return;
 		

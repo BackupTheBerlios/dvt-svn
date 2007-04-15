@@ -111,6 +111,9 @@
    </property>
   </action>
   <action name="actionDeleteLesson" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
    <property name="icon" >
     <iconset resource="../res/dvt.qrc" >:/dvt/dvt/lessonDelete.png</iconset>
    </property>

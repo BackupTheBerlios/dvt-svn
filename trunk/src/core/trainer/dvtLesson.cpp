@@ -25,6 +25,7 @@
 #include "dvtCore.h"
 #include "dvtExceptions.h"
 #include "dvtLanguageProfile.h"
+#include "dvtLessonFile.h"
 
 #include "debug.h"
 #include "xmlNode.h"
@@ -34,11 +35,10 @@ namespace Dvt
 
 using namespace std;
 
-Lesson::Lesson(int number, LanguageProfile* orig, LanguageProfile* trans)
+Lesson::Lesson(int number, LessonFile* lessonFile)
 {
 	core = Core::getInstance();
-	p_langProfile_o = orig;
-	p_langProfile_t = trans;
+	p_lessonFile = lessonFile;
 	p_number = number;
 }
 
@@ -47,21 +47,21 @@ Lesson::~Lesson()
 	unloadData();
 }
 
-LanguageProfile* Lesson::langProfile_o() {return p_langProfile_o;}
-LanguageProfile* Lesson::langProfile_t() {return p_langProfile_t;}
-
-void Lesson::setLangProfile_o(LanguageProfile* lp) {p_langProfile_o = lp;}
-void Lesson::setLangProfile_t(LanguageProfile* lp) {p_langProfile_t = lp;}
+LanguageProfile* Lesson::langProfile_o() {assert(p_lessonFile != NULL); return p_lessonFile->langProfile_o();}
+LanguageProfile* Lesson::langProfile_t() {assert(p_lessonFile != NULL); return p_lessonFile->langProfile_t();}
+LessonFile* Lesson::lessonFile() {return p_lessonFile;}
 
 int Lesson::number() {return p_number;}
 MlString& Lesson::title() {return p_title;}
+
+void Lesson::setTitle(const MlString& title) {p_title = title;}
 
 std::vector<TrainingEntry*>& Lesson::entries() {return p_entries;}
 
 TrainingEntry* Lesson::addEntry()
 {
-	Entry* o = new Entry(p_langProfile_o);
-	Entry* t = new Entry(p_langProfile_t);
+	Entry* o = new Entry(langProfile_o());
+	Entry* t = new Entry(langProfile_t());
 	TrainingEntry* te = new TrainingEntry(o, t);
 	p_entries.push_back(te);
 	return te;
@@ -126,7 +126,7 @@ void Lesson::setFromXmlNode(sxml::XmlNode* lessonNode)
 					throw EXmlTreeInvalid("", tmpNode->name);
 				}
 				
-				orig = new Entry(p_langProfile_o, tmpNode->children[0]->name, wc);
+				orig = new Entry(langProfile_o(), tmpNode->children[0]->name, wc);
 				
 				// translation
 				tmpNode = node->findFirst("t");
@@ -138,7 +138,7 @@ void Lesson::setFromXmlNode(sxml::XmlNode* lessonNode)
 					throw EXmlTreeInvalid("", tmpNode->name);
 				}
 				
-				trans = new Entry(p_langProfile_t, tmpNode->children[0]->name, wc);
+				trans = new Entry(langProfile_t(), tmpNode->children[0]->name, wc);
 				
 				te = new TrainingEntry(orig, trans);
 				

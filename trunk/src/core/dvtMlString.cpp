@@ -36,6 +36,11 @@ MlString::MlString()
 {
 }
 
+MlString::MlString(const std::string& langId, const std::string& str)
+{
+	setString(langId, str);
+}
+
 MlString::~MlString()
 {
 }
