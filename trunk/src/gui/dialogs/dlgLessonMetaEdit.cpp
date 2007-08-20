@@ -29,6 +29,8 @@
 
 #include "dvtLanguageProfile.h"
 
+#include "assert.h"
+
 #include <QLocale>
 #include <QMessageBox>
 #include <QInputDialog>
@@ -324,9 +326,12 @@ void DlgLessonMetaEdit::validateAccept()
 		QSTR2STR(teLicense->toPlainText()));
 	
 	if (title.empty()) {
-		QMessageBox::information(this, APPNAME, trUtf8("Please enter a title for this lesson."));
+		QMessageBox::information(this, APPNAME, trUtf8("Please enter a title for this lesson file."));
 		
-	} else {
+	} else if (lessonFile->lessons().size() == 0) {
+		QMessageBox::information(this, APPNAME, trUtf8("Please create at least one lesson."));
+		
+	}else {
 		accept();
 		
 	}

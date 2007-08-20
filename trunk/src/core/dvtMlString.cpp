@@ -27,6 +27,8 @@
 
 #include "debug.h"
 
+#include "assert.h"
+
 namespace Dvt
 {
 

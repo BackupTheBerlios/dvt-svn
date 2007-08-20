@@ -191,8 +191,11 @@ void MainWindow::on_actionEditProperties_triggered(bool checked)
 	Q_UNUSED(checked);
 	dlgLessonMetaEdit->setFromLessonFile(lessonSelect->lessonFile);
 	QDialog::DialogCode res = (QDialog::DialogCode) dlgLessonMetaEdit->exec();
-	if (res == QDialog::Accepted)
+	if (res == QDialog::Accepted) {
 		lessonSelect->lessonFile->write();
+		currentModule->setLessonFile(lessonSelect->lessonFile);
+		
+	}
 	dlgLessonMetaEdit->setFromLessonFile(NULL);
 }
 

@@ -7,6 +7,8 @@
 
 #include "mainWindow.h"
 
+#include "debug.h"
+
 using namespace std;
 
 bool debugMode = true;
@@ -15,21 +17,19 @@ void messageOutput(QtMsgType type, const char *msg)
 {
 	switch (type) {
 		case QtDebugMsg:
-			if (debugMode) 
-				cerr << "Debug: " << msg << endl;
+			if (debugMode)
+				DEBUG(DBG_GUI, msg); 
 			break;
 		case QtWarningMsg:
-			cerr << "Warning: " << msg << endl;
+			DEBUG(DBG_GUI, "WARNING: %s", msg);
 			break;
 		case QtCriticalMsg:
-			cerr << "Critical: " << msg << endl;
+			DEBUG(DBG_GUI, "CRITICAL: %s", msg);
 			break;
 		case QtFatalMsg:
-			cerr << "Fatal: " << msg << endl;
+			DEBUG(DBG_GUI, "FATAL: %s", msg);
 			abort();
 	}
-	
-	cerr.flush();
 }
 
 int main(int argc, char* argv[]) {

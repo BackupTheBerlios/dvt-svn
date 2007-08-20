@@ -25,6 +25,8 @@
 
 #include "utils.h"
 
+#include "assert.h"
+
 #include <QPalette>
 
 /* TwLabel ********************************************************************/

@@ -34,6 +34,8 @@
 #include "dvtTrainingEntry.h"
 #include "dvtLanguageProfile.h"
 
+#include "assert.h"
+
 #include <vector>
 
 #include <QMessageBox>
@@ -122,65 +124,73 @@ LessonEdit::~LessonEdit()
 void LessonEdit::setLessonFile(Dvt::LessonFile* lessonFile)
 {
 	if (lessonFile != NULL) {
-		if (this->lessonFile != lessonFile) {
-			this->lessonFile = lessonFile;
+		this->lessonFile = lessonFile;
+		
+		if (!lessonFile->dataRead()) 
+			lessonFile->readData();
+		
+		tabWidget->setCurrentIndex(0);
+		tabWidget->setTabEnabled(1, false);
+		
+		if (foreignLang != NULL) delete foreignLang;
+		if (nativeLang != NULL) delete nativeLang;
+		foreignLang = new Language(this, lessonFile->langProfile_t());
+		nativeLang = new Language(this, lessonFile->langProfile_o());
+		
+		// titles
+		
+		gboxForeignLang->setTitle(STR2QSTR(lessonFile->langProfile_t()->name()));
+		gboxNativeLang->setTitle(STR2QSTR(lessonFile->langProfile_o()->name()));
+		
+		// genders
+		
+		vector<Dvt::Gender::Type>::iterator git;
+		
+		cboxForeignGender->clear();
+		for (git = lessonFile->langProfile_t()->genders().begin();
+			git != lessonFile->langProfile_t()->genders().end();
+			git++)
+		{
+			cboxForeignGender->addItem(STR2QSTR(Dvt::Gender::getString(*git)), *git);
+		}
+		frmForeignGender->setVisible(false);
+		
+		cboxNativeGender->clear();
+		for (git = lessonFile->langProfile_o()->genders().begin();
+			git != lessonFile->langProfile_o()->genders().end();
+			git++)
+		{
+			cboxNativeGender->addItem(STR2QSTR(Dvt::Gender::getString(*git)), *git);
+		}
+		frmNativeGender->setVisible(false);
+		
+		// edit extensions
+		
+		if (foreignLang->editExt() != NULL) {
+			frmForeignExt->layout()->addWidget(foreignLang->editExt());
+			frmForeignExt->show();
 			
-			if (!lessonFile->dataRead()) 
-				lessonFile->readData();
+		} else {
+			frmForeignExt->hide();
 			
-			tabWidget->setCurrentIndex(0);
-			tabWidget->setTabEnabled(1, false);
+		}
 			
-			if (foreignLang != NULL) delete foreignLang;
-			if (nativeLang != NULL) delete nativeLang;
-			foreignLang = new Language(this, lessonFile->langProfile_t());
-			nativeLang = new Language(this, lessonFile->langProfile_o());
+		frmNativeExt->hide();
+		
+		resetTabOrder();
+		
+		// lessons
+		
+		cboxLessonSelect->clear();
+		if (lessonFile->lessons().size() == 0) {
+			QMessageBox::warning(this, APPNAME, trUtf8("There are currently no lessons defined in this file.\nPlease add at least one lesson."));
+			setLesson(NULL);
+			pbSave->setEnabled(false);
+			pbNew->setEnabled(false);
 			
-			// titles
+			mainWindow->on_actionEditProperties_triggered();
 			
-			gboxForeignLang->setTitle(STR2QSTR(lessonFile->langProfile_t()->name()));
-			gboxNativeLang->setTitle(STR2QSTR(lessonFile->langProfile_o()->name()));
-			
-			// genders
-			
-			vector<Dvt::Gender::Type>::iterator git;
-			
-			cboxForeignGender->clear();
-			for (git = lessonFile->langProfile_t()->genders().begin();
-				git != lessonFile->langProfile_t()->genders().end();
-				git++)
-			{
-				cboxForeignGender->addItem(STR2QSTR(Dvt::Gender::getString(*git)), *git);
-			}
-			frmForeignGender->setVisible(false);
-			
-			cboxNativeGender->clear();
-			for (git = lessonFile->langProfile_o()->genders().begin();
-				git != lessonFile->langProfile_o()->genders().end();
-				git++)
-			{
-				cboxNativeGender->addItem(STR2QSTR(Dvt::Gender::getString(*git)), *git);
-			}
-			frmNativeGender->setVisible(false);
-			
-			// edit extensions
-			
-			if (foreignLang->editExt() != NULL) {
-				frmForeignExt->layout()->addWidget(foreignLang->editExt());
-				frmForeignExt->show();
-				
-			} else {
-				frmForeignExt->hide();
-				
-			}
-				
-			frmNativeExt->hide();
-			
-			resetTabOrder();
-			
-			// lessons
-			
-			cboxLessonSelect->clear();
+		} else {
 			int i = 1;
 			map<int, Dvt::Lesson*>::const_iterator lit;
 			for (lit = lessonFile->lessons().begin(); lit != lessonFile->lessons().end(); lit++, i++) {
@@ -193,11 +203,14 @@ void LessonEdit::setLessonFile(Dvt::LessonFile* lessonFile)
 			cboxLessonSelect->setCurrentIndex(0);
 			
 			// entries
-			
 			setLesson(lessonFile->lessons().begin()->second);
 			
-			edited = false;
+			pbSave->setEnabled(true);
+			pbNew->setEnabled(true);
+			
 		}
+		
+		edited = false;
 		
 	} else {
 		edited = false;

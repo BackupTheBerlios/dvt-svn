@@ -80,7 +80,8 @@ public:
 	void loadLanguageProfiles(const std::string& dirName);
 	void loadLessonFiles(const std::string& dirName);
 	
-	Dvt::LessonFile* createLessonFile();
+	LessonFile* createLessonFile();
+	void removeLessonFile(LessonFile* lfile);
 };
 
 }

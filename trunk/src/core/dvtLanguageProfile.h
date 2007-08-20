@@ -35,12 +35,22 @@ protected:
 	std::string p_id;
 	MlString p_name;
 	
+	std::map<Gender::Type, std::string> p_defArticles;
+	std::map<Gender::Type, std::string> p_defArticlesPl;
+	std::map<Gender::Type, std::string> p_indefArticles;
+	std::map<Gender::Type, std::string> p_indefArticlesPl;
+	
 public:
 	Case(LanguageProfile* lp);
 	virtual ~Case();
 	
 	std::string id();
 	MlString& name();
+	
+	std::string getDefArticle(Gender::Type gen);
+	std::string getDefArticlePl(Gender::Type gen);
+	std::string getIndefArticle(Gender::Type gen);
+	std::string getIndefArticlePl(Gender::Type gen);
 	
 	void setFromXmlNode(sxml::XmlNode* node);
 	void setToXmlNode(sxml::XmlNode* node);

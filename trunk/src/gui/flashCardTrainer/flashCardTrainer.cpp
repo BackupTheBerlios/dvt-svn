@@ -93,12 +93,20 @@ void FlashCardTrainer::setCard(bool front, QString text)
 	if (front) {
 		palette.setColor(QPalette::WindowText, Qt::darkRed);
 		frmFlashCard->setFrameShadow(QFrame::Raised);
-		lbFlag->setPixmap(mainWindow->flags[STR2QSTR(lessonFile->langProfile_o()->langCode())]->pixmap(20, 12));
+		QIcon* icon = mainWindow->flags[STR2QSTR(lessonFile->langProfile_o()->langCode())];
+		if (icon != NULL && !icon->isNull())
+			lbFlag->setPixmap(icon->pixmap(20, 12));
+		else
+			lbFlag->setPixmap(QPixmap());
 		
 	} else {
 		palette.setColor(QPalette::WindowText, Qt::darkGreen);
 		frmFlashCard->setFrameShadow(QFrame::Sunken);
-		lbFlag->setPixmap(mainWindow->flags[STR2QSTR(lessonFile->langProfile_t()->langCode())]->pixmap(20, 12));
+		QIcon* icon = mainWindow->flags[STR2QSTR(lessonFile->langProfile_t()->langCode())];
+		if (icon != NULL && !icon->isNull())
+			lbFlag->setPixmap(icon->pixmap(20, 12));
+		else
+			lbFlag->setPixmap(QPixmap());
 		
 	}
 	

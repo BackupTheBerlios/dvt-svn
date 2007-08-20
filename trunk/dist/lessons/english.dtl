@@ -406,6 +406,61 @@
 						reckless
 					</t>
 				</e>
+				<e t="n">
+					<o>
+						Forelle
+					</o>
+					<t>
+						trout
+					</t>
+					<oe>
+						<g t="f" />
+					</oe>
+				</e>
+				<e t="n">
+					<o>
+						Hecht
+					</o>
+					<t>
+						pike
+					</t>
+					<oe>
+						<g t="m" />
+					</oe>
+				</e>
+				<e t="n">
+					<o>
+						Scherbe
+					</o>
+					<t>
+						shard
+					</t>
+					<oe>
+						<g t="f" />
+					</oe>
+				</e>
+				<e t="n">
+					<o>
+						Dahinschwinden
+					</o>
+					<t>
+						evanescence
+					</t>
+					<oe>
+						<g t="n" />
+					</oe>
+				</e>
+				<e t="n">
+					<o>
+						Gefährdung
+					</o>
+					<t>
+						peril
+					</t>
+					<oe>
+						<g t="f" />
+					</oe>
+				</e>
 			</entries>
 		</lesson>
 	</lessons>

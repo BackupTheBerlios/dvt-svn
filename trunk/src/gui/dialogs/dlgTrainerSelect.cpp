@@ -29,6 +29,8 @@
 #include "dvtLessonFile.h"
 #include "dvtLesson.h"
 
+#include "assert.h"
+
 #include <QMessageBox>
 
 #include <map>

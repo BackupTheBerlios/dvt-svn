@@ -12,6 +12,8 @@
 #include "debug.h"
 #include "xmlNode.h"
 
+#include "assert.h"
+
 #include <fstream>
 
 namespace Dvt
@@ -33,21 +35,127 @@ Case::~Case()
 string Case::id() {return p_id;}
 MlString& Case::name() {return p_name;}
 
+string Case::getDefArticle(Gender::Type gen)
+{
+	map<Gender::Type, string>::iterator it;
+	
+	it = p_defArticles.find(gen);
+	if (it != p_defArticles.end())
+		return it->second;
+	else
+		return string();
+}
+
+string Case::getDefArticlePl(Gender::Type gen)
+{
+	map<Gender::Type, string>::iterator it;
+	
+	it = p_defArticlesPl.find(gen);
+	if (it != p_defArticlesPl.end())
+		return it->second;
+	else
+		return string();
+}
+
+string Case::getIndefArticle(Gender::Type gen)
+{
+	map<Gender::Type, string>::iterator it;
+	
+	it = p_indefArticles.find(gen);
+	if (it != p_indefArticles.end())
+		return it->second;
+	else
+		return string();
+}
+
+string Case::getIndefArticlePl(Gender::Type gen)
+{
+	map<Gender::Type, string>::iterator it;
+	
+	it = p_indefArticlesPl.find(gen);
+	if (it != p_indefArticlesPl.end())
+		return it->second;
+	else
+		return string();
+}
+
 void Case::setFromXmlNode(sxml::XmlNode* node)
 {
 	p_id = node->attributes["t"];
 	if (p_id.empty()) {
-		DEBUG(DBG_GENERAL, "ERROR: Case::setFromXmlNode() no id!");
+		DEBUG(DBG_DLP, "ERROR: Case::setFromXmlNode() no id!");
 		throw EXmlMissingAttribute("<stream>", node->name, "t");
 	}
 		
 	sxml::XmlNode* n = node->findFirst("name");
-	if (n != NULL)
+	if (n != NULL) {
 		p_name.setFromXmlNode(n);
-	else {
-		DEBUG(DBG_GENERAL, "ERROR: Case::setFromXmlNode(): no name!");
+		DEBUG(DBG_DLP, "Case %s: %s", p_id.c_str(), p_name.c_str());
+		
+	} else {
+		DEBUG(DBG_DLP, "ERROR: Case::setFromXmlNode(): no name!");
 		throw EXmlTreeInvalid("<stream>", node->name);
+		
 	}
+	
+	sxml::XmlNode* articlesNode = node->findFirst("articles");
+	if (articlesNode != NULL) {
+		sxml::XmlNode* n = articlesNode->findFirst("definite");
+		if (n != NULL) {
+			sxml::NodeSearch* ns = n->findInit("a");
+			sxml::XmlNode* a = n->findNext(ns);
+			while (a != NULL) {
+				if (a->children.size() == 1 && 
+					a->children[0]->type == sxml::ntTextNode)
+				{
+					Gender::Type gt = Gender::getType(a->attributes["g"]);
+					string numerus = a->attributes["n"];
+					if (numerus == "sg")
+						p_defArticles[gt] = a->children[0]->name;
+					else if (numerus == "pl")
+						p_defArticlesPl[gt] = a->children[0]->name;
+					else
+						DEBUG(DBG_DLP, "WARNING: Case::setFromXmlNode(): Missing attribute \"n\" in node \"a\"");
+						
+				}
+				
+				a = n->findNext(ns);
+				
+			}
+			
+			n->findFree(ns);
+			
+		}
+		
+		n = articlesNode->findFirst("indefinite");
+		if (n != NULL) {
+			sxml::NodeSearch* ns = n->findInit("a");
+			sxml::XmlNode* a = n->findNext(ns);
+			while (a != NULL) {
+				if (a->children.size() == 1 && 
+					a->children[0]->type == sxml::ntTextNode)
+				{
+					Gender::Type gt = Gender::getType(a->attributes["g"]);
+					string numerus = a->attributes["n"];
+					if (numerus == "sg")
+						p_indefArticles[gt] = a->children[0]->name;
+					else if (numerus == "pl")
+						p_indefArticlesPl[gt] = a->children[0]->name;
+					else
+						DEBUG(DBG_DLP, "WARNING: Case::setFromXmlNode(): Missing attribute \"n\" in node \"a\"");
+						
+				}
+				
+				a = n->findNext(ns);
+				
+			}
+			
+			n->findFree(ns);
+			
+		}
+		
+	} // articlesNode
+
 }
 
 void Case::setToXmlNode(sxml::XmlNode* node)
@@ -73,7 +181,7 @@ void Conjugation::setFromXmlNode(sxml::XmlNode* node)
 {
 	p_id = node->attributes["t"];
 	if (p_id.empty()) {
-		DEBUG(DBG_GENERAL, "ERROR: Conjugation::setFromXmlNode() no id!");
+		DEBUG(DBG_DLP, "ERROR: Conjugation::setFromXmlNode() no id!");
 		throw EXmlMissingAttribute("<stream>", node->name, "t");
 	}
 		
@@ -81,7 +189,7 @@ void Conjugation::setFromXmlNode(sxml::XmlNode* node)
 	if (n != NULL)
 		p_name.setFromXmlNode(n);
 	else {
-		DEBUG(DBG_GENERAL, "ERROR: Conjugation::setFromXmlNode(): no name!");
+		DEBUG(DBG_DLP, "ERROR: Conjugation::setFromXmlNode(): no name!");
 		throw EXmlTreeInvalid("<stream>", node->name);
 	}
 }
@@ -165,7 +273,7 @@ void LanguageProfile::readFromFile(string fileName)
 	ifstream fin(p_fileName.c_str());
 		
 	if (fin.fail()) {
-		DEBUG(DBG_GENERAL, "LanguageProfile::readFromFile(): could not open file %s\n", fileName.c_str());
+		DEBUG(DBG_DLP, "LanguageProfile::readFromFile(): could not open file %s\n", fileName.c_str());
 		throw EFileError(p_fileName);
 	}
 	
@@ -194,7 +302,7 @@ void LanguageProfile::readFromStream(istream& readFrom)
 		
 	} catch (sxml::Exception e) {
 		delete xmlNode;
-		DEBUG(DBG_GENERAL, "LanguageProfile::readFromStream(): eXmlParsingError %i\n", e);
+		DEBUG(DBG_DLP, "LanguageProfile::readFromStream(): eXmlParsingError %i\n", e);
 		
 		throw EXmlParsingError(p_fileName);
 	}
@@ -327,7 +435,11 @@ void LanguageProfile::readFromStream(istream& readFrom)
 			node2 = node->findFirst("genders");
 			if (node2 != NULL)
 				Gender::updateFromXmlNode(node2);
-				
+			
+			node2 = node->findFirst("gendersShort");
+			if (node2 != NULL)
+				Gender::updateShortNamesFromXmlNode(node2);
+			
 			node2 = node->findFirst("wordClasses");
 			if (node2 != NULL)
 				WordClass::updateFromXmlNode(node2);
@@ -338,12 +450,12 @@ void LanguageProfile::readFromStream(istream& readFrom)
 		}
 		
 	} catch (EXmlTreeInvalid e) {
-		DEBUG(DBG_GENERAL, "LanguageProfile::readFromStream(): Exception occurred: %s\n", e.msg.c_str());
+		DEBUG(DBG_DLP, "LanguageProfile::readFromStream(): Exception occurred: %s\n", e.msg.c_str());
 		delete xmlNode;
 		throw;
 		
 	} catch (Exception e) {
-		DEBUG(DBG_GENERAL, "LanguageProfile::readFromStream(): Exception occurred: %s\n", e.msg.c_str());
+		DEBUG(DBG_DLP, "LanguageProfile::readFromStream(): Exception occurred: %s\n", e.msg.c_str());
 		delete xmlNode;
 		throw;
 	}

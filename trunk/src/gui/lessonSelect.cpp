@@ -137,6 +137,10 @@ void LessonSelect::on_pbEdit_clicked(bool pressed)
 void LessonSelect::on_pbNew_clicked(bool pressed)
 {
 	Q_UNUSED(pressed);
+	
+	Dvt::LessonFile* lessonFile = core->createLessonFile();
+	mainWindow->dlgLessonMetaEdit->setFromLessonFile(lessonFile);
+	
 	QDialog::DialogCode res = 
 		(QDialog::DialogCode) mainWindow->dlgLessonMetaEdit->exec();
 	if (res == QDialog::Accepted) {
@@ -166,9 +170,6 @@ void LessonSelect::on_pbNew_clicked(bool pressed)
 			
 		}
 		
-		Dvt::LessonFile* lessonFile = core->createLessonFile();
-		mainWindow->dlgLessonMetaEdit->setToLessonFile(lessonFile);
-		
 		try {
 			lessonFile->writeToFile(QSTR2STR(fileName));
 				
@@ -180,6 +181,9 @@ void LessonSelect::on_pbNew_clicked(bool pressed)
 					.arg(e.code)
 					.arg(e.msg.c_str()),
 				QMessageBox::Cancel);
+				
+			mainWindow->dlgLessonMetaEdit->setFromLessonFile(NULL);
+			core->removeLessonFile(lessonFile);
 			
 			return;
 			
@@ -188,7 +192,11 @@ void LessonSelect::on_pbNew_clicked(bool pressed)
 		mainWindow->dlgLessonMetaEdit->setFromLessonFile(NULL);
 		loadLessonFiles();
 		
+	} else {
+		core->removeLessonFile(lessonFile);
+		
 	}
+	
 }
 
 void LessonSelect::on_pbTrain_clicked(bool pressed)

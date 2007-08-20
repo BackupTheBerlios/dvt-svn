@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<divotra:languageProfile formatVersion="1.0" langCode="sv" version="0.1" xmlns:divotra="http://www.delta-my.de/divotra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.delta-my.de/divotra/dlp.xsd">
+
+<license>
+	<lg c="de">
+		Die Verwendung dieser Datei unterliegt keinerlei Einschränkungen.
+	</lg>
+</license>
+
+<authors>
+	<author>
+		Julius Schulz
+	</author>
+</authors>
+
+<name>
+	<lg c="de">Schwedisch</lg>
+	<lg c="en">Swedish</lg>
+	<lg c="fr">suédois</lg>
+	<lg c="sv">svenska</lg>
+</name>
+
+<genders>
+  <g t="e" />
+  <g t="n" />
+</genders>
+
+<defArticles> <!-- will be obsolete -->
+  <g t="e">den</g>
+  <g t="n">det</g>
+</defArticles>        
+
+<personalPronouns>
+	<p t="1">jag</p>
+	<p t="2">du</p>
+	<p t="3">hon/han/det/den</p>
+	<p t="4">vi</p>
+	<p t="5">ni</p>
+	<p t="6">de</p>
+</personalPronouns>
+
+<cases>
+	<c t="1">
+		<name>
+			<lg c="de">Nominativ</lg>
+			<lg c="en">nominative</lg>
+		</name>
+		<articles>
+			<definite>
+				<a g="e" n="sg">den</a>
+				<a g="n" n="sg">det</a>
+			</definite>
+		</articles>
+	</c>
+</cases>
+
+<tenses>
+	<t t="1">
+		<name>
+			<lg c="de">Präsens</lg>
+			<lg c="en">Present</lg>
+			<lg c="sv">Presens</lg>
+		</name>
+	</t>
+	<t t="2">
+		<name>
+			<lg c="de">Präteritum</lg>
+			<lg c="en">Past tense</lg>
+			<lg c="sv">Preteritum</lg>
+		</name>
+	</t>
+	<t t="3">
+		<name>
+			<lg c="de">Supinum (Perfekt)</lg>
+			<lg c="en">Supinum (Perfect)</lg>
+			<lg c="sv">Supinum</lg>
+		</name>
+	</t>
+	<t t="4">
+		<name>
+			<lg c="de">Imperativ</lg>
+			<lg c="en">Imperative</lg>
+			<lg c="sv">Imperativ</lg>
+		</name>
+	</t>
+</tenses>
+
+<translations>
+	<genders>
+		<g t="u"><lg c="sv">obekant</lg></g>
+		<g t="f"><lg c="sv">feminin</lg></g>
+		<g t="m"><lg c="sv">maskulin</lg></g>
+		<g t="n"><lg c="sv">neutrum</lg></g>
+		<g t="e"><lg c="sv">utrum</lg></g>
+	</genders>
+	<gendersShort>
+		<g t="u"><lg c="sv">obek</lg></g>
+		<g t="f"><lg c="sv">f</lg></g>
+		<g t="m"><lg c="sv">m</lg></g>
+		<g t="n"><lg c="sv">n</lg></g>
+		<g t="e"><lg c="sv">utr</lg></g>
+	</gendersShort>
+	<wordClasses>
+		<wc t="u"><lg c="sv">Obekant</lg></wc>
+		<wc t="n"><lg c="sv">Substantiv</lg></wc>
+		<wc t="v"><lg c="sv">Verb</lg></wc>
+		<wc t="ad"><lg c="sv">Adjektiv</lg></wc>
+		<wc t="av"><lg c="sv">Adverb</lg></wc>
+		<wc t="pn"><lg c="sv">Pronomen</lg></wc>
+		<wc t="pp"><lg c="sv">Preposition</lg></wc>
+		<wc t="cj"><lg c="sv">Konjunktion</lg></wc>
+		<wc t="ij"><lg c="sv">Interjektion</lg></wc>
+		<wc t="nr"><lg c="sv">Numeral</lg></wc>
+		<wc t="p"><lg c="sv">Uttryck</lg></wc>
+		<wc t="nnv"><lg c="sv">inget substantiv, inget verb</lg></wc>
+	</wordClasses>
+	<wordClassesShort>
+		<wc t="u"><lg c="de">Obek</lg></wc>
+		<wc t="n"><lg c="de">Subst</lg></wc>
+		<wc t="v"><lg c="de">Vb</lg></wc>
+		<wc t="ad"><lg c="de">Adj</lg></wc>
+		<wc t="av"><lg c="de">Adv</lg></wc>
+		<wc t="pn"><lg c="de">Pron</lg></wc>
+		<wc t="pp"><lg c="de">Präp</lg></wc>
+		<wc t="cj"><lg c="de">Konj</lg></wc>
+		<wc t="ij"><lg c="de">Interj</lg></wc>
+		<wc t="nr"><lg c="de">Num</lg></wc>
+		<wc t="p"><lg c="de">Uttr</lg></wc>
+		<wc t="nnv"><lg c="de">igSubst/igVb</lg></wc>
+	</wordClassesShort>
+</translations>
+
+</divotra:languageProfile>

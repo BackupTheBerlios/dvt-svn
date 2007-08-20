@@ -41,6 +41,7 @@ public:
 		Male,
 		Female,
 		Neuter,
+		Epicene,	// common gender (eg. swedish utrum)
 		High
 	} Type;
 

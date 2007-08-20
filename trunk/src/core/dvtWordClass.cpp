@@ -43,21 +43,25 @@ void Gender::init()
 	p_gtToMlString[Male].setString("en", "masculine");
 	p_gtToMlString[Female].setString("en", "feminine");
 	p_gtToMlString[Neuter].setString("en", "neuter");
+	p_gtToMlString[Epicene].setString("en", "epicene");
 	
 	p_gtToMlStringShort[Undefined].setString("en", "u");
 	p_gtToMlStringShort[Male].setString("en", "m");
 	p_gtToMlStringShort[Female].setString("en", "f");
 	p_gtToMlStringShort[Neuter].setString("en", "n");
+	p_gtToMlStringShort[Epicene].setString("en", "e");
 	
 	p_typeToXmlAttr[Undefined] = "u";
 	p_typeToXmlAttr[Male] = "m";
 	p_typeToXmlAttr[Female] = "f";
 	p_typeToXmlAttr[Neuter] = "n";
+	p_typeToXmlAttr[Epicene] = "e";
 	
 	p_xmlAttrToType["u"] = Undefined;
 	p_xmlAttrToType["m"] = Male;
 	p_xmlAttrToType["f"] = Female;
 	p_xmlAttrToType["n"] = Neuter;
+	p_xmlAttrToType["e"] = Epicene;
 	
 	initialized = true;
 }

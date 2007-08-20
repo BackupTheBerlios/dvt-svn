@@ -25,21 +25,34 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+const char* dbg_strcat[] = {"GEN", "XML", "GUI", "DLP"}; 
+
 static bool dbg_general = true;
 static bool dbg_xml = true;
+static bool dbg_gui = true;
+static bool dbg_dlp = true;
 
 static FILE* dbg_logFile = stderr;
+
+#define DBG_FMTSTR_LEN	1024
+static char dbg_strfmt[DBG_FMTSTR_LEN];
 
 void dbgInit(FILE* logFile) {
 	dbg_logFile = logFile;
 }
 
-void debug(const int cat, const char* msg, ...) {
-	if ((DBG_GENERAL == cat && dbg_general) || (DBG_XML == cat && dbg_xml))
+void debug(const int cat, const char* msg, ...) 
+{
+	if ((DBG_GENERAL == cat && dbg_general) || 
+		(DBG_XML == cat && dbg_xml) ||
+		(DBG_GUI == cat && dbg_gui) ||
+		(DBG_DLP == cat && dbg_dlp))
 	{
+		snprintf(dbg_strfmt, DBG_FMTSTR_LEN, "[%s] %s\n", dbg_strcat[cat], msg);
+		
 		va_list vargs;
 		va_start(vargs, msg);
-		vfprintf(dbg_logFile, msg, vargs);
+		vfprintf(dbg_logFile, dbg_strfmt, vargs);
 		va_end(vargs);
 		
 		fflush(dbg_logFile);

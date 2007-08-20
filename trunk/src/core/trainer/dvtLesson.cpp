@@ -30,6 +30,8 @@
 #include "debug.h"
 #include "xmlNode.h"
 
+#include "assert.h"
+
 namespace Dvt
 {
 

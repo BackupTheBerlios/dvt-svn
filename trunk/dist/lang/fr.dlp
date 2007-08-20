@@ -25,7 +25,7 @@
 	<g t="f" />
 </genders>
 
-<defArticles>
+<defArticles> <!-- will be obsolete -->
 	<g t="m">le</g>
 	<g t="f">la</g>
 </defArticles>
@@ -38,6 +38,29 @@
 	<p t="5">vous</p>
 	<p t="6">ils/elles</p>
 </personalPronouns>
+
+<cases>
+	<c t="1">
+		<name>
+			<lg c="de">Nominativ</lg>
+			<lg c="en">nominative</lg>
+		</name>
+		<articles>
+			<definite>
+				<a g="m" n="sg">le</a>
+				<a g="f" n="sg">la</a>
+				<a g="m" n="pl">les</a>
+				<a g="f" n="pl">les</a>
+			</definite>
+			<indefinite>
+				<a g="m" n="sg">un</a>
+				<a g="f" n="sg">une</a>
+				<a g="m" n="pl">des</a>
+				<a g="f" n="pl">des</a>
+			</indefinite>
+		</articles>
+	</c>
+</cases>
 
 <tenses>
 	<t t="1">
@@ -54,6 +77,7 @@
 		<g t="m"><lg c="fr">masculin</lg></g>
 		<g t="f"><lg c="fr">féminin</lg></g>
 		<g t="n"><lg c="fr">neutre</lg></g>
+		<g t="e"><lg c="fr">epicène</lg></g>
 	</genders>
 	<wordClasses>
 		<wc t="u"><lg c="fr">inconnue</lg></wc>

@@ -26,7 +26,7 @@
 	<g t="n" />
 </genders>
 
-<defArticles>
+<defArticles> <!-- will be obsolete -->
 	<g t="m">der</g>
 	<g t="f">die</g>
 	<g t="n">das</g>
@@ -40,6 +40,48 @@
 	<p t="5">ihr</p>
 	<p t="6">sie</p>
 </personalPronouns>
+
+<cases>
+	<c t="1">
+		<name>
+			<lg c="de">Nominativ</lg>
+			<lg c="en">nominative</lg>
+		</name>
+		<articles>
+			<definite>
+				<a g="m" n="sg">der</a>
+				<a g="f" n="sg">die</a>
+				<a g="n" n="sg">das</a>
+				<a g="m" n="pl">die</a>
+				<a g="f" n="pl">die</a>
+				<a g="n" n="pl">die</a>
+			</definite>
+			<indefinite>
+				<a g="m" n="sg">ein</a>
+				<a g="f" n="sg">eine</a>
+				<a g="n" n="sg">ein</a>
+			</indefinite>
+		</articles>
+	</c>
+	<c t="2">
+		<name>
+			<lg c="de">Genitiv</lg>
+			<lg c="en">genitive</lg>
+		</name>
+	</c>
+	<c t="3">
+		<name>
+			<lg c="de">Dativ</lg>
+			<lg c="en">dative</lg>
+		</name>
+	</c>
+	<c t="4">
+		<name>
+			<lg c="de">Akkusativ</lg>
+			<lg c="en">accusative</lg>
+		</name>
+	</c>
+</cases>
 
 <tenses>
 	<t t="1">
@@ -56,7 +98,12 @@
 		<g t="m"><lg c="de">maskulin</lg></g>
 		<g t="f"><lg c="de">feminin</lg></g>
 		<g t="n"><lg c="de">sächlich</lg></g>
+		<g t="e"><lg c="de">geschlechtsneutral</lg></g>
 	</genders>
+	<gendersShort>
+		<g t="u"><lg c="de">unbek</lg></g>
+		<g t="e"><lg c="de">gn</lg></g>
+	</gendersShort>
 	<wordClasses>
 		<wc t="u"><lg c="de">unbekannt</lg></wc>
 		<wc t="n"><lg c="de">Substantiv</lg></wc>

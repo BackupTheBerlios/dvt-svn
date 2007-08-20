@@ -25,6 +25,8 @@
 #include "dvtEntry.h"
 #include "dvtLanguageProfile.h"
 
+#include "assert.h"
+
 namespace Dvt
 {
 

@@ -34,6 +34,8 @@
 #include <assert.h>
 #include <errno.h>
 
+#include <algorithm>
+
 namespace Dvt {
 
 using namespace std;
@@ -226,8 +228,26 @@ void Core::loadLessonFiles(const string& dirName) {
 Dvt::LessonFile* Core::createLessonFile()
 {
 	Dvt::LessonFile* lessonFile = new Dvt::LessonFile(true);
+	// TODO: the following should be a little bit more sophisticated...
+	lessonFile->setLangProfile_o(p_languageProfiles.begin()->second);
+	lessonFile->setLangProfile_t(p_languageProfiles.begin()->second);
 	p_lessonFiles.push_back(lessonFile);
 	return lessonFile;
+}
+
+/**
+ * Removes a lesson file from the current managed list and unloads it from
+ * memory. This function does NOT delete the lesson file from disk. The LessonFile
+ * object is invalid after this call.
+ */
+void Core::removeLessonFile(LessonFile* lfile)
+{
+	if (lfile != NULL) {
+		vector<LessonFile*>::iterator it = find(p_lessonFiles.begin(), p_lessonFiles.end(), lfile);
+		assert(it != p_lessonFiles.end());
+		p_lessonFiles.erase(it);
+		delete lfile;
+	}
 }
 
 } // namespace

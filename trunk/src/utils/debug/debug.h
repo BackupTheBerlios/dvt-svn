@@ -27,6 +27,8 @@
 
 #define DBG_GENERAL 	0
 #define DBG_XML			1
+#define DBG_GUI			2
+#define DBG_DLP			3
 
 #define DBGINIT dbgInit
 #define DEBUG debug
