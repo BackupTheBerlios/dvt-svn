@@ -23,18 +23,34 @@ using namespace std;
 
 /* Case ***********************************************************************/
 
+/**
+ * Constructor of case class
+ */
 Case::Case(LanguageProfile* lp)
 {
 	p_langProfile = lp;
 }
 
+/**
+ * Destructor of case class
+ */
 Case::~Case()
 {
 }
 
+/**
+ * Language profile unique case ID (also used in XML)
+ */
 string Case::id() {return p_id;}
+
+/**
+ * Human-readable name of case
+ */
 MlString& Case::name() {return p_name;}
 
+/**
+ * Returns the definite article for a given gender (nominative case)
+ */
 string Case::getDefArticle(Gender::Type gen)
 {
 	map<Gender::Type, string>::iterator it;
@@ -46,6 +62,9 @@ string Case::getDefArticle(Gender::Type gen)
 		return string();
 }
 
+/**
+ * Returns the definite plural article for a given gender (nominative case)
+ */
 string Case::getDefArticlePl(Gender::Type gen)
 {
 	map<Gender::Type, string>::iterator it;
@@ -57,6 +76,9 @@ string Case::getDefArticlePl(Gender::Type gen)
 		return string();
 }
 
+/**
+ * Returns the indefinite article for a given gender (nominative case)
+ */
 string Case::getIndefArticle(Gender::Type gen)
 {
 	map<Gender::Type, string>::iterator it;
@@ -68,6 +90,9 @@ string Case::getIndefArticle(Gender::Type gen)
 		return string();
 }
 
+/**
+ * Returns the indefinite plural article for a given gender (nominative case)
+ */
 string Case::getIndefArticlePl(Gender::Type gen)
 {
 	map<Gender::Type, string>::iterator it;
@@ -79,6 +104,11 @@ string Case::getIndefArticlePl(Gender::Type gen)
 		return string();
 }
 
+/**
+ * Load case information from XML subtree.
+ * 
+ * @param node	Root of XML subtree
+ */
 void Case::setFromXmlNode(sxml::XmlNode* node)
 {
 	p_id = node->attributes["t"];
@@ -90,7 +120,7 @@ void Case::setFromXmlNode(sxml::XmlNode* node)
 	sxml::XmlNode* n = node->findFirst("name");
 	if (n != NULL) {
 		p_name.setFromXmlNode(n);
-		DEBUG(DBG_DLP, "Case %s: %s", p_id.c_str(), p_name.c_str());
+		DEBUG(DBG_DLP, "  Case %s: %s", p_id.c_str(), p_name.c_str());
 		
 	} else {
 		DEBUG(DBG_DLP, "ERROR: Case::setFromXmlNode(): no name!");
@@ -158,6 +188,13 @@ void Case::setFromXmlNode(sxml::XmlNode* node)
 
 }
 
+/**
+ * Write case information to a given XML subtree.
+ * 
+ * NOT YET IMPLEMENTED.
+ * 
+ * @param node	XML subtree
+ */
 void Case::setToXmlNode(sxml::XmlNode* node)
 {
 	assert(false);
@@ -165,36 +202,138 @@ void Case::setToXmlNode(sxml::XmlNode* node)
 
 /* Conjugation ****************************************************************/
 
+/**
+ * Constructor of conjugation class.
+ * 
+ * @param lp	Language profile the conjugation class belongs to
+ */
 Conjugation::Conjugation(LanguageProfile* lp)
 {
 	p_langProfile = lp;
 }
 
+/**
+ * Destructor of conjugation class
+ */
 Conjugation::~Conjugation()
 {
 }
 
+/**
+ * Language profile unique conjugation ID (also XML identifier).
+ */
 string Conjugation::id() {return p_id;}
+
+/**
+ * Human-readable name of conjugation class
+ */
 MlString& Conjugation::name() {return p_name;}
 
+/**
+ * Load conjugation information from XML subtree.
+ * 
+ * @param node	Root of XML subtree
+ */
 void Conjugation::setFromXmlNode(sxml::XmlNode* node)
 {
 	p_id = node->attributes["t"];
 	if (p_id.empty()) {
 		DEBUG(DBG_DLP, "ERROR: Conjugation::setFromXmlNode() no id!");
 		throw EXmlMissingAttribute("<stream>", node->name, "t");
+		
 	}
 		
 	sxml::XmlNode* n = node->findFirst("name");
-	if (n != NULL)
+	if (n != NULL) {
 		p_name.setFromXmlNode(n);
-	else {
+		DEBUG(DBG_DLP, "  Conjugation %s: %s", p_id.c_str(), p_name.c_str());
+		
+	} else {
 		DEBUG(DBG_DLP, "ERROR: Conjugation::setFromXmlNode(): no name!");
 		throw EXmlTreeInvalid("<stream>", node->name);
+		
 	}
 }
 
+/**
+ * Write conjugation information to a XML subtree.
+ * 
+ * NOT YET IMPLEMENTED.
+ * 
+ * @param node	XML subtree
+ */
 void Conjugation::setToXmlNode(sxml::XmlNode* node)
+{
+	assert(false);
+}
+
+/* Tense ****************************************************************/
+
+/**
+ * Constructor for Tense class.
+ * 
+ * @param lp	Language profile the tense belongs to
+ */
+Tense::Tense(LanguageProfile* lp)
+{
+	p_langProfile = lp;
+}
+
+/**
+ * Destructor for Tense class.
+ */
+Tense::~Tense()
+{
+}
+
+/**
+ * Return the (XML-) identifier for the tense.
+ * 
+ * @return Language profile unique tense ID
+ */
+string Tense::id() {return p_id;}
+
+/**
+ * Human-readable name for tense.
+ * 
+ * @return Name of tense
+ */
+MlString& Tense::name() {return p_name;}
+
+/**
+ * Load tense information from XML subtree.
+ * 
+ * @param node	Root of XML subtree
+ */
+void Tense::setFromXmlNode(sxml::XmlNode* node)
+{
+	p_id = node->attributes["t"];
+	if (p_id.empty()) {
+		DEBUG(DBG_DLP, "ERROR: Tense::setFromXmlNode() no id!");
+		throw EXmlMissingAttribute("<stream>", node->name, "t");
+		
+	}
+		
+	sxml::XmlNode* n = node->findFirst("name");
+	if (n != NULL) {
+		p_name.setFromXmlNode(n);
+		DEBUG(DBG_DLP, "  Tense %s: %s", p_id.c_str(), p_name.c_str());
+		
+	} else {
+		DEBUG(DBG_DLP, "ERROR: Tense::setFromXmlNode(): no name!");
+		throw EXmlTreeInvalid("<stream>", node->name);
+		
+	}
+}
+
+/**
+ * Save tense information to XML subtree.
+ * 
+ * NOT YET IMPLEMENTED.
+ * 
+ * @param node	Root of XML subtree
+ */
+void Tense::setToXmlNode(sxml::XmlNode* node)
 {
 	assert(false);
 }
@@ -221,6 +360,7 @@ Language* LanguageProfile::lang() {return p_lang;}
 vector<Gender::Type>& LanguageProfile::genders() {return p_genders;}
 map<string, Case*>& LanguageProfile::cases() {return p_cases;}
 map<string, Conjugation*>& LanguageProfile::conjugations() {return p_conjugations;}
+map<string, Tense*>& LanguageProfile::tenses() {return p_tenses;}
 
 Case* LanguageProfile::getCase(std::string id)
 {
@@ -242,6 +382,31 @@ Conjugation* LanguageProfile::getConjugation(std::string id)
 		return it->second;
 	else	
 		return NULL;
+}
+
+Tense* LanguageProfile::getTense(std::string id)
+{
+	map<std::string, Tense*>::const_iterator it;
+	
+	it = p_tenses.find(id);
+	if (it != p_tenses.end()) {
+		return it->second;
+		
+	} else {
+		return NULL;
+		
+	}
+}
+
+Tense* LanguageProfile::getDefaultTense()
+{
+	if (p_tenses.size() > 0) {
+		return p_tenses.begin()->second;
+		
+	} else {
+		return NULL;
+		
+	}
 }
 
 string LanguageProfile::getPersonalPronoun(PersonalPronoun pp)
@@ -293,6 +458,12 @@ void LanguageProfile::readFromFile(string fileName)
 	}
 }
 
+/**
+ * Loads a language profile from a stream containing the language profile in XML
+ * format.
+ * 
+ * @param readFrom	Stream containing a language profile
+ */
 void LanguageProfile::readFromStream(istream& readFrom)
 {
 	sxml::XmlNode* xmlNode = new sxml::XmlNode();
@@ -348,6 +519,8 @@ void LanguageProfile::readFromStream(istream& readFrom)
 		if (node == NULL) throw EXmlMissingNode(p_fileName, "name");
 		p_name.setFromXmlNode(node);
 		
+		DEBUG(DBG_DLP, "Language profile: %s (%s)", p_name.c_str(), p_langCode.c_str());
+		
 		node = dlpNode->findFirst("conjugations");
 		if (node != NULL) {
 			sxml::NodeSearch* ns = node->findInit("defcj");
@@ -375,6 +548,24 @@ void LanguageProfile::readFromStream(istream& readFrom)
 					Case* c = new Case(this);
 					c->setFromXmlNode(node2);
 					p_cases[c->id()] = c;
+					node2 = node->findNext(ns);
+				}
+			} catch (Exception e) {
+				node->findFree(ns);
+				throw;
+			}
+			node->findFree(ns);
+		}
+		
+		node = dlpNode->findFirst("tenses");
+		if (node != NULL) {
+			sxml::NodeSearch* ns = node->findInit("t");
+			node2 = node->findNext(ns);
+			try {
+				while (node2 != NULL) {
+					Tense* t = new Tense(this);
+					t->setFromXmlNode(node2);
+					p_tenses[t->id()] = t;
 					node2 = node->findNext(ns);
 				}
 			} catch (Exception e) {

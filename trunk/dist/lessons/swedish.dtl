@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<divotra:trainingLesson formatVersion="1.0" langCode_o="de" langCode_t="sv" version="1.0" xmlns:divotra="http://www.delta-my.de/divotra" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.delta-my.de/divotra/dtl.xsd">
+	<title>
+		<lg c="en">
+			Miscellaneous
+		</lg>
+		<lg c="de">
+			Verschiedenes
+		</lg>
+	</title>
+	<license>
+		<lg c="de">
+			Die Verwendung dieser Datei unterliegt keinerlei Einschränkungen.
+		</lg>
+	</license>
+	<lessons>
+		<lesson n="1">
+			<title>
+				<lg c="ia">
+					Lektion 1
+				</lg>
+			</title>
+			<entries>
+				<e t="v">
+					<o>
+						reden
+					</o>
+					<t>
+						tala
+					</t>
+					<te>
+						<cj t="1" ts="1">
+							<p t="1">
+								talar
+							</p>
+						</cj>
+					</te>
+				</e>
+				<e t="v">
+					<o>
+						lesen
+					</o>
+					<t>
+						läsa
+					</t>
+					<te>
+						<cj t="2">
+							<p t="1">
+								läser
+							</p>
+						</cj>
+					</te>
+				</e>
+				<e t="v">
+					<o>
+						wohnen
+					</o>
+					<t>
+						bo
+					</t>
+					<te>
+						<cj t="3">
+							<p t="1">
+								bor
+							</p>
+						</cj>
+					</te>
+				</e>
+				<e t="v">
+					<o>
+						sehen
+					</o>
+					<t>
+						se
+					</t>
+					<te>
+						<cj t="4">
+							<p t="1">
+								ser
+							</p>
+						</cj>
+					</te>
+				</e>
+			</entries>
+		</lesson>
+	</lessons>
+</divotra:trainingLesson>

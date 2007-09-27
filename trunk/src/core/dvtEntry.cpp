@@ -66,7 +66,23 @@ void Entry::setGender(Gender::Type gt) {
 }
 
 map<string, string>& Entry::decls() {return p_decls;} 
-map<PersonalPronoun, string>& Entry::conjs() {return p_conjs;}
+
+/**
+ * Return the conjugations for a given tense. If tense is omitted, the default
+ * tense is used (eg. none or the first tense with the lowest ID defined in the
+ * XML file).
+ * 
+ * @param tense	Pointer to tense
+ * 
+ * @return STL map with conjugations
+ */
+map<PersonalPronoun, string>& Entry::conjs(Tense* tense)
+{
+	if (tense == NULL)
+		tense = lp->getDefaultTense();
+	
+	return p_conjs[tense];
+}
 
 string Entry::longName() {return lp->lang()->getLongName(this);}
 string Entry::longNameHtml() {return lp->lang()->getLongNameHtml(this);}
@@ -74,8 +90,40 @@ string Entry::longNameHtml() {return lp->lang()->getLongNameHtml(this);}
 string Entry::getDecl(string id) {return p_decls[id];}
 void  Entry::setDecl(string id, std::string s) {p_decls[id] = s;}
 
-string Entry::getConj(PersonalPronoun pp) {return p_conjs[pp];}
-void Entry::setConj(PersonalPronoun pp, string s) {p_conjs[pp] = s;}
+/**
+ * Get a conjugated form of a verb. If tense is omitted the default tense is
+ * used (eg. none or the first tense with the lowest ID defined in the
+ * XML file).
+ * 
+ * @param pp	Personal pronoun
+ * @param tense	Tense
+ * 
+ * @return Conjugated form of the entry
+ */
+string Entry::getConj(PersonalPronoun pp, Tense* tense)
+{
+	if (tense == NULL)
+		tense = lp->getDefaultTense();
+		
+	return p_conjs[tense][pp];
+}
+
+/**
+ * Set a conjugated form of a verb. If tense is omitted the default tense is
+ * used (eg. none or the first tense with the lowest ID defined in the
+ * XML file).
+ * 
+ * @param pp	Personal pronoun
+ * @param s		Conjugated form of the entry
+ * @param tense	Tense
+ */
+void Entry::setConj(PersonalPronoun pp, string s, Tense* tense)
+{
+	if (tense == NULL)
+		tense = lp->getDefaultTense();
+	
+	p_conjs[tense][pp] = s;
+}
 
 Conjugation* Entry::conjClass() {return lp->getConjugation(p_conjClass);}
 
@@ -108,8 +156,11 @@ void Entry::setFromXmlNode(sxml::XmlNode* node)
 		n->findFree(ns);
 	}
 	
-	n = node->findFirst("cj");
-	if (n != NULL) {
+	sxml::NodeSearch* ns_cj = node->findInit("cj");
+	while ((n = node->findNext(ns_cj))) {
+		Tense* tense = lp->getTense(n->attributes["ts"]);
+		if (tense == NULL)
+			tense = lp->getDefaultTense();
 		p_conjClass = n->attributes["t"];
 		sxml::XmlNode* pn;
 		sxml::NodeSearch* ns = n->findInit("p");
@@ -118,11 +169,12 @@ void Entry::setFromXmlNode(sxml::XmlNode* node)
 			if (pp > ppUndefined && pp < ppHigh && pn->children.size() == 1 && 
 				pn->children[0]->type == sxml::ntTextNode)
 			{
-				p_conjs[pp] = pn->children[0]->name;
+				p_conjs[tense][pp] = pn->children[0]->name;
 			}
 		}
 		n->findFree(ns);
 	}
+	node->findFree(ns_cj);
 	
 }
 
@@ -148,14 +200,23 @@ void Entry::setToXmlNode(sxml::XmlNode* node)
 		}
 		if (n->children.size() > 0)
 			node->children.push_back(n);
+		else
+			delete n;
 	}
 	
-	if (p_conjs.size() > 0) {
+	map<Tense*, map<PersonalPronoun, std::string> >::iterator it_tense;
+	for (it_tense = p_conjs.begin(); it_tense != p_conjs.end(); it_tense++) {
+		Tense* tense = it_tense->first;
+		map<PersonalPronoun, std::string>& cjs = it_tense->second;
+		
 		sxml::XmlNode* n = new sxml::XmlNode(sxml::ntElementNode, "cj");
 		if (!p_conjClass.empty())	
 			n->attributes["t"] = p_conjClass;
+		if (tense != NULL)
+			n->attributes["ts"] = tense->id();
+			
 		map<PersonalPronoun, string>::const_iterator it;
-		for (it = p_conjs.begin(); it != p_conjs.end(); it++) {
+		for (it = cjs.begin(); it != cjs.end(); it++) {
 			if (it->first > ppUndefined && it->first < ppHigh && !it->second.empty()) {
 				char pps[33];
 				snprintf(pps, 33, "%d", it->first);
@@ -168,6 +229,8 @@ void Entry::setToXmlNode(sxml::XmlNode* node)
 		}
 		if (n->children.size() > 0)
 			node->children.push_back(n);
+		else
+			delete n;
 	}
 }
 

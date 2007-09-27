@@ -47,6 +47,22 @@ EditDetailVerb::EditDetailVerb(LessonEdit* ledit, Dvt::LanguageProfile* lp, QWid
 			cboxConjClass->addItem(STR2QSTR(c->name()), (int) c);
 		}
 		
+		cboxConjClass->setCurrentIndex(0);
+		
+	}
+	
+	if (lp->tenses().size() == 0) {
+		wTenses->hide();
+		
+	} else {
+		map<string, Dvt::Tense*>::const_iterator it;
+		for (it = lp->tenses().begin(); it != lp->tenses().end(); it++) {
+			Dvt::Tense* t = it->second;
+			cboxTense->addItem(STR2QSTR(t->name()), (int) t);
+		}
+		
+		cboxTense->setCurrentIndex(0);
+		
 	}
 	
 	lbPpSg1->setText(STR2QSTR(lp->getPersonalPronoun(Dvt::ppSingular1)));
@@ -56,12 +72,13 @@ EditDetailVerb::EditDetailVerb(LessonEdit* ledit, Dvt::LanguageProfile* lp, QWid
 	lbPpPl2->setText(STR2QSTR(lp->getPersonalPronoun(Dvt::ppPlural2)));
 	lbPpPl3->setText(STR2QSTR(lp->getPersonalPronoun(Dvt::ppPlural3)));
 	
-	setTabOrder(cboxConjClass, lbPpSg1);
-	setTabOrder(lbPpSg1, lbPpSg2);
-	setTabOrder(lbPpSg2, lbPpSg3);
-	setTabOrder(lbPpSg3, lbPpPl1);
-	setTabOrder(lbPpPl1, lbPpPl2);
-	setTabOrder(lbPpPl2, lbPpPl3);
+	setTabOrder(cboxTense, cboxConjClass);
+	setTabOrder(cboxConjClass, leSg1);
+	setTabOrder(leSg1, leSg2);
+	setTabOrder(leSg2, leSg3);
+	setTabOrder(leSg3, lePl1);
+	setTabOrder(lePl1, lePl2);
+	setTabOrder(lePl2, lePl3);
 	
 }
 

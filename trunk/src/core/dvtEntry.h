@@ -36,6 +36,7 @@ namespace Dvt
 
 class Core;
 class LanguageProfile;
+class Tense;
 
 class Entry
 {
@@ -49,7 +50,7 @@ private:
 	std::map<std::string, std::string> p_decls;
 	
 	std::string p_conjClass;
-	std::map<PersonalPronoun, std::string> p_conjs;
+	std::map<Tense*, std::map<PersonalPronoun, std::string> > p_conjs;
 	
 public:
 	Entry(LanguageProfile* lp, std::string baseName = std::string(), 
@@ -68,7 +69,7 @@ public:
 	void setGender(Gender::Type gt);
 	
 	std::map<std::string, std::string>& decls();
-	std::map<PersonalPronoun, std::string>& conjs();
+	std::map<PersonalPronoun, std::string>& conjs(Tense* tense = NULL);
 	
 	std::string longName();
 	std::string longNameHtml();
@@ -76,8 +77,8 @@ public:
 	std::string getDecl(std::string id);
 	void setDecl(std::string id, std::string s);
 	
-	std::string getConj(PersonalPronoun pp);
-	void setConj(PersonalPronoun pp, std::string s);
+	std::string getConj(PersonalPronoun pp, Tense* tense = NULL);
+	void setConj(PersonalPronoun pp, std::string s, Tense* tense = NULL);
 	
 	Conjugation* conjClass();
 	void setConjClass(Conjugation* cc);

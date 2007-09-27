@@ -17,6 +17,9 @@ class Core;
 class Language;
 class LanguageProfile;
 
+/**
+ * General personal pronouns (I, you, he/she/it, we, you, they)
+ */
 typedef enum {
 	ppUndefined = 0,
 	ppSingular1 = 1,
@@ -28,6 +31,9 @@ typedef enum {
 	ppHigh = 7
 } PersonalPronoun;
 
+/**
+ * Grammatical cases
+ */
 class Case
 {
 protected:
@@ -57,6 +63,9 @@ public:
 	
 };
 
+/**
+ * Conjugation of verbs
+ */
 class Conjugation
 {
 protected:
@@ -76,6 +85,30 @@ public:
 	
 };
 
+/**
+ * Tense
+ */
+class Tense
+{
+protected:
+	LanguageProfile* p_langProfile;
+	std::string p_id;
+	MlString p_name;
+	
+public:
+	Tense(LanguageProfile* lp);
+	virtual ~Tense();
+	
+	std::string id();
+	MlString& name();
+	
+	void setFromXmlNode(sxml::XmlNode* node);
+	void setToXmlNode(sxml::XmlNode* node);
+};
+
+/**
+ * Language profile
+ */
 class LanguageProfile
 {
 private:
@@ -92,6 +125,7 @@ private:
 	std::map<Gender::Type, std::string> p_defArticles;
 	std::map<std::string, Case*> p_cases;
 	std::map<std::string, Conjugation*> p_conjugations;
+	std::map<std::string, Tense*> p_tenses;
 	
 public:
 	LanguageProfile();
@@ -106,9 +140,12 @@ public:
 	virtual std::vector<Gender::Type>& genders();
 	virtual std::map<std::string, Case*>& cases();
 	virtual std::map<std::string, Conjugation*>& conjugations();
+	virtual std::map<std::string, Tense*>& tenses();
 	
 	virtual Case* getCase(std::string id);
 	virtual Conjugation* getConjugation(std::string id);
+	virtual Tense* getTense(std::string id);
+	virtual Tense* getDefaultTense();
 	virtual std::string getPersonalPronoun(PersonalPronoun pp);
 	virtual std::string getDefArticle(Gender::Type gen);
 	

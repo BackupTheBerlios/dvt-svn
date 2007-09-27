@@ -86,6 +86,29 @@
 	</t>
 </tenses>
 
+<conjugations>
+	<defcj t="1">
+		<name>
+			<lg c="de">schwaches Verb I</lg>
+		</name>
+	</defcj>
+	<defcj t="2">
+		<name>
+			<lg c="de">schwaches Verb II</lg>
+		</name>
+	</defcj>
+	<defcj t="3">
+		<name>
+			<lg c="de">schwaches Verb III</lg>
+		</name>
+	</defcj>
+	<defcj t="4">
+		<name>
+			<lg c="de">starkes/unregelmäßiges Verb</lg>
+		</name>
+	</defcj>
+</conjugations>
+
 <translations>
 	<genders>
 		<g t="u"><lg c="sv">obekant</lg></g>
